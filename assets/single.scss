@@ -1,0 +1,40 @@
+.single_page{
+    @include grid_list (1fr 2fr 1fr, 1fr);
+    display: grid;
+    grid-template-areas: ". single_content .";
+
+    .single_content{
+        line-height: 180%;
+        grid-area: single_content;
+        img{
+            max-width: 550px;
+            display: block;
+            padding: 3em;
+            margin: auto;
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    
+    .single_page{
+        @include grid_list (1fr 1fr 1fr);
+        display: grid;
+        grid-template-areas: ". single_content .";
+    
+        .single_content{
+            line-height: 150%;
+            grid-area: single_content;
+            font-size: x-small;
+            img{
+                max-width: 500px;
+                width: 300px;
+                display: block;
+                padding: 1em;
+                margin: auto;
+            }
+            h2{
+                line-height: 25px;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<div class="taxonomies">
+
+  <div class="t_time">
+    {{ $dateTime := .PublishDate.Format "2006-01-02" }}
+    {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+    <time class="black" datetime="{{ $dateTime }}">
+    <p class="ma0 mr2">Published: {{ .PublishDate.Format $dateFormat }}</p>
+    </time>
+  </div>
+  <div class="t_tags">
+    {{ with .Params.tags }}
+    <p class="ma0 mr2 b">Tags:</p>
+    {{ range . }}
+    {{ $href := print (absURL "tags/") (urlize .) }}
+    <a class="link underline-hover ttc blue-70 mr2 " href="{{ $href }}">{{ . }}</a>
+    {{ end }}
+    {{ end }}
+  </div>
+  <div class="t_categories">
+    {{ with .Params.categories }}
+    <p class="ma0 mr2 b">Categories:</p>
+    {{ range . }}
+    {{ $href := print (absURL "categories/") (urlize .) }}
+    <a class="link underline-hover ttc blue-70 mr2 " href="{{ $href }}">{{ . }}</a>
+    {{ end }}
+    {{ end }}
+  </div>
+
+</div>

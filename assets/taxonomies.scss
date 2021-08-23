@@ -1,0 +1,28 @@
+.taxonomies {
+
+    .t_time {
+        display: flex;
+        flex-direction: row;
+        margin: 1em 0 0 0;
+    }
+
+    .t_tags {
+        display: flex;
+        flex-direction: row;
+        margin: 1em 0 0 0;
+
+        time {
+            font-weight: 700;
+        }
+    }
+
+    .t_categories {
+        display: flex;
+        flex-direction: row;
+        margin: 1em 0 0 0;
+
+        time {
+            font-weight: 700;
+        }
+    }
+}

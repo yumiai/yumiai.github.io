@@ -1,0 +1,12 @@
+{{ define "blog" }}
+<div class="list_page">
+    <div class="list_content">
+        {{ range .Pages.ByPublishDate}}
+        <div class="list_posts">
+            <a class="link black underline-hover dim fw6 f4" href="{{ .RelPermalink }}"><h1 class="f4-ns f5 ma0 tl">{{ .Title }}</h1></a>
+            {{ partial "taxonomies.html" . }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

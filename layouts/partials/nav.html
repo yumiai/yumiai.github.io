@@ -1,0 +1,11 @@
+<div class="site_brand">
+    <div class="brand_content">
+        <a class=" dim " href="/"><img src="{{ $.Site.Params.brandimage }}" alt=""></a>
+        <h1 class="f3-ns f4 center lh-copy">{{ .Title }}</h1>
+        {{ if .IsHome }}<h1 class="f4-ns center f6 fw2 i">"{{ .Params.byline }}"</h1>{{ end }}
+        <div class="summary">
+            <p>{{ .Params.summary }}</p>
+        </div>
+        <hr class="mv4 w-70">
+    </div>
+</div>

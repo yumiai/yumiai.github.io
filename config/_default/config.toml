@@ -1,0 +1,14 @@
+baseURL = ""
+languageCode = "en-gb"
+title = "yümi & ai"
+
+[params]
+dateFormat = "Jan 2, 2006"
+type = "website"
+brandimage = "/img/site/yumiai-logo.svg"
+footertext = "powered by hugo & tachyons"
+footertextsub = "copyright © yümi labs"
+
+[taxonomies]
+tag = "tags"
+category = "categories"

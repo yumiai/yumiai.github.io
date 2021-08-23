@@ -1,0 +1,150 @@
+@import 'tachyons';
+@import 'list';
+@import 'taxonomies';
+@import 'single';
+
+*{
+    font-family: 'Space Mono', monospace;
+}
+
+body {
+    background-color: white;
+    font-size: 14px;
+    line-height: 180%;
+
+    h1 {
+        font-size: 30px;
+        text-align: center;
+        margin: 2em;
+    }
+    h3,h4{
+        margin: 1em 0 1em 0;
+    }
+    h2{
+        font-size: 24px;
+        margin: 1em 0 1em 0;
+    }
+}
+
+blockquote {
+    display: inline-block;
+    font-style: italic;
+    font-size: 18px;
+
+    p {
+        margin: 0;
+        padding: 10px;
+        color: $black-70;
+    }
+
+    p::before {
+        content: " > ";
+        color: $black;
+    }
+
+}
+
+.site_brand{
+    @include grid_list(1fr 2fr 1fr);
+    @include items_center();
+    display: grid;
+    grid-template-areas: ". brand_content .";
+    text-align: center;
+    .brand_content{
+        grid-area: brand_content;
+
+        img{
+            max-width: 130px;
+            margin: 1.5em 0 1.5em 0;
+        }
+    }
+.summary {
+    margin: 3em 0 3em 0;
+        p {
+            color: $black-80;
+            font-size: 13px;
+            line-height: 220%;
+        }
+    }
+}
+
+  .page{
+      @include grid_list(1fr 2fr 1fr, 1fr );
+      @include items_center();
+      display: grid;
+      grid-template-areas:". content .";
+      .content{
+          grid-area: content;
+        img {
+            max-width: 350px;
+            display: block;
+            padding: 1.5em;
+            margin: auto;
+        }
+      }
+    }
+
+.footer{
+    @include grid_list(1fr 2fr 1fr, 1fr );
+    @include items_center();
+    display: grid;
+    grid-template-areas:". f_content .";
+    .f_content{
+        margin: 1em;
+        text-align: center;
+        grid-area: f_content;
+    .f_icons{
+        display: flex;
+        direction: row;
+        justify-content: center;
+        svg{
+           margin: 2em;
+           color: $black;
+        }
+    }
+    .f_text{
+        display: flex;
+        flex-direction: column;
+        }
+    }
+}
+
+// Small Phone Screens
+@media only screen and (max-width: 768px) {
+    
+    blockquote {
+        display: inline-block;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 15px;
+    
+        p {
+            margin: 0;
+            padding: 0px;
+            color: $black-70;
+        }
+    
+        p::before {
+            content: " > ";
+            color: $black;
+        }
+    
+    }
+
+    .site_brand{
+        @include grid_list(50px 1fr 50px);
+        @include items_center();
+        text-align: center;
+    }
+    
+    .footer{
+        @include grid_list(1fr 1fr 1fr, 1fr );
+        @include items_center();
+        align-items: center;
+        .f_content{
+            font-size: 12px;
+        }
+    }
+
+    
+}

@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+<div class="single_page">
+    <div class="single_content">
+        <div>
+            <div>
+                {{ $dateTime := .PublishDate.Format "2006-01-02" }}
+                {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+                <time class="black" datetime="{{ $dateTime }}">
+                    <p class="ma0 fw7 mr2">Published: {{ .PublishDate.Format $dateFormat }}</p>
+                </time>
+            </div>
+            {{ partial "readtime.html" . }}
+            <p class="b">Video: <a href="{{ .Params.youtube }}">{{ .Params.youtube }}</a></p>
+        </div>
+        {{.Content}}
+    </div>
+</div>
+
+{{ end }}

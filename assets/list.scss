@@ -1,0 +1,39 @@
+@mixin grid_list ($tmp_column, $tmp_row: 1fr) {
+    grid-template-columns: $tmp_column;
+    grid-template-rows: $tmp_row;
+  }
+
+  @mixin items_center {
+    align-items: center;
+    justify-self: center;
+  }
+
+.list_page{
+    @include grid_list(1fr 2fr 1fr, 1fr);
+    display: grid;
+    grid-template-areas: ". list_content .";
+
+    .list_content{
+        grid-area: list_content;
+        .list_posts{
+            display: flex;
+            flex-direction: column;
+            margin: 2em 0 4em;
+        }
+    }
+}
+
+// Small Phone Screens
+@media only screen and (max-width: 768px) {
+  .list_page{
+    @include grid_list(50px 1fr 50px, 1fr);
+    @include items_center()
+    .list_content{
+        .list_posts{
+            display: flex;
+            flex-direction: column;
+            margin: 1em 0 3em;
+        }
+    }
+}
+}
