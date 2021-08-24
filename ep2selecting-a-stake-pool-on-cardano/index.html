@@ -1,0 +1,125 @@
+<head>
+<html prefix="og: http://ogp.me/ns#"></html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>yümi & ai</title>
+<link rel="shorcut icon" type=image/ico href=/img/site/yumiai-logo.svg>
+<meta name=description content>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=stylesheet href=/style.main.min.f5281333901e096d2f53fca57768415d2ef4efa9f4ab7202820b47b2946991cd.css integrity="sha256-9SgTM5AeCW0vU/yld2hBXS7076n0q3ICggtHspRpkc0=" media=screen>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel=stylesheet>
+</head>
+</head>
+<body>
+<main>
+<div class=site_brand>
+<div class=brand_content>
+<a class=dim href=/><img src=/img/site/yumiai-logo.svg alt></a>
+<h1 class="f3-ns f4 center lh-copy">EP2: Selecting a Stake Pool on Cardano</h1>
+<div class=summary>
+<p></p>
+</div>
+<hr class="mv4 w-70">
+</div>
+</div>
+<div class=single_page>
+<div class=single_content>
+<div>
+<div>
+<time class=black datetime=2020-08-13>
+<p class="ma0 fw7 mr2">Published: Aug 13, 2020</p>
+</time>
+</div>
+<p class=fw7>Reading time: 7 minutes and
+54 seconds.</p>
+<p class=b>Video: <a href="https://www.youtube.com/watch?v=R1FBI7g6iLI&t">https://www.youtube.com/watch?v=R1FBI7g6iLI&t</a></p>
+</div>
+<iframe src=https://anchor.fm/yumiai/embed/episodes/Selecting-a-Stake-Pool-on-Cardano---A-look-a-metrics-and-delegation-eit79v height=166px width=100% frameborder=0 scrolling=no></iframe>
+<p>Thanks for tuning in. In this episode, I&rsquo;ll be focusing on Cardano and a process called stake-pool delegation.</p>
+<p>I&rsquo;ll be covering Cardano a lot in this channel, but in this episode I thought I would walk through understanding stake-pool metrics and how to delegate your Ada. I&rsquo;ll look at setting up a Wallet, selecting a Stake-Pool, then delegating the Wallet to it. I&rsquo;m going to explain the process using the the Daedalus Wallet. Other Wallets such as Yoroi and Adalight will support staking soon; and custody services such as Coinbase Custody will also eventually enable this.</p>
+<p>The process with these will be similar to what I explain here. If you need a little background to Proof-of-Stake the previous video covers that.
+I&rsquo;ve linked to it and the Daelalus Wallet software along with other resources mentioned in the video in the description below.</p>
+<h2 id=what-are-wallets>What are Wallets?</h2>
+<p>A Wallet is a public and private key pair. A pair of &ldquo;magic&rdquo; cryptographic numbers that help identify, protect, and sign transactions in the network. A Wallet application is a bit of software that helps you manage these cryptographic keys. Since crypto-currency holdings can represent significant value, good practice includes using a hardware wallet— a small physical device specifically engineered to manage private keys. It&rsquo;s the private keys which enable you to spend tokens and perform other tasks so these need to be handled with care. Cardano&rsquo;s best known wallet applications are Daedalus and Yoroi.</p>
+<p><img src=/img/content/ep2/Daedalus_yoroi_master.gif alt></p>
+<p>Wallet applications to date have focused on Crypto-currencies; but as the use of tokens, certificates, and smart-contracts become more prevalent in the coming years, wallet software will help manage different processes.You can see this evolution in the Daedalus&rsquo;s delegation center, the features of the application that help you delegate your Ada stake.</p>
+<p>We will be covering this more in a moment, but first we need to install Daedalus.</p>
+<h2 id=daedalus>Daedalus</h2>
+<p>Each time you run Daedalus it will sync up with the network but in general that happens in the background. Since Daedalus is a full-node wallet application, which means it pulls down an entire copy of the Cardano Blockchain the first time you run it, Daedalus will need a little bit of time to sync up with the network. Its takes up to 2 hours to sync up the full block so you can see why lite wallets such as Yoroi or Ada light have an advantage.</p>
+<p><img src=/img/content/ep2/Final_wallet_hub_comp.gif alt></p>
+<p>If this is the first time using Daedalus you&rsquo;ll need to either create a new wallet or restore one from a seed phrase if you&rsquo;ve had a Ada wallet in Yoroi for example. In this case I already have Ada in my wallet but you can always go to an exchange or crypto currency retailer to obtain Ada.</p>
+<p><img src=/img/content/ep2/wallet_restoration_creation.gif alt></p>
+<p>Now that we have a Wallet with Ada in it, we are ready to start making decisions about delegating our Ada. This amounts to deciding on which Stake-Pool we want to delegate to. Delegation happens at the Wallet level, so if you want to delegate to more than one Stake-Pool, then you&rsquo;d create more Wallets.</p>
+<h2 id=delegating-rules>Delegating Rules</h2>
+<p>Ten Ada is the minimum amount required in a wallet for delegating.</p>
+<p>Delegating a Wallet creates a special rewards wallet that receives earned rewards, and incurs a small transaction fee to register the delegation on the blockchain. Any changes to delegation preferences require a full epoch to elapse before they take effect. Since this delay will affect the expected return, you don&rsquo;t want to be switching up your delegation preferences too often.</p>
+<p>In other words, we should be making informed decisions about whom to delegate to.</p>
+<p>Keep in mind that Stake-Pools can retire too, so you will need to keep an eye on your stakes over time to ensure they are delegated productively. For simplicity, I&rsquo;m going to delegate to one Stake-Pool so I&rsquo;ve created a single Wallet to do this.</p>
+<p><img src=/img/content/ep2/Retiring_stake_pool.gif alt></p>
+<h2 id=stake-pools>Stake Pools</h2>
+<p>To make the selection process and monitoring straightforward and consistent, Daedalus includes a visual grading system of the publicly registered Stake-Pools. There is also a reward calculator, that I&rsquo;ve linked to in the description, that can help us get a sense of expected returns.</p>
+<p>As I mentioned before Daedalus&rsquo;s User Interface includes a Delegation Centre. The area of the Wallet application designed to help you make a decision for wallet delegation. In the &ldquo;Stake-Pools&rdquo; tab of Daedalus&rsquo;s Delegation Centre, each Pool is represented as a tile and dynamically ranked according to criteria that help to illuminate the past and expected productivity of the Pool.</p>
+<p>Each tile uniformly represents a Stake-Pool: A five character pool symbol, the ranking, an optional retirement badge, and a saturation indicator. Clicking on any tile reveals more information about the Pool: an ID, a web link, and factors that contribute to the ranking. Each Stake-Pool can be viewed as a micro-enterprise competing for community delegations since this enables them to produce blocks and earn fees.</p>
+<p><img src=/img/content/ep2/ref_stake_analysis_10.gif alt></p>
+<p>To help operators promote their Pool, the listing includes a web link. This enables the operator to position themselves uniquely. It includes featuring their set-up, their long-term performance, their contribution to the Cardano ecosystem and even making promises to invest profits to some other causes.</p>
+<h2 id=stake-pool-operators>Stake Pool Operators</h2>
+<p>Many operators just provide a dashboard that gives a bit of transparency into the operation of the node, but overtime we can expect Stake-Pool operators to become more sophisticated. A Pools desirability features numerically in the tile as it&rsquo;s rank but also orders the tiles.</p>
+<p>I&rsquo;ll explain some of the factors that contribute to this ranking in a moment.</p>
+<h2 id=saturation>Saturation</h2>
+<p>Each tile shows a Pool&rsquo;s Saturation. A combination of bar length and associated colour offer a quick visual clue to the relative amount of Ada delegated with a Pool.</p>
+<p><img src=/img/content/ep2/Pool_saturation_flux.gif alt></p>
+<p>The Ouroboros incentive mechanism caps earning potential of a Pool if too much Ada is pledged and delegated to it. The rule prevents a &ldquo;rich-get-richer&rdquo; outcome and therefore helps to mitigate consolidation of the stake-pools into a few operators.</p>
+<p><img src=/img/content/ep2/pool_consolidation.gif alt></p>
+<p>One hundred per cent Saturation is where a pool has an optimal amount of Ada delegated to it. Anything beyond one hundred per cent is non-optimal for distributing block production across the network. The bar colour varies from Green to Orange. Green indicates a pool is undersaturated, and orange indicates an oversaturated one. Since the actual Ada in delegated Wallets can be transferred or spent easily by the owner, Saturation will be dynamic.</p>
+<h2 id=stake-pool-metrics>Stake Pool Metrics</h2>
+<p>Drilling into a Pool&rsquo;s metrics a little deeper we have; Controlled Stake, Pool Margin, Pledge, Cost per Epoch, and Produced blocks. Controlled Stake shows the ratio of Ada delegated to the pool and pool margin is the operation fee charged after the cost is deducted. The Pool margin is the fee charged by the pool operator and is applied to the pool&rsquo;s earned rewards after costs have been deducted. Pledge reveals how much Ada the owners have delegated to their Pool. Pledges signal a commitment to operating a stake-pool and producing blocks, such that it is in the operators and owners interest to be honest.</p>
+<p><img src=/img/content/ep2/pool_detail_final_comp.gif alt></p>
+<p>The Pledge amount is an opportunity cost to the operator on top of the node&rsquo;s running costs. A higher pledge means a greater level of commitment so they can charge a higher Pool Margin. The pledge amount also factors into the reward calculation, giving a reward boost for higher pledgers. Mitigating something called a Sybil attack and hence operators. This design aims to ensure that pool operators don&rsquo;t masquerade as many different pools or monopolise the system.</p>
+<p>The Cost-Per-Epoch, is an operation fee deducted from the Pool&rsquo;s reward after each epoch.</p>
+<p>After the cost and margin are deducted from the pool&rsquo;s reward, what Ada remains is distributed to the Pool&rsquo;s stake reward wallets. Pledge and delegated Ada make up the total stake of a pool, so the rewards are issued on a pro-rata basis to the appropriate reward wallet.</p>
+<p>The Pool&rsquo;s Operator sets the Pool-Margin, Pledge amount, and Cost-Per-Epoch. To offset short-term profit-maximising. These factors all contribute to calculating the desirability and rank of the Pool.</p>
+<h2 id=overall-recap>Overall Recap</h2>
+<p>Now all of that is a lot to take in!</p>
+<p>The objective of the overall design is to create a well-distributed, decentralised network. A network topology that can sustain both ongoing operations and encourage continued participation beyond any Ada exchange value speculation. When we&rsquo;ve selected the Pool we&rsquo;re going to delegate to, It&rsquo;s a reasonably straightforward process: We select the Pool; click delegate; choose a wallet; then confirm this by entering your spending password.</p>
+<p>As discussed before, there is a ten Ada minimum fee to delegate a Wallet to a Stake-Pool. We can transfer Ada in and out at any time. Wallets can be delegated to other Pools at any time. However, any changes to the preferences take a full epoch to take effect and you start seeing rewards. In both cases a transaction fee applies for transfers or delegation.</p>
+<p>How you decide to delegate is entirely up to you but the intention is that you make an informed decision that benefits both you and the Cardano network.</p>
+<p>I research the pools and get to know them a little bit, then factor in the ranking metrics before I delegate. Typically I choose a pool that aligns with building a healthy ecosystem.</p>
+<p>Don&rsquo;t be afraid to delegate to the the slightly lower ranks either!</p>
+<p>Remember that these pools are completely dynamic and are subject to delegation and performance updates. So what might be a slightly lower ranking Stake-Pool, could end-up offering a higher return in the end.</p>
+<blockquote>
+<p><strong>Disclaimer</strong>: Just a little note about the Shelley era. At the time of recording, Cardano was in the early days of the Shelley so the ranking and performance of the Stake-Pools is randomised for the moment and the network is slowly moving to being decentralised over the next few months. I&rsquo;ve chosen to discuss everything as if this whole decentralisation process has been completed.</p>
+</blockquote>
+<p>I hope I&rsquo;ve created enough interest for you to at least experiment with staking on Cardano. Perhaps even motivating you to obtain some Ada yourself and give staking a try. Overall the Cardano Network is well-engineered and able to evolve continually. In the next episode I&rsquo;ll be making an argument for Cardano, what makes it unique with respect to other blockchain projects.</p>
+<p>Anyway, thanks for listening Ka kite anō and I’ll see you in the next one.</p>
+<hr>
+<h2 id=resources>Resources</h2>
+<p><a href="https://www.youtube.com/watch?v=Do8rHvr65ZA">Cardano Simply Explained</a></p>
+<hr>
+<h2 id=support->Support ❤️</h2>
+<p>Follow us on twitter and paetreon!</p>
+<p>Twitter: <a href=https://twitter.com/yumilabs>@yumilabs</a></p>
+</div>
+</div>
+</main>
+<div class=footer>
+<div class=f_content>
+<div class=f_icons>
+<a href="https://www.youtube.com/channel/UCUl0e1S_69nW2EBAi_xlpxA?view_as=subscriber" class=dim><i data-feather=youtube></i></a>
+<a href=https://twitter.com/yumilabs class=dim><i data-feather=twitter></i></a>
+<a href=https://github.com/yumiai class=dim><i data-feather=github></i></a>
+<a href=mailto:hiya@yumi.ai class=dim><i data-feather=send></i></a>
+</div>
+<div class=f_text>
+<small class=black-80>copyright © yümi labs</small>
+</div>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js></script>
+<script>feather.replace()</script>
+</body>
+</html>
