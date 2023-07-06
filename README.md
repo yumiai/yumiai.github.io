@@ -43,4 +43,4 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## License
 
-The website and it's contents `yumiai\yumiai.github.io` is copyright © yümi labs. Software and site styling is licensed under and MIT License.
+The website and it's contents `yumiai\yumiai.github.io` is copyright © yūmi labs. 
