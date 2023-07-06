@@ -1,11 +1,11 @@
-# yümi & ai website
+# yūmi & ai website
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## A DAO building DAOs. Programmable value streams for decentralised governance.
+## Regenerative finance (ReFI) market protocols.
 
-Initial website of yümi & ai 
+Initial website of yūmi & ai 
 
 ## Change Log
 
