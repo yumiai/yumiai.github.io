@@ -90,12 +90,12 @@ p {
 }
 
 #background-1 {
-  background: url('assets/images/watercolour.jpg') repeat;
+  background: url('assets/images/watercolour1.png') repeat;
   animation-delay: 0s;
 }
 
 #background-2 {
-  background: url('assets/images/watercolour3.jpg') repeat;
+  background: url('assets/images/watercolour3.png') repeat;
   animation-delay: 15s;
 }
 
