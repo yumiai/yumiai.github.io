@@ -38,6 +38,7 @@ h1 {
   font-variation-settings: "wght" 400, "SOFT" 100, "WONK" 1;
   margin: 0;
 }
+
 p {
   font-size: 1.5rem;
   margin: 0.5em 0 0.5em 0;
@@ -59,10 +60,10 @@ p {
   margin-top: -4.5rem;
   gap: 0;
   position: relative;
+  min-width: 22.5rem;
 
   font-family: 'Fraunces';
   font-size: 4.5em;
-  min-width: 22.5rem;
   font-variation-settings: "wght" 400, "SOFT" 100, "WONK" 1;
 }
 
@@ -211,7 +212,11 @@ p {
   }
 }
 
-@media (max-width: 786px) {
+@media (max-width: 812px) {
+
+  body {
+    font-variation-settings: "wght" 400, "slnt" 0;
+  }
   
   h1 {
     font-size: 2.25rem;
@@ -220,6 +225,10 @@ p {
 
   p {
     font-size: 1rem;
+  }
+
+  #content-container {
+    padding: 0 2.5rem 0 2.5rem;
   }
 
   #links {
@@ -249,11 +258,6 @@ p {
     right: -25rem;
     height: 40rem;
   }
-
-  #content-container {
-    padding: 0 2rem 0 2rem;
-  }
-
 }
 
 
