@@ -30,7 +30,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           enable_jekyll: false
           publish_dir: ./public
-          publish_branch: main # Deploy branch
+          publish_branch: hugo # Deploy branch, change to main to make public.
           force_orphan: true
           user_name: 'github-actions[bot]'
           user_email: '82072426+wolstaeb@users.noreply.github.com'
