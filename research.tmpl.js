@@ -1,5 +1,5 @@
 export const layout = "layouts/archive.njk";
-export const title = "Blog";
+export const title = "Research";
 
 export default function* ({ search, paginate }) {
   const posts = search.pages("type=posts", "date=desc");
@@ -10,7 +10,8 @@ export default function* ({ search, paginate }) {
     // Show the first page in the menu
     if (data.pagination.page === 1) {
       data.menu = {
-        visible: false,
+        visible: true,
+        order: 4,
       };
     }
 
@@ -20,8 +21,8 @@ export default function* ({ search, paginate }) {
 
 function url(n) {
   if (n === 1) {
-    return "/posts/";
+    return "/research/";
   }
 
-  return `/posts/${n}/`;
+  return `/research/${n}/`;
 }

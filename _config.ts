@@ -1,5 +1,6 @@
 import lume from "lume/mod.ts";
 import date from "lume/plugins/date.ts";
+import tailwindcss from "lume/plugins/tailwindcss.ts";
 import postcss from "lume/plugins/postcss.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import basePath from "lume/plugins/base_path.ts";
@@ -16,6 +17,25 @@ const site = lume({
 site
   .ignore("README.md", "flake.nix", "flake.lock", "default.nix", "shell.nix")
   .copy("assets")
+  .use(tailwindcss({
+    // Extract the classes from HTML and njk files
+    extensions: [".html", ".njk", ".css"],
+
+    // Tailwind options, like the theme colors and fonts
+    options: {
+      theme: {
+        extend: {
+          color: {
+            'yumi-green': '#012E0D',
+          },
+          fontFamily: {
+            'fraunces': ['Fraunces', 'Merriweather', 'serif' ],
+            'inter': ['Inter', 'Graphik', 'sans-serif' ],            
+          },
+        },
+      },
+    },
+  }))
   .use(postcss())
   .use(date())
   .use(codeHighlight())

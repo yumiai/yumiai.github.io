@@ -1,11 +1,9 @@
 ---
-title: This is my second post.
-description: This is a post on My Blog about leveraging agile frameworks.
-date: 2018-07-04
+title: The second post.
+description: This is a post on our Blog about stuff.
+date: 2023-06-29
 tags:
-  - number-2
   - second-tag
-
 ---
 
 Leverage agile frameworks to provide a robust synopsis for high level overviews.

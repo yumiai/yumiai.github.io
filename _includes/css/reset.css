@@ -1,20 +1,14 @@
-:root {
-  --red: #c04;
-  --lightgray: #e6e6e6;
-  --darkgray: #0d1117;
-  --blue: #135;
-  --white: #fff;
-  --font-family: -apple-system, system-ui, sans-serif;
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: var(--font-family);
-  color: var(--darkgray);
-  background-color: var(--white);
-
   /** Pagefind variables */
   --pagefind-ui-scale: .8;
   --pagefind-ui-primary: var(--darkgray);
@@ -29,42 +23,30 @@ body {
   --pagefind-ui-font: var(--font-family);
 }
 
-main {
-  padding: 5vh 5vw;
-
-  & > :first-child {
-    margin-top: 0;
+/* Navbar */
+#search {
+  & .pagefind-ui__drawer {
+    @apply absolute px-5 py-5 overflow-y-auto shadow-lg w-full bg-white border rounded-md;
+    max-height: calc(100vh - 200px);
   }
-}
 
-a {
-  color: var(--blue);
-}
-
-/* Warning */
-.warning {
-  background-color: #ffc;
-  padding: 1em 0.5em;
-}
-
-table {
-  margin: 1em 0;
-
-  & td,
-  & th {
-    padding-right: 1em;
+  & .pagefind-ui__message {
+    @apply m-0 p-0;
   }
-}
 
-pre,
-code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-  line-height: 1.5;
-  font-size: 1rem;
-}
+  & .pagefind-ui__result {
+    @apply pt-2 pb-0
+  }
 
-hr {
-  border: 0;
-  border-top: solid 2px var(--lightgray);
-  margin: 5vh 0;
+  & .pagefind-ui__result-inner {
+      @apply mt-2
+    }
+  
+  & .pagefind-ui__result-link {
+    @apply text-[color:black];  
+  }
+  
+  & .pagefind-ui__result-excerpt {
+    @apply text-[color:darkgray];
+  }
 }

@@ -1,10 +1,10 @@
 ---
-title: This is my third post.
-description: This is a post on My Blog about win-win survival strategies.
-date: 2018-08-24
+title: The third post.
+description: This is a post on our Blog about stuff.
+date: 2023-06-30
 pinned: true
 tags:
-  - second-tag
+  - third-tag
 ---
 
 Leverage agile frameworks to provide a robust synopsis for high level overviews.

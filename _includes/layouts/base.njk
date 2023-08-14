@@ -1,42 +1,67 @@
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en" class="p-0 m-0 font-custom text-darkgray bg-white">
+<head>
+    <meta charset="UTF-8">
     <title>{{ title or site.title }}</title>
-    <meta name="description" content="{{ description or site.description }}">
+    <meta name="description" content="{{ description or site.description }}">    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="stylesheet" href="/styles.css">
     <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ site.title }}">
     <link rel="alternate" href="/feed.json" type="application/json" title="{{ site.title }}">
-  </head>
-  <body>
-    <nav class="navbar">
-      <a href="/" class="navbar-home">
-        <strong>{{ site.title }}</strong>
-      </a>
-
-      <ul class="navbar-links">
-      {%- for entry in search.pages("menu.visible=true", "menu.order") %}
-        <li>
-          <a href="{{ entry.data.url }}"{% if entry.data.url == url %} aria-current="page"{% endif %}>
-            {{ entry.data.menu.title or entry.data.title }}
-          </a>
-        </li>
-      {%- endfor %}
-      </ul>
-
-      <div class="navbar-search">
-        <div id="search"></div>
-      </div>
-    </nav>
-
-    <main class="{{ bodyClass }}">
+</head>
+<body class="p-0 m-0 font-custom text-darkgray bg-white">
+    <header>
+        <div>
+            <nav class="flex flex-wrap items-center p-4 gap-x-8 gap-y-4">
+              <a href="/" class="block no-underline">
+                <img src="/assets/images/logo-yumi.svg" alt="Logo" class="h-10 w-auto">
+              </a>
+              <ul class="p-0 m-0 list-none flex flex-wrap gap-x-8">
+              {%- for entry in search.pages("menu.visible=true", "menu.order") %}
+                <li>
+                  <a href="{{ entry.data.url }}" class="block no-underline hover:underline{% if entry.data.url == url %} font-bold underline" aria-current="page{% endif %}">
+                    {{ entry.data.menu.title or entry.data.title }}
+                  </a>
+                </li>
+              {%- endfor %}
+              </ul>
+          
+              <div class="flex-grow max-w-[350px] ml-auto">
+                <div id="search"></div>
+              </div>
+              <div>
+                {% for link in site.sociallinks %}
+                <a href="{{ link.url }}" class="text-gray-500 hover:text-gray-800" aria-label="{{ link.title }}">
+                    <i class="{{ link.faSet }} {{ link.faIcon }}"></i>
+                </a>
+                {% endfor %}
+              </div>
+            </nav>
+        </div>
+    </header>
+    <main class="font-fraunces py-20 px-20">
       {{ content | safe }}
     </main>
-
-    <footer></footer>
-
-    <!-- Current page: {{ url }} -->
-  </body>
+    <footer>
+        <div>
+            <div><img src="/assets/images/logo-yumi.svg" alt="Logo" class="h-10 w-auto"></div>
+            <div>You, Me and A.I.</div>
+            <div>Using artifical intelligence to help us solve hard problems, together</div>
+            <hr class="border-0 border-t-2 border-lightgray-300 my-20" />
+            <div class="flex justify-center items-center">
+              {% for link in site.sociallinks %}
+              <div class="flex flex-col items-center justify-center p-4">
+                <a href="{{ link.url }}" class="text-gray-500 hover:text-gray-800" aria-label="{{ link.title }}">
+                  <i class="{{ link.faSet }} {{ link.faIcon }}"></i>
+                </a>
+                <p>{{ link.title }}</p>
+              </div>
+              {% endfor %}
+            </div>
+            <div>Copyright terms here.</div>
+        </div>
+    </footer>
+</body>
 </html>

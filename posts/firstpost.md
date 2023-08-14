@@ -1,9 +1,9 @@
 ---
-title: This is my first post.
-description: This is a post on My Blog about agile frameworks.
-date: 2018-05-01
+title: The first post.
+description: This is a post on our Blog about stuff.
+date: 2023-06-28
 tags:
-  - another-tag
+  - first-tag
 ---
 
 Leverage agile frameworks to provide a robust synopsis for high level overviews.
