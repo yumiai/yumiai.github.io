@@ -4,64 +4,106 @@
     <meta charset="UTF-8">
     <title>{{ title or site.title }}</title>
     <meta name="description" content="{{ description or site.description }}">    
-    <link rel="shortcut icon" href="/assets/images/favicon.ico"> 
+    <link rel="shortcut icon" href="/assets/images/favico.ico"> 
     <link rel="preconnect" href="https://fonts.gstatic.com">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="stylesheet" href="/styles.css">
     <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ site.title }}">
     <link rel="alternate" href="/feed.json" type="application/json" title="{{ site.title }}">
 </head>
-<body class="p-0 m-0 font-custom text-darkgray bg-white">
-    <header>
-        <div>
-            <nav class="flex flex-wrap items-center p-4 gap-x-8 gap-y-4">
-              <a href="/" class="block no-underline">
-                <img src="/assets/images/logo-yumi.svg" alt="Logo" class="h-10 w-auto">
+<body class="flex flex-col h-screen w-full p-0 m-0 overflow-hidden text-english-holly bg-coconut-cream">
+
+    <div id="grid-container" class="absolute h-full w-full grid grid-cols-6 grid-rows-3 scroll-right z-0">
+      {% for i in range(1,18) %}
+         <div class="grid-item bg-noise blur-3xl invert-[50%] animate-pulse"></div>
+      {%- endfor %}   
+    </div>
+    <div id="background-1" class="absolute h-full w-full bg-pattern-1 bg-repeat mix-blend-screen animate-bg-1"></div>
+    <div id="background-2" class="absolute h-full w-full bg-pattern-2 bg-repeat mix-blend-screen animate-bg-2"></div>
+
+    <header class="z-20">
+      <div>
+        <nav class="flex relative justify-between items-center self-stretch h-16 mx-10 mt-5">
+          <div id="name" class="flex font-header text-2xl mr-4">
+            <img src="/assets/images/logo-yumi.svg" alt="The yumi logo, two hands held in the shape of a heart." class="w-10 w-auto">
+          </div>
+          <ul class="p-0 m-0 list-none flex flex-wrap gap-x-8">
+          {%- for entry in search.pages("menu.visible=true", "menu.order") %}
+            <li>
+              <a href="{{ entry.data.url }}" class="block no-underline hover:text-tuscany hover:underline{% if entry.data.url == url %} font-bold underline" aria-current="page{% endif %}">
+                {{ entry.data.menu.title or entry.data.title }}
               </a>
-              <ul class="p-0 m-0 list-none flex flex-wrap gap-x-8">
-              {%- for entry in search.pages("menu.visible=true", "menu.order") %}
-                <li>
-                  <a href="{{ entry.data.url }}" class="block no-underline hover:underline{% if entry.data.url == url %} font-bold underline" aria-current="page{% endif %}">
-                    {{ entry.data.menu.title or entry.data.title }}
-                  </a>
-                </li>
-              {%- endfor %}
-              </ul>
-          
-              <div class="flex-grow max-w-[350px] ml-auto">
-                <div id="search"></div>
-              </div>
-              <div>
-                {% for link in site.sociallinks %}
-                <a href="{{ link.url }}" class="text-gray-500 hover:text-gray-800" aria-label="{{ link.title }}">
-                    <i class="{{ link.faSet }} {{ link.faIcon }}"></i>
-                </a>
-                {% endfor %}
-              </div>
-            </nav>
-        </div>
+            </li>
+          {%- endfor %}
+          </ul>
+      
+          <div class="flex-grow max-w-sm ml-auto mr-4">
+            <div id="search"></div>
+          </div>
+          <div class="flex">
+            {% for link in site.sociallinks %}
+            <a href="{{ link.url }}" class="text-gray-500 hover:text-gray-800 flex flex-row gap-6 pr-4" aria-label="{{ link.title }}">
+                <i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i>
+            </a>
+            {% endfor %}
+          </div>
+        </nav>
+      </div>
     </header>
-    <main class="font-fraunces py-20 px-20">
-      {{ content | safe }}
-    </main>
-    <footer>
-        <div>
-            <div><img src="/assets/images/logo-yumi.svg" alt="Logo" class="h-10 w-auto"></div>
-            <div>You, Me and A.I.</div>
-            <div>Using artifical intelligence to help us solve hard problems, together</div>
-            <hr class="border-0 border-t-2 border-lightgray-300 my-20" />
-            <div class="flex justify-center items-center">
-              {% for link in site.sociallinks %}
-              <div class="flex flex-col items-center justify-center p-4">
-                <a href="{{ link.url }}" class="text-gray-500 hover:text-gray-800" aria-label="{{ link.title }}">
-                  <i class="{{ link.faSet }} {{ link.faIcon }}"></i>
-                </a>
-                <p>{{ link.title }}</p>
-              </div>
-              {% endfor %}
-            </div>
-            <div>Copyright terms here.</div>
+
+    <main class="flex-grow relative items-start px-[4.25rem] w-full m-0 box-border z-20">
+      <div class="absolute bottom-0 right-0 m-0 p-0 ">
+        <img class="h-[50rem]" src="assets/images/pilea-peperomioides.png" alt="Pilea peperomioides plant, the money plant."></img>
+      </div> 
+
+      <div class="flex flex-col justify-center h-full w-full ml-20">
+        <div class="flex flex-row items-center whitespace-nowrap">
+          <div class="font-header text-english-holly text-6xl z-30">yūmi is Regenerative</div>
+          <div id="scroll-mask" class="relative h-52 overflow-hidden mask-radial z-30 ml-2">
+            <div id="scroll-container" class="flex flex-col-reverse relative font-serif text-7xl gap-0  ml-1 mt-[-5rem] min-w-[22.5em]"></div>
+          </div>
         </div>
+        <div class="mt-[-3rem] z-30">
+          <p class="text-2xl">Unleashing our collective wisdom to propel impactful change.</p>
+          <p class="text-2xl">Engineered on Cardano.</p>
+        </div>
+      </div>  
+
+    </main>
+
+    <footer class="mb-20 z-20">
+      <hr class="border-0 border-t-2 mb-10 opacity-20 border-lightgray" />
+      <div class="flex flex-col items-center justify-center">
+        <img src="/assets/images/logo-yumi.svg" alt="Logo" class="block h-10 mb-5">
+        <div>You, Me and A.I.</div>
+        <div>Using our collective intelligence to help solve hard problems, together</div>
+        <div class="flex justify-center items-center mt-2">
+          {% for link in site.sociallinks %}
+          <div class="flex flex-col items-center justify-center p-4">
+            <a href="{{ link.url }}" class="text-gray-500 hover:text-gray-800" aria-label="{{ link.title }}">
+              <i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i>
+            </a>
+            <p>{{ link.title }}</p>
+          </div>
+          {% endfor %}
+        </div>
+        <div>Copyright terms here.</div>
+      </div>
     </footer>
+
+    <script>
+      // Add a random animation-delay to each .grid-item div for the background animation.
+      document.addEventListener("DOMContentLoaded", function() {
+        const gridItems = document.querySelectorAll('.grid-item');
+    
+        gridItems.forEach(item => {
+          const randomDelay = Math.random() * 5;  // random delay between 0 and 5 seconds
+          item.style.animationDelay = `${randomDelay}s`;
+        });
+      });
+    </script>
+
+    <script src="/scripts/word-scroll.js"></script>
+
 </body>
 </html>
