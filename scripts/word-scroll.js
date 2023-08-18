@@ -1,4 +1,4 @@
-const words = ["Markets", "Finance", "Progress", "Places", "Returns", "Impact"];
+const words = ["Markets.", "Finance.", "Progress.", "Places.", "Returns.", "Impact."];
 let currentIndex = -1;
 const scrollContainer = document.getElementById('scroll-container');
 
