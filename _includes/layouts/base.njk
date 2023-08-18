@@ -63,8 +63,8 @@
             <div id="scroll-container" class="flex flex-col-reverse relative font-serif text-7xl gap-0  ml-1 mt-[-5rem] min-w-[22.5em]"></div>
           </div>
         </div>
-        <div class="mt-[-3rem] z-30 w-5/12">
-          <span class="text-2xl">Unleashing our collective wisdom to propel impactful change.</span>
+        <div class="mt-[-3rem] z-30 w-6/12">
+          <span class="text-2xl">Unleashing our collective intelligence to propel impactful change.</span>
           <span class="text-2xl">Regenerative Finance (ReFi) engineered on Cardano.</span>
         </div>
       </div>  
@@ -73,21 +73,21 @@
 
     <footer class="mb-20 z-20">
       <hr class="border-0 border-t-2 mb-10 opacity-20 border-lightgray" />
-      <div class="flex flex-col items-center justify-center">
-        <img src="/assets/images/logo-yumi.svg" alt="Logo" class="block h-10 mb-5">
-        <div>You, Me and A.I.</div>
-        <div>Using our collective intelligence to help solve hard problems, together</div>
+      <div class="flex flex-col items-center justify-center opacity-50">
         <div class="flex justify-center items-center mt-2">
           {% for link in site.sociallinks %}
           <div class="flex flex-col items-center justify-center p-4">
-            <a href="{{ link.url }}" class="text-gray-500 hover:text-gray-800" aria-label="{{ link.title }}">
+            <a href="{{ link.url }}" class="text-gray-700 hover:text-gray-800" aria-label="{{ link.title }}">
               <i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i>
             </a>
             <p>{{ link.title }}</p>
           </div>
           {% endfor %}
         </div>
-        <div>Copyright terms here.</div>
+        <img class="block h-12 mt-3 mb-2" src="/assets/images/logo-yumi.svg" alt="Logo" >
+        <div class="font-header text-lg mt-2">You, Me and A.I.</div>
+        <div>Using decentralised smart-markets to solve hard problems, together.</div>
+        <div class="text-xs mt-2 font-fine-print italic">{{site.copyright}}</div>
       </div>
     </footer>
 
