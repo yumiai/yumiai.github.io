@@ -95,8 +95,8 @@ site
           fontFamily: {      
             'serif': ["Fraunces, Merriweather, serif", {fontVariationSettings: '"wght" 400, "SOFT" 100, "WONK" 1'} ],  
             'header': ["Fraunces, Merriweather, serif", {fontVariationSettings: '"wght" 400, "SOFT" 100, "WONK" 1'} ], 
-            'sans': ["Inter, sans-serif", {fontVariationSettings: '"wght" 300, "slnt" 0'} ],
-            'body': ["Inter, sans-serif", {fontVariationSettings: '"wght" 300, "slnt" 0'} ],                 
+            'sans': ['var(--font-family)', {fontVariationSettings: '"wght" 300, "slnt" 0'} ],
+            'body': ['var(--font-family)', {fontVariationSettings: '"wght" 300, "slnt" 0'} ],                 
           },
 
           backgroundImage: {

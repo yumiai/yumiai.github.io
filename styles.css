@@ -11,6 +11,18 @@
   src: url('assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
 }
 
+/* CSS variables are used to set Pagefind style and are used in the font family is used in
+   tailwind theme. 
+*/
+:root {
+    --font-family: 'Inter', -apple-system, system-ui, sans-serif;
+	--red: #c04;
+    --lightgray: #e6e6e6;
+    --darkgray: #0d1117;
+    --blue: #135;
+    --white: rgba(255,255,255,0);
+}
+
 @layer base {
   html,
   body {
@@ -37,7 +49,7 @@
   #search {
     & .pagefind-ui__drawer { @apply absolute px-5 py-5 overflow-y-auto shadow-lg w-full bg-white border rounded-md max-h-viewport-200}
     & .pagefind-ui__message { @apply m-0 p-0; }
-    & .pagefind-ui__result { @apply pt-2 pb-0 }
+    & .pagefind-ui__result { @apply pt-2 pb-0 border-0 }
     & .pagefind-ui__result-inner { @apply mt-2 }
     & .pagefind-ui__result-link { @apply text-black}
     & .pagefind-ui__result-excerpt { @apply text-gray-500}
