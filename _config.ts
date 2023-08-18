@@ -32,8 +32,10 @@ site
         function ({ addUtilities }) {
           addUtilities({
             '.mask-radial': {
-              maskImage: 'radial-gradient(67% 50% at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%)',
-              WebkitMaskImage: 'radial-gradient(67% 50% at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%)'
+              width: '30rem',
+              height: '13rem',
+              maskImage: 'radial-gradient(67% 50% at 33% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%)',
+              WebkitMaskImage: 'radial-gradient(67% 50% at 33% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%)'
             }
           }, ['responsive', 'hover']);
         },
@@ -125,9 +127,8 @@ site
             'scroll-right': '240s ease-in-out infinite kf-scroll-right',
             'bg-1': '30s 0s infinite kf-fade',
             'bg-2': '30s 15s infinite kf-fade',
-            'pulse': '10s infinite ease-in-out ',
+            'pulse': '10s infinite ease-in-out',
           },
-
         },
       },
     },

@@ -1,44 +1,59 @@
-const words = ["Markets.", "Finance.", "Progress.", "Places.", "Returns.", "Impact."];
-let currentIndex = -1;
+/**/
+
 const scrollContainer = document.getElementById('scroll-container');
+const words = ["Markets.", "Finance.", "Progress.", "Places.", "Returns.", "Impact."];
+const wordClasses = "flex flex-col items-start justify-center";
 
-let intervalId = null;
+const focusElement = 1;
+const focusOpacity = 1;
+const fadeoutElement = 2;
+const fadeoutOpacity = 0.1;
+const numElements = 4; 
+let currentIndex = 0;
 
-function generateWordList() {
-  scrollContainer.innerHTML = ''; // Remove existing words  
-  currentIndex = (currentIndex + 1) % words.length; // Cycle through words  
-  for (let i = 0; i < 4; i++) {
-    const wordIndex = (currentIndex + i) % words.length;
-    const wordDiv = document.createElement('div');
-    wordDiv.style.opacity = (i === 1) ? 1 : 0.1; // The second word is "active"
-    wordDiv.className = 'flex flex-col items-start justify-center transition-opacity duration-[2s] h-[4.5rem]';
-    wordDiv.textContent = words[wordIndex];
-    scrollContainer.appendChild(wordDiv);
-  }
+
+// Initialize the divs once.
+function initializeWordList() {
+    for (let i = 0; i < numElements; i++) {
+        let wordDiv = document.createElement('div');
+        wordDiv.classList.add(...wordClasses.split(' '));
+        wordDiv.style.opacity = (i === focusElement)? focusOpacity : fadeoutOpacity;
+        scrollContainer.appendChild(wordDiv);
+    }
+    updateWords();
+}
+function updateWords() {
+    const children = scrollContainer.children;
+    for (let i = 0; i < numElements; i++) {
+        children[i].textContent = words[(currentIndex + i) % words.length];
+    }
 }
 
 function animate() {
-  // Reset position
-  scrollContainer.style.transform = 'translateY(0%)'; 
-  // Change opacity of first and second words
-  scrollContainer.children[1].style.opacity = 0.1;
-  scrollContainer.children[2].style.opacity = 1;
-  setTimeout(() => {
-    scrollContainer.style.transition = 'transform 1s cubic-bezier(.6,-0.3,.4,1.3)'; // Add transition
-    scrollContainer.style.transform = 'translateY(25%)'; // Animate downwards
-    setTimeout(() => { // Delay reset to ensure animation ends
-      scrollContainer.style.transition = 'none'; // Remove transition
-      scrollContainer.style.transform = '';
-      generateWordList(); // Generate new word list
-      // Clear the interval and set it again
-      clearInterval(intervalId);
-      intervalId = setInterval(animate, 2500);
-    }, 2000);
-  }, 0);
+    // Animate downwards
+    scrollContainer.style.transition = 'transform 1s cubic-bezier(.6,-0.3,.4,1.3)';
+    scrollContainer.style.transform = 'translateY(25%)';
+    let children = scrollContainer.children;
+ 
+    [focusElement, fadeoutElement].forEach(i => {
+        children[i].style.transition = 'opacity 1s cubic-bezier(.6,-0.3,.4,1.3)';
+        children[i].style.opacity = (i === focusElement) ? fadeoutOpacity : focusOpacity;
+    });
+
+    setTimeout(() => {
+        // After animation ends
+        scrollContainer.style.transition = 'none';
+        scrollContainer.style.transform = 'translateY(0%)';
+
+        [focusElement, fadeoutElement].forEach(i => {
+            children[i].style.transition = 'none';
+            children[i].style.opacity = (i === focusElement) ? focusOpacity : fadeoutOpacity;
+        }); 
+
+        currentIndex = (currentIndex + 1) % words.length;
+        updateWords();
+    }, 1000);
 }
 
-// Generate the initial word list
-generateWordList();
-
-// Animate every 2.5s seconds
-setTimeout(() => intervalId = setInterval(animate, 2500), 0);
+initializeWordList(); // Initialize once
+setInterval(animate, 2500);
