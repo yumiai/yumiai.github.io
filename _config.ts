@@ -103,15 +103,15 @@ site
           },
 
           backgroundImage: {
-            'pattern-1': "url('/assets/images/watercolour1.png')",
-            'pattern-2': "url('/assets/images/watercolour3.png')",
-            'noise': "url('/assets/images/noise.jpg')",
+            'pattern-1': "url('/assets/images/watercolour1.webp')",
+            'pattern-2': "url('/assets/images/watercolour3.webp')",
+            'noise': "url('/assets/images/noise.webp')",
           },
 
           keyframes: {
             'kf-scroll-right' : {
-              '0%, 100%': { transform: 'translateX(-50%)' },
-              '50%': { transform: 'translateX(0%)' },
+              '0%, 100%': { transform: 'translate3d(0, -50%, 0)' },
+              '50%': { transform: 'translate3d(0, 0, 0)' },
             },
             'kf-pulse': {
               '0%, 100%': { opacity: 0 },

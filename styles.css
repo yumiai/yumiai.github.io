@@ -16,7 +16,7 @@
 */
 :root {
     --font-family: 'Inter', -apple-system, system-ui, sans-serif;
-	--red: #c04;
+	  --red: #c04;
     --lightgray: #e6e6e6;
     --darkgray: #0d1117;
     --blue: #135;
@@ -47,7 +47,7 @@
 @layer components {
   /* Navbar */
   #search {
-    & .pagefind-ui__drawer { @apply absolute px-5 py-5 overflow-y-auto shadow-lg w-full bg-white border rounded-md max-h-viewport-200}
+    & .pagefind-ui__drawer { @apply absolute px-5 py-5 overflow-y-auto shadow-lg w-full bg-white border rounded-md max-h-viewport-200 opacity-95}
     & .pagefind-ui__message { @apply m-0 p-0; }
     & .pagefind-ui__result { @apply pt-2 pb-0 border-0 }
     & .pagefind-ui__result-inner { @apply mt-2 }

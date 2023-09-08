@@ -2,7 +2,7 @@
 
 const scrollContainer = document.getElementById('scroll-container');
 const words = ["Markets.", "Finance.", "Progress.", "Places.", "Returns.", "Impact."];
-const wordClasses = "flex flex-col items-start justify-center";
+const wordClasses = "items-start";
 
 const focusElement = 1;
 const focusOpacity = 1;
@@ -32,7 +32,7 @@ function updateWords() {
 function animate() {
     // Animate downwards
     scrollContainer.style.transition = 'transform 1s cubic-bezier(.6,-0.3,.4,1.3)';
-    scrollContainer.style.transform = 'translateY(25%)';
+    scrollContainer.style.transform = 'translate3d(0, 25%, 0)';
     let children = scrollContainer.children;
  
     [focusElement, fadeoutElement].forEach(i => {
@@ -43,7 +43,7 @@ function animate() {
     setTimeout(() => {
         // After animation ends
         scrollContainer.style.transition = 'none';
-        scrollContainer.style.transform = 'translateY(0%)';
+        scrollContainer.style.transform = 'translate3d(0, 0, 0)';
 
         [focusElement, fadeoutElement].forEach(i => {
             children[i].style.transition = 'none';
