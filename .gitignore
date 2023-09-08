@@ -2,6 +2,7 @@
 
 ### Deno / Lume Generated Files ###
 /_site/
+/_cache/
 
 ### Code ###
 .vscode/*
