@@ -12,55 +12,54 @@
     <link rel="alternate" href="/feed.json" type="application/json" title="{{ site.title }}">
 </head>
 <body class="text-english-holly bg-coconut-cream">
-
-    <header class="relative flex flex-col top-0 inset-x-0">
-      <div id="grid-container" class="absolute inset-x-0 inset-y-0 grid grid-cols-6 grid-rows-3 overflow-y-clip">
+    <section id="hero-section" class="relative flex flex-col top-0 inset-x-0">
+      <div id="hero-background-noise" class="absolute inset-x-0 inset-y-0 grid grid-cols-6 grid-rows-3 overflow-y-clip">
         {% for i in range(0,18) %}
           <div class="grid-item bg-noise blur-2xl invert-[50%] animate-pulse"></div>
         {%- endfor %}   
       </div>
-      <div id="background-1" class="absolute inset-x-0 inset-y-0 bg-pattern-1 bg-repeat mix-blend-screen animate-bg-1"></div>
-      <div id="background-2" class="absolute inset-x-0 inset-y-0 bg-pattern-2 bg-repeat mix-blend-screen animate-bg-2"></div>
-
-      <nav class="flex relative justify-left items-center self-stretch h-16 mx-10 mt-5 z-20">
-        <div id="name" class="flex font-header text-xl mr-4">
+      <div id="hero-background-1" class="absolute inset-x-0 inset-y-0 bg-pattern-1 bg-repeat mix-blend-screen animate-bg-1"></div>
+      <div id="hero-background-2" class="absolute inset-x-0 inset-y-0 bg-pattern-2 bg-repeat mix-blend-screen animate-bg-2"></div>
+    
+      <header role="banner" class="flex top-0 inset-x-0 mx-10 mt-5 z-20">
+        <picture id="name" class="flex font-header text-xl mr-4">
           {% if url != "/" %}<a href="/">{% endif %}
             <img src="/assets/images/logo-yumi.svg" alt="The yumi logo, two hands held in the shape of a heart." class="w-auto">
           {% if url != "/" %}</a>{% endif %}
-        </div>
-        <ul class="p-0 m-0 list-none flex flex-wrap md:mr-2 gap-x-2 md:gap-x-3 xl:gap-x-8">
-        {%- for entry in search.pages("menu.visible=true", "menu.order") %}
-          {% if entry.data.url != "/" %}
-          <li>
-            <a href="{{ entry.data.url }}" class="block no-underline hover:text-tuscany hover:underline{% if entry.data.url == url %} font-bold underline" aria-current="page{% endif %}">
-              {{ entry.data.menu.title or entry.data.title }}
-            </a>
-          </li>
-          {% endif %}            
-        {%- endfor %}
-        </ul>
-    
-        <div class="hidden md:flex md:grow-0 max-w-sm ml-auto z-20">
-          <div id="search"></div>
-        </div>
-      </nav>
+        </picture>
+        <nav role="navigation" class="flex relative justify-left items-center self-stretch h-16">
+          <menu role="menu" class="p-0 m-0 list-none flex flex-wrap md:mr-2 gap-x-2 md:gap-x-3 xl:gap-x-8">
+          {%- for entry in search.pages("menu.visible=true", "menu.order") %}
+            {% if entry.data.url != "/" %}
+            <li role="menuitem">
+              <a href="{{ entry.data.url }}" class="block no-underline hover:text-tuscany hover:underline{% if entry.data.url == url %} font-bold underline" aria-current="page{% endif %}">
+                {{ entry.data.menu.title or entry.data.title }}
+              </a>
+            </li>
+            {% endif %}            
+          {%- endfor %}
+          </menu>
+        </nav>
+        <div id="hero-search" role="search" class="hidden md:flex md:grow-0 max-w-sm ml-auto"></div>
+      </header>
 
-      <div class="flex relative flex-row-reverse inset-x-0 inset-y-0 items-center pt-10 z-10 overflow-x-clip">
-        <div class="place-self-end mr-[-5.5rem]"><img src="assets/images/pilea-peperomioides.webp" alt="Pilea peperomioides plant, the money plant."></img></div>
-        <div class="flex flex-col justify-left w-7/12 shrink-0 pl-10">          
-          <div class="flex flex-col md:flex-row justify-left md:items-center">
+      <section id="hero-message" class="flex relative flex-row-reverse inset-x-0 inset-y-0 items-end pt-6 z-10 overflow-x-clip">
+        <img class="place-self-end mr-[-5.5rem] landscape:max-h-30" src="/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."></img></picture>
+        <div class="flex flex-col grow w-6/12 lg:w-7/12 shrink-0 pl-10 pb-5 md:pb-32 landscape:md:pb-40 xl:pb-40">          
+          <h1 class="flex flex-col md:flex-row justify-left md:items-center">
             <div class="font-header text-english-holly text-2xl md:text-3xl lg:text-5xl xl:text-6xl whitespace-nowrap">People. Actions.</div>
-            <div id="scroll-mask" class="max-h-24 md:max-h-32 lg:max-h-40 max-w-xs mt-[-1.3rem] md:mt-0 md:ml-2 mask-radial overflow-y-clip">
-              <div id="scroll-container" class="flex flex-col-reverse font-serif text-2xl md:text-3xl lg:text-5xl xl:text-6xl gap-0 pl-0 md:ml-1 mt-[-2rem] md:mt-[-1.6rem] lg:mt-[-2.5rem] xl:mt-[-4.4rem]"></div>
+            <div id="scroll-mask" class="mt-[-1.3rem] w-full md:mt-0 md:ml-2 mask-radial overflow-y-clip">
+              <div id="scroll-container" class="flex flex-col-reverse font-serif text-2xl md:text-3xl lg:text-5xl xl:text-6xl gap-0 pl-0 md:ml-1 mt-[-2rem] md:mt-[-2.2rem] lg:mt-[-3rem] xl:mt-[-3.8rem]"></div>
             </div>
-          </div>
-          <div class="xl:flex xl:flex-col text-xs md:text-lg lg:text-xl xl:text-2xl mt-[-0.7rem] md:mt-[-1rem] xl:mt-0">
+          </h1>
+          <p class="xl:flex xl:flex-col text-xs md:text-lg lg:text-xl xl:text-2xl mt-[-0.7rem] md:mt-[-1rem] xl:mt-0">
             <span>Unleashing our collective intelligence to propel impactful change.</span>
             <span>Regenerative Finance (ReFi) engineered on Cardano.</span>
-          </div>
+          </p>
         </div>
-      </div>
-    </header>
+      </section>
+    
+    </section>
 
     <main class="z-30">
   

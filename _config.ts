@@ -10,7 +10,8 @@ import jsx from "lume/plugins/jsx_preact.ts";
 import pageFind from "lume/plugins/pagefind.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import feed from "lume/plugins/feed.ts";
-
+import picture from "lume/plugins/picture.ts";
+import imagick from "lume/plugins/imagick.ts";
 
 const site = lume({location: new URL("https://yumi.ai.com/")});
 
@@ -32,8 +33,6 @@ site
         function ({ addUtilities }) {
           addUtilities({
             '.mask-radial': {
-              width: '30rem',
-              height: '13rem',
               maskImage: 'radial-gradient(67% 50% at 33% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%)',
               WebkitMaskImage: 'radial-gradient(67% 50% at 33% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%)'
             }
@@ -87,7 +86,7 @@ site
               '950': '#3a1a10',
             },     
             
-            // TODO: These colors are related to the mask-radical class above.
+            // TODO: These colors are related to the mask-radial class above.
             'black-alpha': 'rgba(0,0,0,1)',
             'transparent': 'rgba(0,0,0,0)',
           },
@@ -141,6 +140,7 @@ site
   .use(pageFind({
     ui: {
       resetStyles: false,
+      containerId: "hero-search",
     },
   }))
   .use(slugifyUrls({ alphanumeric: false }))
@@ -156,6 +156,8 @@ site
       content: "$.post-body",
     }
   }))
-  .use(resolveUrls());
+  .use(resolveUrls())
+  .use(picture())
+  .use(imagick());
 
 export default site;
