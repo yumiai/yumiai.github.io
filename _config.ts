@@ -18,7 +18,7 @@ site
   .ignore(
     "README.md", "LICENSE", "CHANGELOG.md",
     "flake.nix", "flake.lock", "default.nix", "shell.nix",  
-    "assets/toucaan/webpack.config.js.sample", "assets/toucaan/header.svg", "assets/toucaan/README.md", 
+    "assets/css/webpack.config.js.sample", "assets/css/header.svg", "assets/css/README.md", 
     "Caddyfile", "llama2context.md", "ts-exp1.tsx", "ts-exp2.tsx" )
   .use(sass({
     format: "expanded",
