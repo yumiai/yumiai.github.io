@@ -12,14 +12,14 @@ import feed from "lume/plugins/feed.ts";
 import picture from "lume/plugins/picture.ts";
 import imagick from "lume/plugins/imagick.ts";
 
-const site = lume({location: new URL("https://yumi.ai.com/")});
-
-// site.filter("random-delay", function(value) {return '${value}${Math(floor(Math.random()*5)}s';});
+const site = lume({location: new URL("https://yumi.ai/")});
 
 site
-  .ignore("README.md", "flake.nix", "flake.lock", "default.nix", "shell.nix")
-  .copy("assets")
-  .copy("scripts")
+  .ignore(
+    "README.md", "LICENSE", "CHANGELOG.md",
+    "flake.nix", "flake.lock", "default.nix", "shell.nix",  
+    "assets/toucaan/webpack.config.js.sample", "assets/toucaan/header.svg", "assets/toucaan/README.md", 
+    "Caddyfile", "llama2context.md", "ts-exp1.tsx", "ts-exp2.tsx" )
   .use(sass())
   .use(jsx())
   .use(date())
@@ -47,6 +47,8 @@ site
   }))
   .use(resolveUrls())
   .use(picture())
-  .use(imagick());
+  .use(imagick())
+  .copy("assets/scripts")    
+  .copyRemainingFiles();
 
 export default site;
