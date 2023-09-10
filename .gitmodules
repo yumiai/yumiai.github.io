@@ -1,0 +1,3 @@
+[submodule "assets/toucaan"]
+	path = assets/toucaan
+	url = ../toucaan.git
