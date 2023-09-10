@@ -42,7 +42,6 @@
 
 @import "css/reset.css";
 
-@tailwind base;
 
 @layer components {
   /* Navbar */
@@ -57,7 +56,3 @@
 }
 
 @import "css/yumi.css";
-
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>{{ title or site.title }}</title>
     <meta name="description" content="{{ description or site.description }}">    
-    <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favico.ico"> 
+    <link rel="shortcut icon" href="/assets/images/favico.ico"> 
     <link rel="preconnect" href="https://fonts.gstatic.com">    
     <meta name="viewport" content="initial-scale=1.0, width=device-width, minimum-scale=1.0, viewport-fit=cover">
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css"/>
-    <link rel="alternate" href="{{ site.baseurl }}/feed.xml" type="application/atom+xml" title="{{ site.title }}">
-    <link rel="alternate" href="{{ site.baseurl }}/feed.json" type="application/json" title="{{ site.title }}">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ site.title }}">
+    <link rel="alternate" href="/feed.json" type="application/json" title="{{ site.title }}">
 </head>
 <body class="text-english-holly bg-coconut-cream">
     <section id="hero-section" class="relative flex flex-col top-0 inset-x-0 overflow-clip">
@@ -21,12 +21,12 @@
         </div>
         <div id="hero-background-1" class="absolute inset-x-0 inset-y-0 bg-pattern-1 bg-repeat mix-blend-screen animate-bg-1"></div>
         <div id="hero-background-2" class="absolute inset-x-0 inset-y-0 bg-pattern-2 bg-repeat mix-blend-screen animate-bg-2"></div>
-        <img class="absolute bottom-0 right-0 mr-[-6.5rem] pt-20 max-h-[24rem] md:max-h-[32rem]" src="{{ site.baseurl }}/assets/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."></img></picture>
+        <img class="absolute bottom-0 right-0 mr-[-6.5rem] pt-20 max-h-[24rem] md:max-h-[32rem]" src="/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."></img></picture>
       </section>
       <header role="banner" class="flex top-0 inset-x-0 mx-10 mt-5 z-20">
         <picture id="name" class="flex font-header text-xl mr-4">
           {% if url != "/" %}<a href="/">{% endif %}
-            <img src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="The yumi logo, two hands held in the shape of a heart." class="w-auto">
+            <img src="/assets/images/logo-yumi.svg" alt="The yumi logo, two hands held in the shape of a heart." class="w-auto">
           {% if url != "/" %}</a>{% endif %}
         </picture>
         <nav role="navigation" class="flex relative items-center self-stretch h-16">
@@ -63,7 +63,7 @@
     <main class="z-30">
   
       <section class="bg-coconut-cream">
-        <img src="{{ site.baseurl }}/assets/images/pilea-peperomioides.webp" alt="Pilea peperomioides plant, the money plant."></img>
+        <img src="assets/images/pilea-peperomioides.webp" alt="Pilea peperomioides plant, the money plant."></img>
       </section>
 
       <section>
@@ -78,7 +78,7 @@
             </div>
             {% endfor %}
           </div>
-          <img class="block h-6 md:h-8 mt-2 mb-2" src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="Logo" >
+          <img class="block h-6 md:h-8 mt-2 mb-2" src="/assets/images/logo-yumi.svg" alt="Logo" >
           <div class="font-header text-base lg:text-lg mt-2">You, Me and A.I.</div>
           <div class="text-xs md:text-base text-center w-7/12">{{site.description}}</div>
         </div>
@@ -103,7 +103,7 @@
       });
     </script>
 
-    <script src="{{ site.baseurl }}/scripts/word-scroll.js"></script>
+    <script src="/scripts/word-scroll.js"></script>
 
 </body>
 </html>
