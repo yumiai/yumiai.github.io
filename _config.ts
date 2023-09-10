@@ -20,6 +20,8 @@ site
   .ignore("README.md", "flake.nix", "flake.lock", "default.nix", "shell.nix")
   .copy("assets")
   .copy("scripts")
+  .use(sass())
+  .use(jsx())
   .use(date())
   .use(codeHighlight())
   .use(basePath())
@@ -44,8 +46,7 @@ site
     }
   }))
   .use(resolveUrls())
-  .use(imagick())
   .use(picture())
-  .use(sass());
+  .use(imagick());
 
 export default site;
