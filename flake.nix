@@ -6,33 +6,33 @@
     crane.url = "github:ipetkov/crane";
     crane.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.nixpkgs.follows = "nixpkgs";
-    # flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;
-    flake-compat.inputs.nixpkgs.follows = "nixpkgs";
     nix-filter.url = "github:numtide/nix-filter";
     npmlock2nix.url = "github:nix-community/npmlock2nix";
     npmlock2nix.flake = false; 
   };
 
   outputs = { self, nixpkgs, crane, flake-utils, flake-compat, fenix, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
-    # TODO Use flake-utils with flake-utils.lib.eachSystem supportedSystems 
-    # What systems have been implemented and supported by this flake?
-    # supportedSystems = [
-    #    # TODO "aarch64-linux"
-    #    # TODO "x86_64-linux"        
-    #    "aarch64-darwin"
-    #    "x86_64-darwin"
-    #    # TODO: Add M1 Support.
+    flake-utils.lib.eachSystem ["aarch64-darwin" "x86_64-darwin"] (system: 
+    # TODO Use flake-utils with flake-utils.lib.eachSystem supportedSystems as done above 
+    #      previous approach is to use eachDefaultSystem thus: 'flake-utils.lib.eachDefaultSystem (system:'
+    #
+    #      What systems have been implemented and supported by this flake?
+    #      supportedSystems = [
+    #        # TODO "aarch64-linux"
+    #        # TODO "x86_64-linux"        
+    #        "aarch64-darwin"
+    #        "x86_64-darwin"
+    #        # TODO: Add M1 Support?
     #  ];
     let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
+      pkgs = nixpkgs.legacyPackages.${system};
+      #pkgs = import nixpkgs {
+      #  inherit system;
+      #};
       inherit (pkgs) lib stdenv;
 
       # Non-Flake input, so need to import it.
@@ -60,7 +60,8 @@
       ]);
       fenix-channel = fenix.packages.${system}.stable;
       # Use the selected toolchain in Crane.
-      craneLib = crane.lib.${system}.overrideToolchain fenix-toolchain;
+      #craneLib = crane.lib.${system}.overrideToolchain fenix-toolchain;
+      craneLib = crane.lib.${system};
     
       # Apple specific frameworks and Libraries
       frameworks = pkgs.darwin.apple_sdk.frameworks;
@@ -109,7 +110,7 @@
       # A function to define cargo+nix package, listing all the dependencies (as dir)
       # to help limit the amount of things that need to rebuild when some file change.
       # (original copied from https://github.com/fedimint/fedimint )
-      projectBuild = { name ? null, includeDir ? null, excludeDir ? null }: 
+      projectBuild = { name ? null, includeDir ? null, excludeDir ? null, features ? null }: 
         let
           mkFilter = {common, optional? null}: common ++ lib.optionals (builtins.isList optional) optional;
         in rec {
@@ -127,19 +128,25 @@
         } // lib.optionalAttrs (name != null) {
           pname = name;
           cargoExtraArgs = "--bin ${name}";
+        } // lib.optionalAttrs (features != null) {
+          cargoExtraArgs = "--features ${features}";
         });
       };
 
       # Build a crate and any binary dependencies
-      buildCrate = { pname, version, sha256, buildInputs ? commonArgs.buildInputs, bin ? true }: rec {
+      buildCrate = { pname, version, sha256, buildInputs ? commonArgs.buildInputs, features ? null, bin ? true  }: rec {
         package = craneLib.buildPackage {
           inherit pname version buildInputs;
           doCheck = false;
           src = pkgs.fetchCrate {
             inherit pname version sha256;
           }; 
+          cargoExtraArgs = "--lib --bin=${pname} --features cli";
+          # CARGO_PROFILE = "dev";
         } // lib.optionalAttrs bin {
-          cargoExtraArgs = "--bin ${pname}"; # Extra option to make Cargo build binaries.
+          # cargoExtraArgs = "--lib --bin=${pname} --features cli"; # Extra option to make Cargo build binaries.
+        } // lib.optionalAttrs (features != null) { 
+        #  cargoExtraArgs = "--lib --bin=${pname} --features ${features}"; # Extra option to make Cargo build binaries.
         };
       };
 
@@ -159,6 +166,20 @@
         };
       });
 
+      # oxipng - A lossless PNG compression optimizer. https://crates.io/crates/oxipng
+      oxipng = buildCrate { 
+        pname = "oxipng";
+        version = "5.0.1";
+        sha256 = "sha256-0OGTqNUKC6jeGmEWZ+vPmKhlYdTt78ENAvjdW100Vbw=";
+      };
+
+      lightingcss = buildCrate {
+        pname = "lightningcss";
+        version = "1.0.0-alpha.47";
+        sha256 = "sha256-4mndsEExxywoWIwXbwXAQAsaufM6x2QNRsEdwglt+ew=";
+        features = "cli";
+      };
+ 
     in {  
       # Build the development shell invoked by ''direnv'' or ''nix develop''  
       devShells.default = pkgs.mkShell {
@@ -169,13 +190,17 @@
         #  llvmPackages_16.clang
         #  llvm_16
         #  ninja
+        # oxipng.package 
+        lightingcss.package
         deno
+        ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+            # Additional darwin specific inputs can be set here
         ];
         # Extra inputs can be added here. On Darwin, libiconv must be explicity 
         # included in the build dependencies this is done by pulling the native
         # inputs from commonsArgs.
         nativeBuildInputs = with pkgs; commonArgs.nativeBuildInputs ++ [
-
+        #  fenix-toolchain
         ];
 
         RUST_BACKTRACE=1; # Set environment variable for backtracing rust commands.
@@ -183,12 +208,6 @@
         EDITOR = "code --wait"; # Set primarily for sops.
 
 #        CPLUS_INCLUDE_PATH="${"$(llvm-config --includedir):$CPLUS_INCLUDE_PATH
-#        LD_LIBRARY_PATH=$(llvm-config --libdir):$LD_LIBRARY_PATH
-#        LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-#        CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-
-#        CPLUS_INCLUDE_PATH=$(llvm-config --includedir):$CPLUS_INCLUDE_PATH
 #        LD_LIBRARY_PATH=$(llvm-config --libdir):$LD_LIBRARY_PATH
 #        LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 #        CPPFLAGS="-I/opt/homebrew/opt/llvm/include"

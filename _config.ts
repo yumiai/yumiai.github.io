@@ -1,4 +1,5 @@
 import lume from "lume/mod.ts";
+import lightningCss from "lume/plugins/lightningcss.ts";
 import sass from "lume/plugins/sass.ts";
 import date from "lume/plugins/date.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
@@ -23,6 +24,7 @@ site
   .use(sass({
     format: "expanded",
   }))
+  .use(lightningCss())  
   .use(jsx())
   .use(date())
   .use(codeHighlight())

@@ -1,0 +1,131 @@
+/*** Portrait or y-axis.  ***/
+/* The portrait-axis router. */
+
+/* Smartphones */
+@import url('../app/mobile.css') 
+  (min-width: 414px) /* iPhone 11 */
+  and (max-width: 896px)
+  and (resolution: 2x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 370px) /* iPhone 11 Pro */
+  and (max-width: 812px)
+  and (resolution: 3x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 375px) /* iPhone 8 */
+  and (max-width: 667px)
+  and (resolution: 2x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 320px) /* iPhone SE */
+  and (max-width: 568px)
+  and (resolution: 2x)
+  and (hover: none) 
+  and (pointer: coarse);  
+
+/* Android Smartphones */
+@import url('../app/mobile.css') 
+  (min-width: 412px) /* Google Pixel 6 */
+  and (max-width: 915px)
+  and (resolution: 2.625x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 412px) /* Google Pixel 6 Pro */
+  and (max-width: 892px)
+  and (resolution: 3.5x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 393px) /* Google Pixel 5 */
+  and (max-width: 851px)
+  and (resolution: 2.75x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 412px) /* Google Pixel 3XL */
+  and (max-width: 846px)
+  and (resolution: 3.5x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 412px) /* Google Pixel 3A XL */
+  and (max-width: 824px)
+  and (resolution: 2.6x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 360px) /* Galaxy S22 */
+  and (max-width: 780px)
+  and (resolution: 3x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 384px) /* Galaxy S22 Plus */
+  and (max-width: 832px)
+  and (resolution: 2.8125x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 384px) /* Galaxy S22 Ultra */
+  and (max-width: 824px)
+  and (resolution: 3.75x) /* Resolution not working on Blisk for this device. */
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 360px) /* Galaxy S9 */
+  and (max-width: 740px)
+  and (resolution: 4x)
+  and (hover: none) 
+  and (pointer: coarse);
+
+/*** Route-in or @import tablet.css next. ***/
+
+/* Tablets */
+@import url('../app/tablet.css') 
+  (min-device-width: 768px)  /* iPad Mini 4 */ 
+  and (max-device-width: 1024px) 
+  and (resolution: 2x) 
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-device-width: 810px)  /* iPad 10 */ 
+  and (max-device-width: 1080px) 
+  and (resolution: 2x) 
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-device-width: 768px)  /* iPad Pro 9 */ 
+  and (max-device-width: 1024px) 
+  and (resolution: 2x) 
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-device-width: 834px)  /* iPad Pro 10*/ 
+  and (max-device-width: 1112px) 
+  and (resolution: 2x) 
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-device-width: 1024px)  /* iPad Pro 12 */ 
+  and (max-device-width: 1366px) 
+  and (resolution: 2x) 
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-device-width: 834px)  /* iPad Pro 11 */ 
+  and (max-device-width: 1194px) 
+  and (resolution: 2x) 
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-device-width: 1024px)  /* iPad Pro 12 */ 
+  and (max-device-width: 1366px) 
+  and (resolution: 2x) 
+  and (hover: none) 
+  and (pointer: coarse); 
+
+/*** Route-in or @import desktop.css next. ***/
+/*** Vertically mounted Retina & non-retina Screens ***/
+
+/* Desktops */ 
+@import url('../app/desktop.css') 
+  (min-device-width: 720px) 
+  and (max-device-height: 1920px) 
+  and (-webkit-min-device-pixel-ratio: 1)
+  and (hover: hover) 
+  and (pointer: fine),
+    (min-device-width: 900px) 
+    and (max-device-width: 2880px) 
+    and (-webkit-min-device-pixel-ratio: 2) 
+    and (min-resolution: 192dpi)
+    and (hover: hover) 
+    and (pointer: fine);
+
