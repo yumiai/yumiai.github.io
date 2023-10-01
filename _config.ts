@@ -1,6 +1,5 @@
 import lume from "lume/mod.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
-import sass from "lume/plugins/sass.ts";
 import date from "lume/plugins/date.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import basePath from "lume/plugins/base_path.ts";
@@ -18,13 +17,8 @@ const site = lume({location: new URL("https://yumi.ai/")});
 site
   .ignore(
     "README.md", "LICENSE", "CHANGELOG.md",
-    "flake.nix", "flake.lock", "default.nix", "shell.nix",  
-    "assets/css/webpack.config.js.sample", "assets/css/header.svg", "assets/css/README.md", 
-    "Caddyfile", "llama2context.md", "ts-exp1.tsx", "ts-exp2.tsx", 
-    "test_css", "assets/css_orig" )
-  .use(sass({
-    format: "expanded",
-  }))
+    "flake.nix", "flake.lock", "default.nix", "shell.nix",   
+    "Caddyfile", "llama2context.md", "ts-exp1.tsx", "ts-exp2.tsx" )
   .use(lightningCss())  
   .use(jsx())
   .use(date())
