@@ -20,7 +20,8 @@ site
     "README.md", "LICENSE", "CHANGELOG.md",
     "flake.nix", "flake.lock", "default.nix", "shell.nix",  
     "assets/css/webpack.config.js.sample", "assets/css/header.svg", "assets/css/README.md", 
-    "Caddyfile", "llama2context.md", "ts-exp1.tsx", "ts-exp2.tsx" )
+    "Caddyfile", "llama2context.md", "ts-exp1.tsx", "ts-exp2.tsx", 
+    "test_css", "assets/css_orig" )
   .use(sass({
     format: "expanded",
   }))

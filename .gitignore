@@ -4,6 +4,12 @@
 /_site/
 /_cache/
 
+### Nix ###
+result
+
+### Development Artefacts - Can be deleted ###
+ts-exp*.tsx
+
 ### Code ###
 .vscode/*
 !.vscode/settings.json

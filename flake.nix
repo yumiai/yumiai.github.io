@@ -3,6 +3,10 @@
   # TODO: Clang
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # TODO: This is only temporary until nixpkgs-unstable is updated... pull in the latest 
+    #       version of deno.
+    nixpkgs_deno.url = "github:NixOS/nixpkgs/e187c41b289aab58535bbf0c41d13e453d17f76b";
+
     crane.url = "github:ipetkov/crane";
     crane.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
@@ -16,7 +20,7 @@
   };
 
   outputs = { self, nixpkgs, crane, flake-utils, flake-compat, fenix, ... }@inputs:
-    flake-utils.lib.eachSystem ["aarch64-darwin" "x86_64-darwin"] (system: 
+    flake-utils.lib.eachSystem ["aarch64-darwin"] (system: 
     # TODO Use flake-utils with flake-utils.lib.eachSystem supportedSystems as done above 
     #      previous approach is to use eachDefaultSystem thus: 'flake-utils.lib.eachDefaultSystem (system:'
     #
@@ -30,9 +34,33 @@
     #  ];
     let
       pkgs = nixpkgs.legacyPackages.${system};
-      #pkgs = import nixpkgs {
-      #  inherit system;
-      #};
+ 
+      # deno_latest = pkgs.deno.overrideAttrs (oldAttrs: let
+      #       version = "1.37.1";
+      #       pname = "deno";
+      #     in rec {
+      #       inherit version;     
+      #       src = pkgs.fetchFromGitHub {
+      #         owner = "denoland";
+      #         repo = "${pname}";
+      #         rev = "v${version}";
+      #          # If you don't know the hash, the first time, set: ``hash = "";`` then nix will fail the 
+      #          # build with such an error message: 
+      #          #   ``hash mismatch in fixed-output derivation '/nix/store/m1ga09c0z1a6n7rj8ky3s31dpgalsn0n-source':
+      #          #     specified: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+      #          #     got:    sha256-173gxk0ymiw94glyjzjizp8bv8g72gwkjhacigd1an09jshdrjb4``
+      #          #
+      #          hash = "sha256-ZfICDkW6q4OLvpSZnRpa6i324OuLNuOHXuSOQ7/aUJ8=";
+      #       };
+      #       # Instead of specifying ``cargoHash``you have to change the hash lower down. 
+      #       # See the comments here https://discourse.nixos.org/t/is-it-possible-to-override-cargosha256-in-buildrustpackage/4393/4  
+      #       cargoDeps = oldAttrs.cargoDeps.overrideAttrs (pkgs.lib.const {
+      #         name = "${pname}-vendor.tar.gz";
+      #         inherit src;
+      #         outputHash = "sha256-HKvkncIOqNDGVHBwzCPGKSlUa3uUoinBdzgUnTdqqfY=";
+      #       });
+      #     });
+
       inherit (pkgs) lib stdenv;
 
       # Non-Flake input, so need to import it.
@@ -181,6 +209,8 @@
       };
  
     in {  
+      packages.default = lightingcss.package;
+
       # Build the development shell invoked by ''direnv'' or ''nix develop''  
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [
@@ -192,7 +222,8 @@
         #  ninja
         # oxipng.package 
         lightingcss.package
-        deno
+        #deno
+        inputs.nixpkgs_deno.legacyPackages.${system}.deno
         ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
             # Additional darwin specific inputs can be set here
         ];
