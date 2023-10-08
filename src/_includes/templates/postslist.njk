@@ -1,0 +1,24 @@
+<ul class="p-0 list-none">
+  {% for post in postslist %}
+  <li>
+    <a href="{{ post.data.url }}" class="inline-block text-xl py-2 pr-1"{% if entry.data.url == url %} aria-current="page"{% endif %}>
+      {% if post.data.title %}
+        <strong>{{ post.data.title }}</strong>
+      {% else %}
+        <code>{{ post.url }}</code>
+      {% endif %}
+    </a>
+
+    <time class="text-sm text-darkgrey" datetime="{{ post.data.date | date('DATETIME') }}">
+      {{ post.data.date | date('HUMAN_DATE') }}
+    </time>
+
+    {% for tag in post.data.tags %}
+    {% set page = search.page("type=tag tag='" + tag + "'") %}
+    {% if page %}
+    <a href="{{ page.data.url  }}" class="tag inline-block uppercase text-xs leading-none py-1 px-2 mr-2 bg-indigo-400 text-white rounded-md no-underline">{{ tag }}</a>
+    {% endif %}
+    {% endfor %}
+  </li>
+{% endfor %}
+</ul>

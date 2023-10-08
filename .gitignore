@@ -1,14 +1,18 @@
 .DS_store
 
 ### Deno / Lume Generated Files ###
-/_site/
-/_cache/
+site/
+src/_cache/
+.deno/
 
 ### Nix ###
 result
+.direnv/
+.devenv/
 
 ### Development Artefacts - Can be deleted ###
 ts-exp*.tsx
+llama2context.md
 
 ### Code ###
 .vscode/*

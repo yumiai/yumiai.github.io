@@ -1,0 +1,134 @@
+<style>
+    /* Always set Charset. Recommended reading: https://www.w3.org/International/questions/qa-css-charset.en */
+    @charset "UTF-8";
+
+    /* Portrait ⇋ landscape switch.
+
+       Import statements must come before anything else, there the paths to the top-level CSS files are
+       Fully specified here. Then repeated as CSS Variables for other uses.
+    */
+    @import url(/assets/css/router/portrait.css) screen and (orientation: portrait);
+    @import url(/assets/css/router/landscape.css) screen and (orientation: landscape);
+
+    :root {
+        /* Do not remove or alter the following two lines. Repeated from above. */
+        /* Recommended reading: https://bubblin.io/blog/a-css-router */
+        --portrait-axis: /assets/css/router/portrait.css;
+        --landscape-axis: /assets/css/router/landscape.css;
+    }
+
+    /* --vmin stands for base unit of intrinsic blockscoped typography. */
+    @media only screen and (orientation: portrait) {
+        :root {
+            --vmin: calc(100vw/100);
+            /* Fallback if vmin is not supported. */
+        }
+    }
+    
+    @media only screen and (orientation: landscape) {
+        :root {
+            --vmin: calc(100vh/100);
+            /* Fallback if vmin is not supported. */
+        }
+    }
+    
+    @font-face {
+        font-family: 'Fraunces';
+        src: url('assets/fonts/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Inter';
+        src: url('assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
+    }
+
+    /* Global variables below */
+    :root {
+        --vmin: 1vmin; /* Only used when vmin is supported by the browser. */
+    
+        /* Font families. */
+        --sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        --system: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans, sans-serif !important;
+        --monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        --serif: -apple-system-ui-serif, ui-serif, "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times", "Source Serif Pro", serif;
+        
+        --font-family: 'Inter', -apple-system, system-ui, sans-serif;
+
+        /* Set your custom font unto a variable over here, like so: */
+        --eina-one: 'Eina01 Regular', sans-serif; /* Examples off of Red Goose. See /typopgraphy/typset.scss */
+        --mark-pro-heavy: 'Mark Pro Medium', sans-serif;
+        
+        /****** THE FULL COLOR PALETTE *******/
+        --white: rgba(255, 255, 255, 1);
+        --black: rgba(0, 0, 0, 0);	
+        --red: #c04;
+        --lightgray: #e6e6e6;
+        --darkgray: #0d1117;
+        --blue: #135;
+        --white: rgba(255,255,255,0);
+
+        /* Implement color palette for your brand. { Check → /accessibility/_darkmode.scss as well. }. */
+        /* Recommended reading → Building Your Color Palette by Adam Wathan. https://www.refactoringui.com/previews/building-your-color-palette */	
+
+        --english-holly: #effef2;
+        --coconut-cream: #fcfaed;
+      
+      /*
+        --lightmode-primary-text-color: 
+        --lightmode-primary-headings-color: 
+        --lightmode-primary-background-color: 
+        */
+        /* Set anchor color 
+        --lightmode-primary-anchor-color: rgba(25, 95, 255, 0.99);
+        --lightmode-primary-anchor-highlighted-color: rgba(50, 140, 255, 0.99);
+    
+        
+        /* What this is → TODO: doc link here*/ /*
+        --lightmode-text-selection-color: 
+        --lightmode-background-selection-color: 
+    
+        /* What this is → TODO: doc link here*/ /*
+        --lightmode-background-selection-window-inactive-color:
+        --lightmode-text-selection-window-inactive-color:
+    
+        /* What this is → TODO: doc link here*/ /*
+        --lightest-grey:
+        --lighter-grey: 
+        --light-grey: 
+        --grey: 
+        --dark-grey:
+        --darker-grey:
+        --darkest-grey: 
+        
+        and so on…*/
+
+    }
+
+    @layer base {
+      html,
+      body {
+        /** Pagefind variables */
+        --pagefind-ui-scale: .8;
+        --pagefind-ui-primary: var(--darkgray);
+        --pagefind-ui-text: var(--darkgray);
+        --pagefind-ui-background: var(--white);
+        --pagefind-ui-border: var(--darkgray);
+        --pagefind-ui-tag: var(--lightgray);
+        --pagefind-ui-border-width: 1px;
+        --pagefind-ui-border-radius: 6px;
+        --pagefind-ui-image-border-radius: 6px;
+        --pagefind-ui-image-box-ratio: 3 / 2;
+        --pagefind-ui-font: var(--font-family);          
+    }}
+
+    @layer components {
+      /* Navbar */
+      #hero-search {
+        & .pagefind-ui__drawer { @apply absolute px-5 py-5 overflow-y-auto shadow-lg w-full bg-white border rounded-md max-h-viewport-200 opacity-95}
+        & .pagefind-ui__message { @apply m-0 p-0; }
+        & .pagefind-ui__result { @apply pt-2 pb-0 border-0 }
+        & .pagefind-ui__result-inner { @apply mt-2 }
+        & .pagefind-ui__result-link { @apply text-black}
+        & .pagefind-ui__result-excerpt { @apply text-gray-500}
+      }
+    }
+  </style>

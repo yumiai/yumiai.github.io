@@ -1,253 +1,46 @@
 {
-  description = "A basic devShell for Clang, Rust using Crane, Fenix, flake-utils.";
-  # TODO: Clang
+  description = "Development environment for working with the yūmi.ai website. test";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # TODO: This is only temporary until nixpkgs-unstable is updated... pull in the latest 
-    #       version of deno.
-    nixpkgs_deno.url = "github:NixOS/nixpkgs/e187c41b289aab58535bbf0c41d13e453d17f76b";
 
-    crane.url = "github:ipetkov/crane";
-    crane.inputs.nixpkgs.follows = "nixpkgs";
+    # Flake compatability
     flake-utils.url = "github:numtide/flake-utils";
-    fenix.url = "github:nix-community/fenix";
-    fenix.inputs.nixpkgs.follows = "nixpkgs";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;
-    nix-filter.url = "github:numtide/nix-filter";
-    npmlock2nix.url = "github:nix-community/npmlock2nix";
-    npmlock2nix.flake = false; 
+
+    # devenv: See [documentation](https://devenv.sh/getting-started/)
+    #
+    # BROKEN: Using the current release v0.6.3 `processes`are broken in flakes. 
+    #         See [issue: devenv up broken with flakes #756](https://github.com/cachix/devenv/issues/756)
+    #         If you need to run processes with `devenv up`then switch the inputs. 
+    #
+    devenv.url = "github:cachix/devenv/9ba9e3b908a12ddc6c43f88c52f2bf3c1d1e82c1";
+    # devenv.url = "github:cachix/devenv";  # Project Devshell
   };
 
-  outputs = { self, nixpkgs, crane, flake-utils, flake-compat, fenix, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, flake-compat, devenv, ... }@inputs:
     flake-utils.lib.eachSystem ["aarch64-darwin"] (system: 
-    # TODO Use flake-utils with flake-utils.lib.eachSystem supportedSystems as done above 
-    #      previous approach is to use eachDefaultSystem thus: 'flake-utils.lib.eachDefaultSystem (system:'
-    #
-    #      What systems have been implemented and supported by this flake?
-    #      supportedSystems = [
-    #        # TODO "aarch64-linux"
-    #        # TODO "x86_64-linux"        
-    #        "aarch64-darwin"
-    #        "x86_64-darwin"
-    #        # TODO: Add M1 Support?
-    #  ];
     let
-      pkgs = nixpkgs.legacyPackages.${system};
- 
-      # deno_latest = pkgs.deno.overrideAttrs (oldAttrs: let
-      #       version = "1.37.1";
-      #       pname = "deno";
-      #     in rec {
-      #       inherit version;     
-      #       src = pkgs.fetchFromGitHub {
-      #         owner = "denoland";
-      #         repo = "${pname}";
-      #         rev = "v${version}";
-      #          # If you don't know the hash, the first time, set: ``hash = "";`` then nix will fail the 
-      #          # build with such an error message: 
-      #          #   ``hash mismatch in fixed-output derivation '/nix/store/m1ga09c0z1a6n7rj8ky3s31dpgalsn0n-source':
-      #          #     specified: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
-      #          #     got:    sha256-173gxk0ymiw94glyjzjizp8bv8g72gwkjhacigd1an09jshdrjb4``
-      #          #
-      #          hash = "sha256-ZfICDkW6q4OLvpSZnRpa6i324OuLNuOHXuSOQ7/aUJ8=";
-      #       };
-      #       # Instead of specifying ``cargoHash``you have to change the hash lower down. 
-      #       # See the comments here https://discourse.nixos.org/t/is-it-possible-to-override-cargosha256-in-buildrustpackage/4393/4  
-      #       cargoDeps = oldAttrs.cargoDeps.overrideAttrs (pkgs.lib.const {
-      #         name = "${pname}-vendor.tar.gz";
-      #         inherit src;
-      #         outputHash = "sha256-HKvkncIOqNDGVHBwzCPGKSlUa3uUoinBdzgUnTdqqfY=";
-      #       });
-      #     });
-
-      inherit (pkgs) lib stdenv;
-
-      # Non-Flake input, so need to import it.
-      npmlock2nix = pkgs.callPackages inputs.npmlock2nix {};
-
-      # Fix-up the flake introduced name for nix-filter for consistency.
-      nix-filter = inputs.nix-filter.lib;
-
-      # Debugging functions. TODO clean these up a bit to be more useful and able
-      # to easily switch debugging on/off.
-      traceVal = pkgs.lib.debug.traceVal;
-      traceSeq = val: pkgs.lib.debug.traceSeqN 4 val val;
-      trace = val: pkgs.lib.debug.traceValSeqN 4 val val;
-      log_drv = drv: pkgs.lib.debug.traceSeqN 1 "Dervivation Output: ${drv}" drv;
-
-      # Sops/Age encrypted secrets.
-      api_tokens_secrets_file = "./secrets/apitokens.dev.json";
-
-      # Use a particular Rust Toolchain
-      fenix-toolchain = (fenix.packages.${system}.complete.withComponents [
-        "rustc" "cargo"
-        "clippy" "rust-src"  "rustfmt"
-        "rust-analyzer"
-        "llvm-tools-preview"
-      ]);
-      fenix-channel = fenix.packages.${system}.stable;
-      # Use the selected toolchain in Crane.
-      #craneLib = crane.lib.${system}.overrideToolchain fenix-toolchain;
-      craneLib = crane.lib.${system};
-    
-      # Apple specific frameworks and Libraries
-      frameworks = pkgs.darwin.apple_sdk.frameworks;
-
-      # Common derivation arguments used for all builds
-      commonArgs =  {
-        name = "tomo";
-        root = ./tools; # BUG nix-filter has a permissions problem when ./. is used.
-        # On Darwin, libiconv must be explicity included in the build dependencies.
-        buildInputs = with pkgs; lib.optionals stdenv.isDarwin [
-          libiconv cocoapods m-cli 
-        ];
-        nativeBuildInputs = with pkgs; [];
-      };
-
-      # Use a standard way of naming derivations package names.
-      packageName = suffix: commonArgs.name + "-" + suffix;
-
-      # To get good build times it's vitally important to not have to rebuild 
-      # derivation needlessly. The way Nix caches things is very simple: if 
-      # any input file changed, derivation needs to be rebuild. Use nix-filter
-      # to include or exlude files and directories from a derivation build.
-      commonFilters = rec {
-        cargoFiles = ["Cargo.lock" "Cargo.toml" (nix-filter.matchName "Cargo")];
-        npmFiles = ["package-lock.json" "package.json"];
-
-        rustSources = [(nix-filter.matchExt "rs")];
-        testScripts = [(nix-filter.inDirectory "scripts")];
-
-        markdownFiles = [(nix-filter.matchExt "md")];
-        # TODO specify the standard directories used by antora.
-        asciidocFiles = [(nix-filter.matchExt "adoc")]; 
-        readmeFiles = ["README.md" "SECURITY.md" "LICENSE" "CHANGELOG.md" "CODE_OF_CONDUCT.md"];
-        nixFiles = [(nix-filter.matchExt "nix")];
-        configFiles = [".editorconfig"];    
-
-        workspaceIncludes = cargoFiles;
-        projectIncludes = cargoFiles ++ rustSources;
-        projectExcludes = markdownFiles ++ asciidocFiles ++ testScripts;
-        docsInclude = asciidocFiles;
-        docsAntoraInclude = npmFiles;
-        docsSourceInclude = docsInclude ++ markdownFiles ++ rustSources;
-        # TODO Add more filters for things like CI testing etc.
-      };
-
-      # A function to define cargo+nix package, listing all the dependencies (as dir)
-      # to help limit the amount of things that need to rebuild when some file change.
-      # (original copied from https://github.com/fedimint/fedimint )
-      projectBuild = { name ? null, includeDir ? null, excludeDir ? null, features ? null }: 
-        let
-          mkFilter = {common, optional? null}: common ++ lib.optionals (builtins.isList optional) optional;
-        in rec {
-        package = craneLib.buildPackage (commonArgs // {
-          cargoArtifacts = workspaceDependencyBuild;
-          # TODO Turn off any build checking for the moment.
-          doCheck = false;
-          # Include only files needed to build a project.
-          src = nix-filter {
-            root = commonArgs.root;
-            include = mkFilter {common = commonFilters.projectIncludes; optional = includeDir;};
-            # TODO Make the documentational optional on a documentation and build flag?
-            exclude = mkFilter {common = commonFilters.projectExcludes; optional = excludeDir;};
-          };          
-        } // lib.optionalAttrs (name != null) {
-          pname = name;
-          cargoExtraArgs = "--bin ${name}";
-        } // lib.optionalAttrs (features != null) {
-          cargoExtraArgs = "--features ${features}";
-        });
-      };
-
-      # Build a crate and any binary dependencies
-      buildCrate = { pname, version, sha256, buildInputs ? commonArgs.buildInputs, features ? null, bin ? true  }: rec {
-        package = craneLib.buildPackage {
-          inherit pname version buildInputs;
-          doCheck = false;
-          src = pkgs.fetchCrate {
-            inherit pname version sha256;
-          }; 
-          cargoExtraArgs = "--lib --bin=${pname} --features cli";
-          # CARGO_PROFILE = "dev";
-        } // lib.optionalAttrs bin {
-          # cargoExtraArgs = "--lib --bin=${pname} --features cli"; # Extra option to make Cargo build binaries.
-        } // lib.optionalAttrs (features != null) { 
-        #  cargoExtraArgs = "--lib --bin=${pname} --features ${features}"; # Extra option to make Cargo build binaries.
-        };
-      };
-
-      # Build *just* the cargo dependencies, so we can reuse all of that work 
-      # Creates a target.tar.zst file which can use tar with the unzstd command
-      # to decompress it: '''tar --use-compress-program=unzstd -xvf archive.tar.zst'''
-      workspaceDependencyBuild = craneLib.buildDepsOnly (commonArgs // rec {
-        pname = "workspace-dependencies";
-        name = packageName pname;
-        doCheck = false;
-        # Include only files needed to build project dependencies which are
-        # the essentially the Cargo files. Any *.rs files are not needed to
-        # build dependencies because by definition they are independant projects.
-        src =  nix-filter {
-          root = commonArgs.root;
-          include = commonFilters.cargoFiles ++ [commonArgs.name];
-        };
-      });
-
-      # oxipng - A lossless PNG compression optimizer. https://crates.io/crates/oxipng
-      oxipng = buildCrate { 
-        pname = "oxipng";
-        version = "5.0.1";
-        sha256 = "sha256-0OGTqNUKC6jeGmEWZ+vPmKhlYdTt78ENAvjdW100Vbw=";
-      };
-
-      lightingcss = buildCrate {
-        pname = "lightningcss";
-        version = "1.0.0-alpha.47";
-        sha256 = "sha256-4mndsEExxywoWIwXbwXAQAsaufM6x2QNRsEdwglt+ew=";
-        features = "cli";
-      };
- 
+      pkgs = nixpkgs.legacyPackages.${system}; 
+      projectRoot = builtins.getEnv "PWD"; # fyi. Impure!
     in {  
-      packages.default = lightingcss.package;
+      devShells.default = devenv.lib.mkShell {
+        inherit inputs pkgs;
+        modules = [
+          ({ config, pkgs, ... }: {
+            packages = [ pkgs.deno pkgs.ponysay ];
+            scripts.lume.exec = "${pkgs.deno}/bin/deno task $1";
+            env = {
+              DENO_DIR="${projectRoot}/.deno";
+              INIT_CWD="${projectRoot}/src";
+              LUME_DEST_DIR="../site";
+              LUME_CONFIG_FILE="_config.ts";
+            };
 
-      # Build the development shell invoked by ''direnv'' or ''nix develop''  
-      devShells.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-        # buildInputs = with pkgs; commonArgs.buildInputs ++ [
-        #  fenix-toolchain
-        #  cmake
-        #  llvmPackages_16.clang
-        #  llvm_16
-        #  ninja
-        # oxipng.package 
-        lightingcss.package
-        #deno
-        inputs.nixpkgs_deno.legacyPackages.${system}.deno
-        ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
-            # Additional darwin specific inputs can be set here
+            # BROKEN: Processes in v0.6.3 are broken. See comment above about devenv input.  
+            processes.lume.exec = "${pkgs.deno}/bin/deno task --cwd \"${projectRoot}/src\" dev";
+          })
         ];
-        # Extra inputs can be added here. On Darwin, libiconv must be explicity 
-        # included in the build dependencies this is done by pulling the native
-        # inputs from commonsArgs.
-        nativeBuildInputs = with pkgs; commonArgs.nativeBuildInputs ++ [
-        #  fenix-toolchain
-        ];
-
-        RUST_BACKTRACE=1; # Set environment variable for backtracing rust commands.
-        RUST_SRC_PATH = "${fenix-channel.rust-src}/lib/rustlib/src/rust/library";
-        EDITOR = "code --wait"; # Set primarily for sops.
-
-#        CPLUS_INCLUDE_PATH="${"$(llvm-config --includedir):$CPLUS_INCLUDE_PATH
-#        LD_LIBRARY_PATH=$(llvm-config --libdir):$LD_LIBRARY_PATH
-#        LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-#        CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-        #shellHook = ''
-        #  export NIX_LDFLAGS="-F${frameworks.CoreFoundation}/Library/Frameworks -framework CoreFoundation $NIX_LDFLAGS";
-        #  export GIT_CREDENTIALS="$(sops -d --extract '["github_documentation"]' ${api_tokens_secrets_file})";
-        #  alias awstest "sops exec-env ./secrets/aws.dev.json aws"
-        #'';        
       };
-    });
+  });
 }

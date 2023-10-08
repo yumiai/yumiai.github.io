@@ -1,15 +1,18 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume@v1.18.5/"
+    "lume/": "https://deno.land/x/lume@v1.19.1/"
   },
   "lock": false,
   "tasks": {
-    "build": "deno task lume",
-    "serve": "deno task lume -s",
-    "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -"
+    "build": "deno task --cwd \"$INIT_CWD\" lume-run",
+    "serve": "deno task --cwd \"$INIT_CWD\" lume-run -s",
+    "dev": "deno task --cwd \"$INIT_CWD\" lume-run --dev --serve",
+    "upgrade": "deno run --unstable -A ./lume/lumecli.ts upgrade",
+    "help": "deno run --unstable --allow-read ./lume/lumecli.ts --help",    
+    "lume-run": "cd \"$INIT_CWD\" && deno run --unstable -A ../lume/lumecli.ts --dest \"$LUME_DEST_DIR\" --config \"$LUME_CONFIG_FILE\""
   },
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "npm:preact"
-  }  
+  }
 }
