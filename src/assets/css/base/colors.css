@@ -1,0 +1,113 @@
+/* 
+   Implementing the color palette for the yūmi brand. Recommended reading:
+   
+   1. Building Your Color Palette by Adam Wathan. https://www.refactoringui.com/previews/building-your-color-
+   2. Building a [hsl] color scheme. https://web.dev/articles/building/a-color-scheme
+      Source: https://github.com/argyleink/gui-challenges/blob/main/color-schemes/style.css
+*/	
+
+/* Global Colour Schemes below */
+* {
+    /* brand foundation */
+    --color-hue-coconut-cream-default: 52;
+    --color-saturation-coconut-cream-default: 71%;
+    --color-lightness-coconut-cream-default: 96%;
+
+    --color-hue-english-holly-default: 136;
+    --color-saturation-english-holly-default: 96%;
+    --color-lightness-english-holly-default: 9%;
+
+    --color-hue-tuscany-default: 22;
+    --color-saturation-tuscany-default: 62%;
+    --color-lightness-tuscany-default: 49%;
+
+    /* BEGIN: Fix up the naming an colour type used */
+    --english-holly: #012e0d;
+    --coconut-cream: #fcfaed;
+
+    --color-text-gray-500: #6b7280;
+    --color-text-gray-700: #4a5568;
+    --color-text-gray-800: #2d3748;
+    --color-text-black: rgba(0,0,0,0);
+    --color-text-white: rgba(255,255,255,0);
+
+    --red: #c04;
+    --lightgray: #e6e6e6;
+    --darkgray: #0d1117;
+    --blue: #135;
+    --white: rgba(255,255,255,0);
+    /* END: Fix up */
+
+    /* LIGHT MODE colour scheme */
+    --bg-color-light: hsl( 
+      var(--color-hue-coconut-cream-default) 
+      var(--color-saturation-coconut-cream-default) 
+      var(--color-lightness-coconut-cream-default));
+
+    --text-color-light: hsl(
+      var(--color-hue-english-holly-default) 
+      var(--color-saturation-english-holly-default) 
+      var(--color-lightness-english-holly-default));
+
+    --text-color-tuscany-light: hsl( 
+      var(--color-hue-tuscany-default)
+      var(--color-saturation-tuscany-default) 
+      var(--color-lightness-tuscany-default)
+    );
+
+    --shadow-strength-light: .02;
+
+    /* DARK MODE colour scheme */
+    --bg-color-dark: hsl( 
+      var(--color-hue-coconut-cream-default) 
+      calc(var(--color-saturation-coconut-cream-default) / 2) 
+      calc(var(--color-lightness-coconut-cream-default) / 1.5)
+    );
+
+    --text-color-dark: hsl( 
+      var(--color-hue-english-holly-default)
+      calc(var(--color-saturation-english-holly-default) * 1.5) 
+      calc(var(--color-lightness-english-holly-default) * 1.5)
+    );
+
+    --text-color-tuscany-dark: hsl( 
+      var(--color-hue-tuscany-default)
+      var(--color-saturation-tuscany-default) 
+      var(--color-lightness-tuscany-default)
+    );
+
+    --shadow-strength-dark: .8;
+
+    /* These colors are related to the mask-radical class */
+    --color-alpha-black: rgba(0,0,0,1);
+    --color-transparent: rgba(0,0,0,0);   
+
+  }
+
+  :root {
+    color-scheme: light;
+
+    --bg-color: var(--bg-color-light); 
+    --text-color: var(--text-color-light);
+    --text-color-tuscany: var(--text-color-tuscany-light);
+    --text-gray-500: var(--color-text-gray-500);
+    --text-gray-700: var(--color-text-gray-700);
+    --text-gray-800: var(--color-text-gray-800);  
+    --text-black: var(--color-text-black);
+
+    --shadow-strength: var(--shadow-strength-light);
+
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+    
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+
+      --bg-color: var(--bg-color-dark); 
+      --text-color: var(--text-color-dark);
+      --text-color-tuscany: var(--text-color-tuscany-dark);
+
+      --shadow-strength: var(--shadow-strength-dark);
+  }}

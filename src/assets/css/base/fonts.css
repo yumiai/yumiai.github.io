@@ -1,0 +1,31 @@
+
+@font-face {
+    font-family: 'Fraunces';
+    src: url('/assets/fonts/Fraunces-VariableFont-1.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/assets/fonts/Inter-VariableFont-1.ttf') format('truetype');
+}
+
+/* Global Font families. */
+:root {
+    --sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --system: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans, sans-serif !important;
+    --monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --serif: -apple-system-ui-serif, ui-serif, "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times", "Source Serif Pro", serif;
+    
+    /* yumi styles */
+    --serif-font-family: "Fraunces", "Merriweather", serif;
+    --serif-variation: "wght" 400, "SOFT" 100, "WONK" 1;
+
+    --sans-font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    --sans-variation: "wght" 300, "slnt" 0;
+    
+    --header-font-family: "Fraunces", "Merriweather", serif;
+    --header-variation: "wght" 400, "SOFT" 100, "WONK" 1;
+
+    --fine-print-font-family: "Fraunces", "Merriweather", serif;    
+    --fine-print-variation: "wght" 200, "SOFT" 100, "WONK" 1;
+}

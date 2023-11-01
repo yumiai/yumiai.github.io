@@ -16,7 +16,14 @@ const site = lume({location: new URL("https://yumi.ai/")});
 
 site
   .ignore("README.md", "LICENSE", "CHANGELOG.md", ".gitkeep")
-  .use(lightningCss())  
+  .use(lightningCss({
+    extensions: [".css"],
+    includes: false,
+    options: {
+      MediaQueries: true,
+      Nesting: true,
+      minify: false, 
+  }}))  
   .use(jsx())
   .use(date())
   .use(codeHighlight())
@@ -25,7 +32,12 @@ site
   .use(pageFind({
     ui: {
       resetStyles: false,
-      containerId: "hero-search",
+      containerId: "search",
+    },
+    indexing: {
+      rootSelector: "html",
+      glob: "**/*.html",
+      verbose: false,
     },
   }))
   .use(slugifyUrls({ alphanumeric: false }))
@@ -44,9 +56,7 @@ site
   .use(resolveUrls())
   .use(picture())
   .use(imagick())
-  .copy("assets/scripts")
-  .copy("assets/css/router") // TODO: Should not need to do this but lightning doesn't appear to be handling
-                             //       CSS Routing files correctly. 
+  .copy("assets/scripts/")  // TODO: copyRemainingFiles() should take care of this.
   .copyRemainingFiles();
 
 export default site;

@@ -33,4 +33,5 @@
 
   --base-font-size-for-mobile: calc(4 * var(--fs)); 
   --base-font-size: var(--base-font-size-for-mobile); /* This variable is declared for each device category separately. */
+
 }

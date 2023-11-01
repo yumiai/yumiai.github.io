@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ lang.code }}" class="text-english-holly bg-coconut-cream">
+<html lang="{{ lang.code }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width, minimum-scale=1.0, viewport-fit=cover">
@@ -11,30 +11,30 @@
     <link rel="alternate" href="{{ site.baseurl }}/feed.json" type="application/json" title="{{ site.title }}">
     {% include "partials/base-style.njk" %}
 </head>
-<body class="text-english-holly bg-coconut-cream">
-    <section id="hero-section" class="relative flex flex-col top-0 inset-x-0 overflow-clip">
-      <section id="hero-background">
-        <div id="hero-background-noise" class="absolute inset-x-0 inset-y-0 grid grid-cols-6 grid-rows-3">
+<body>
+    <section id="hero-section">
+      <section class="background">
+        <div>
           {% for i in range(0,18) %}
-            <div class="grid-item bg-noise blur-2xl invert-[50%] animate-pulse"></div>
+            <div class="bg-pattern grid-item"></div>
           {%- endfor %}   
         </div>
-        <div id="hero-background-1" class="absolute inset-x-0 inset-y-0 bg-pattern-1 bg-repeat mix-blend-screen animate-bg-1"></div>
-        <div id="hero-background-2" class="absolute inset-x-0 inset-y-0 bg-pattern-2 bg-repeat mix-blend-screen animate-bg-2"></div>
-        <img class="absolute bottom-0 right-0 mr-[-6.5rem] pt-20 max-h-[24rem] md:max-h-[32rem]" src="{{ site.baseurl }}/assets/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."></img></picture>
+        <div class="hero-bg bg-1"></div>
+        <div class="hero-bg bg-2"></div>
+        <img src="{{ site.baseurl }}/assets/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."/>
       </section>
-      <header role="banner" class="flex top-0 inset-x-0 mx-10 mt-5 z-20">
-        <picture id="name" class="flex font-header text-xl mr-4">
+      <header id="menu-bar">
+        <picture>
           {% if url != "/" %}<a href="/">{% endif %}
-            <img src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="The yumi logo, two hands held in the shape of a heart." class="w-auto">
+            <img src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="The yumi logo, two hands held in the shape of a heart.">
           {% if url != "/" %}</a>{% endif %}
         </picture>
-        <nav role="navigation" class="flex relative items-center self-stretch h-16">
-          <menu role="menu" class="p-0 m-0 list-none flex flex-wrap md:mr-2 gap-x-2 md:gap-x-3 xl:gap-x-8">
+        <nav>
+          <menu role="menu">
           {%- for entry in search.pages("menu.visible=true", "menu.order") %}
             {% if entry.data.url != "/" %}
-            <li role="menuitem">
-              <a href="{{ entry.data.url }}" class="block no-underline hover:text-tuscany hover:underline{% if entry.data.url == url %} font-bold underline" aria-current="page{% endif %}">
+            <li class="menu-item">
+              <a href="{{ entry.data.url }}" class="menu-item{% if entry.data.url == url %} current-page" aria-current="page{% endif %}">
                 {{ entry.data.menu.title or entry.data.title }}
               </a>
             </li>
@@ -42,53 +42,46 @@
           {%- endfor %}
           </menu>
         </nav>
-        <div id="hero-search" role="search" class="hidden md:flex md:grow-0 max-w-sm ml-auto"></div>
+        <div id="search" role="search"></div>
       </header>
 
-      <section id="hero-message" class="flex flex-col w-7/12 lg:w-8/12 pl-10 pb-16 md:pb-32 mt-16 z-10">
-        <h1 class="flex flex-col md:flex-row md:items-center">
-          <span class="font-header text-english-holly text-2xl md:text-3xl lg:text-5xl xl:text-6xl whitespace-nowrap">People. Actions.</span>
-          <span id="scroll-mask" class="mask-radial w-full mt-[-1.3rem] md:mt-0 md:ml-2 overflow-y-clip">
-            <div id="scroll-container" class="flex flex-col-reverse font-serif text-2xl md:text-3xl lg:text-5xl xl:text-6xl gap-0 pl-0 md:ml-1 mt-[-2rem] md:mt-[-2.2rem] lg:mt-[-3rem] xl:mt-[-3.8rem]"></div>
-          </span>
-        </h1>
-        <p class="xl:flex xl:flex-col text-xs md:text-lg lg:text-xl xl:text-2xl mt-[-0.7rem] md:mt-[-1rem] xl:mt-0">
+      <section class="brand-message">
+        <div data-pagefind-ignore>
+          <span>People. Actions.</span>
+          <div><div id="scroll-container"></div></div>
+        </div>
+        <p>
           <span>Unleashing our collective intelligence to propel impactful change.</span>
           <span>Regenerative Finance (ReFi) engineered on Cardano.</span>
         </p>
-      </section>
-    
+      </section>    
     </section>
 
-    <main class="z-30">
-  
-      <section class="bg-coconut-cream">
+    <main>
+      <section id="filler">
         <img src="{{ site.baseurl }}/assets/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."></img>
       </section>
 
-      <section>
-        <div class="flex flex-col items-center justify-center opacity-50">
-          <div class="flex justify-center items-center mt-2">
-            {% for link in site.sociallinks %}
-            <div class="flex flex-col items-center justify-center p-3">
-              <a href="{{ link.url }}" class="text-xs md:text-base text-gray-700 hover:text-gray-800" aria-label="{{ link.title }}">
-                <i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i>
-              </a>
-              <p>{{ link.title }}</p>
-            </div>
-            {% endfor %}
-          </div>
-          <img class="block h-6 md:h-8 mt-2 mb-2" src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="Logo" >
-          <div class="font-header text-base lg:text-lg mt-2">You, Me and A.I.</div>
-          <div class="text-xs md:text-base text-center w-7/12">{{site.description}}</div>
-        </div>
-      </section>
-
+      <section data-pagefind-body>{{ content | safe }}</section>
     </main>
 
-    <footer class="bottom-5 mt-2">
-        <div class="text-center w-screen text-xs font-fine-print italic">{{site.copyright}}</div>
+    <footer id="social-links" data-pagefind-ignore>
+      <div>
+        {% for link in site.sociallinks %}
+        <div>
+          <a href="{{ link.url }}" aria-label="{{ link.title }}"><i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i></a>
+          <span>{{ link.title }}</span>
+        </div>
+        {% endfor %}
       </div>
+        
+      <img id="basement-message" src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="Logo" >
+      <p>You, Me and A.I.</p>
+      <p>{{site.description}}</p>
+    </footer>
+
+    <footer id="copyright" data-pagefind-ignore>
+      <p>{{site.copyright}}</p>
     </footer>
 
     <script>

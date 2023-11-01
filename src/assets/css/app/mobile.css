@@ -18,7 +18,6 @@
   }
 }
 /* End test of viewport squarishness */ 
-
 :root {
   /* Treat larger widths in portrait mode as landscape with more room for the scroll. */
   --lean: calc(95 * var(--vmin)); /* 100vmin i.e portrait width or full height in landscape orientation. */
@@ -31,4 +30,5 @@
 
   --base-font-size-for-mobile: calc(4 * var(--fs)); 
   --base-font-size: var(--base-font-size-for-mobile); /* This variable is declared for each device category separately. */
+
 }
