@@ -25,17 +25,19 @@
     --english-holly: #012e0d;
     --coconut-cream: #fcfaed;
 
-    --color-text-gray-500: #6b7280;
-    --color-text-gray-700: #4a5568;
-    --color-text-gray-800: #2d3748;
-    --color-text-black: rgba(0,0,0,0);
-    --color-text-white: rgba(255,255,255,0);
+    --color-gray-100: #edeef1; 
+    --color-gray-300: #b6bac3;
+    --color-gray-500: #6b7280;
+    --color-gray-700: #4a5568;
+    --color-gray-800: #40444c;
+    --color-gray-900: #383a42;
+    --color-black: rgba(0,0,0,1);
+    --color-darkgray: var(--color-gray-900);
+    --color-lightgray: var(--color-gray-300);
+    --color-white: rgba(255,255,255,1);
+    --color-white-transparent-95: rgba(255,255,255,0.95);
+    --color-white-transparent-25: rgba(255,255,255,0.25);
 
-    --red: #c04;
-    --lightgray: #e6e6e6;
-    --darkgray: #0d1117;
-    --blue: #135;
-    --white: rgba(255,255,255,0);
     /* END: Fix up */
 
     /* LIGHT MODE colour scheme */
@@ -81,6 +83,7 @@
     /* These colors are related to the mask-radical class */
     --color-alpha-black: rgba(0,0,0,1);
     --color-transparent: rgba(0,0,0,0);   
+    --color-transparent-010: rgba(0,0,0,0.1);   
 
   }
 
@@ -88,12 +91,16 @@
     color-scheme: light;
 
     --bg-color: var(--bg-color-light); 
+    --bg-color-white: var(--color-white); 
+    --bg-color-black: var(--color-black); 
+
     --text-color: var(--text-color-light);
-    --text-color-tuscany: var(--text-color-tuscany-light);
-    --text-gray-500: var(--color-text-gray-500);
-    --text-gray-700: var(--color-text-gray-700);
-    --text-gray-800: var(--color-text-gray-800);  
-    --text-black: var(--color-text-black);
+    --text-color-tuscany: var(--text-tuscany-light);
+    --text-color-gray-500: var(--color-gray-500);
+    --text-color-gray-700: var(--color-gray-700);
+    --text-color-gray-800: var(--color-gray-800);  
+    --text-color-black: var(--color-black);
+    --text-color-white: var(--color-white);
 
     --shadow-strength: var(--shadow-strength-light);
 
