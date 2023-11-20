@@ -14,17 +14,17 @@
   </head>
 
 <body>
-  <div class="page-container">
-
-    <section id="hero-section">
+  <div class="page-container">  
+    <section id="hero-section" class="home">
       <section class="background">
         <div>
-          {% for i in range(0,6) %}
+          {% for i in range(0,19) %}
             <div class="bg-pattern grid-item"></div>
           {%- endfor %}   
         </div>
         <div class="hero-bg bg-1"></div>
         <div class="hero-bg bg-2"></div>
+        <img src="{{ site.baseurl }}/assets/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."/>
       </section>
       <header id="menu-bar">
         <picture>
@@ -46,11 +46,26 @@
           </menu>
         </nav>
         <div id="search" role="search"></div>
-      </header> 
+      </header>
+
+      <section class="brand-message">
+        <div data-pagefind-ignore>
+          <span>People. Actions.</span>
+          <div><div id="scroll-container"></div></div>
+        </div>
+        <p>
+          <span>Unleashing our collective intelligence to propel impactful change.</span>
+          <span>Regenerative Finance (ReFi) engineered on Cardano.</span>
+        </p>
+      </section>    
     </section>
 
     <main id="content">
-      <section data-pagefind-body>{{ content | safe }}</section>
+      <section id="filler">
+        <img src="{{ site.baseurl }}/assets/images/pilea-peperomioides.png" imagick="avif webp jpg 800@2" alt="Pilea peperomioides plant, the money plant."></img>
+      </section>
+
+      <section class="testit" data-pagefind-body>{{ content | safe }}</section>
     </main>
 
     <footer id="basement-message" data-pagefind-ignore>
@@ -75,9 +90,7 @@
     <footer id="copyright" data-pagefind-ignore>
       <p>{{site.copyright}}</p>
     </footer>
-
   </div>
-
     <script>
       // Add a random animation-delay to each .grid-item div for the background animation.
       document.addEventListener("DOMContentLoaded", function() {
@@ -89,6 +102,8 @@
         });
       });
     </script>
+
+    <script src="{{ site.baseurl }}/assets/scripts/word-scroll.js"></script>
 
 </body>
 </html>

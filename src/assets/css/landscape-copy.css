@@ -1,16 +1,21 @@
-/*** Portrait or y-axis.  ***/
-/* The portrait-axis router. */
+/* ** Landscape or y-axis.  ***/
+/* The landscape-axis router. */
 
-/* Smartphones */
+/* iOS Smartphones */
 @import url('/assets/css/app/mobile.css') 
+  (min-width: 375px) /* iPhone 12 mini */
+  and (max-width: 812px)
+  and (resolution: 3x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 390px) /* iPhone 14 */
+  and (max-width: 844px)
+  and (resolution: 3x)
+  and (hover: none) 
+  and (pointer: coarse),  
   (min-width: 414px) /* iPhone 11 */
   and (max-width: 896px)
   and (resolution: 2x)
-  and (hover: none) 
-  and (pointer: coarse),
-  (min-width: 370px) /* iPhone 11 Pro */
-  and (max-width: 812px)
-  and (resolution: 3x)
   and (hover: none) 
   and (pointer: coarse),
   (min-width: 375px) /* iPhone 8 */
@@ -42,18 +47,8 @@
   and (hover: none) 
   and (pointer: coarse),
   (min-width: 412px) /* Google Pixel 3XL */
-  and (max-width: 846px)
-  and (resolution: 3.5x)
-  and (hover: none) 
-  and (pointer: coarse),
-  (min-width: 412px) /* Google Pixel 3A XL */
   and (max-width: 824px)
   and (resolution: 2.6x)
-  and (hover: none) 
-  and (pointer: coarse),
-  (min-width: 360px) /* Galaxy S22 */
-  and (max-width: 780px)
-  and (resolution: 3x)
   and (hover: none) 
   and (pointer: coarse),
   (min-width: 384px) /* Galaxy S22 Plus */
@@ -63,12 +58,17 @@
   and (pointer: coarse),
   (min-width: 384px) /* Galaxy S22 Ultra */
   and (max-width: 824px)
-  and (resolution: 3.75x) /* Resolution not working on Blisk for this device. */
+  and (resolution: 3.75x)
   and (hover: none) 
   and (pointer: coarse),
   (min-width: 360px) /* Galaxy S9 */
   and (max-width: 740px)
   and (resolution: 4x)
+  and (hover: none) 
+  and (pointer: coarse),
+  (min-width: 480px) /* Galaxy Note 5 */
+  and (max-width: 853px)
+  and (resolution: 3x)
   and (hover: none) 
   and (pointer: coarse);
 
@@ -110,14 +110,28 @@
   and (max-device-width: 1366px) 
   and (resolution: 2x) 
   and (hover: none) 
-  and (pointer: coarse); 
+  and (pointer: coarse);
 
 /*** Route-in or @import desktop.css next. ***/
-/*** Vertically mounted Retina & non-retina Screens ***/
+/*** Retina & non-retina Screens ***/
 
 /* Desktops */ 
-
-@import url('/assets/css/app/desktop.css') 
+@import url('/assets/css/app/desktopl.css') 
   (hover: hover) 
   and (pointer: fine);
-
+/*
+  @import url('/assets/css/app/desktopl.css') 
+  (min-device-width: 100px) 
+  and (max-device-width: 3840px) 
+  and (-webkit-min-device-pixel-ratio: 1)
+  and (max-aspect-ratio: 32/9)
+  and (hover: hover) 
+  and (pointer: fine),
+  (min-device-width: 1440px) 
+  and (max-device-width: 5120px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  and (min-resolution: 192dpi)
+  and (max-aspect-ratio: 32/9)
+  and (hover: hover) 
+  and (pointer: fine);
+*
