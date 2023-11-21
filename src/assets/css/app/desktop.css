@@ -15,12 +15,11 @@
 }
 
 /* Responsive Layer Break Points */
-
-@custom-media --breakpoint-psm  (min-width: 640px);
-@custom-media --breakpoint-pmd  (min-width: 768px);
-@custom-media --breakpoint-plg  (min-width: 1024px);
-@custom-media --breakpoint-pxl  (min-width: 1280px);
-@custom-media --breakpoint-p2xl (min-width: 1536px);
+@custom-media --breakpoint-sm  (min-width: 640px);
+@custom-media --breakpoint-md  (min-width: 768px);
+@custom-media --breakpoint-lg  (min-width: 1024px);
+@custom-media --breakpoint-xl  (min-width: 1280px);
+@custom-media --breakpoint-2xl (min-width: 1536px);
 
 @custom-media --breakpoint-lsm  (min-width: 640px)  and (orientation: landscape);
 @custom-media --breakpoint-lmd  (min-width: 768px)  and (orientation: landscape);
@@ -28,8 +27,14 @@
 @custom-media --breakpoint-lxl  (min-width: 1280px) and (orientation: landscape);
 @custom-media --breakpoint-l2xl (min-width: 1536px) and (orientation: landscape);
 
+@custom-media --breakpoint-arsm  (min-aspect-ratio: 1/1);
+@custom-media --breakpoint-armd  (min-aspect-ratio: 4/3);
+@custom-media --breakpoint-arlg  (min-aspect-ratio: 3/2);
+@custom-media --breakpoint-arxl  (min-aspect-ratio: 16/9);
+@custom-media --breakpoint-ar2xl (min-aspect-ratio: 21/9);
 
 :root {
+
   /* Width utilities in landscape: */
   --lean: calc(100 * var(--vmin)); /* 100vmin i.e Full portrait width or full landscape height. */
   --safe: calc(100 * var(--fs) + (100vmax - 100 * var(--fs)) / 2); /* 100vmin plus half of the remaining space on either sides. */
@@ -42,15 +47,8 @@
   --base-font-size: var(--base-font-size-for-desktop); /* This variable is declared for each device category separately. */
 
   /* Fix standard width to a minimum */
-  --standard-width: 130px;
-  --min-width: 25rem;
-
-  @media (--breakpoint-psm) {
-    --standard-width: calc(25 * var(--vmin));
-  }
-  @media (--breakpoint-lmd) {
-    --standard-width: calc(25 * var(--vmin));
-  }
+  --standard-width: calc(25 * var(--vmin));
+  --min-width: 368px; /* TODO: calculate this? */
 }
 
 @layer components {
@@ -133,27 +131,19 @@
     };
   
     img {
-      background-color: blueviolet;
-
       position: absolute;
       bottom: 0;
       right: 0;
       padding-top: 1.25rem;
       margin-right: calc(var(--standard-width) * -0.8);
-      max-height: calc(var(--standard-width) * 2.5);
+      max-height: calc(var(--standard-width) * 2);
 
-      @media (--breakpoint-psm) {
-        max-height: calc(var(--standard-width) * 2);
-      }
-      @media (--breakpoint-pmd) {
+      @media (--breakpoint-arsm) {
         margin-right: calc(var(--standard-width) * -0.5);
+      }
+      @media (--breakpoint-armd) {
+        margin-right: calc(var(--standard-width) * -0.2);
         max-height: calc(var(--standard-width) * 1.8);
-      }
-      @media (--breakpoint-lmd) {
-        margin-right: calc(var(--standard-width) * -0.25);
-      }
-      @media (--breakpoint-lxl) {
-        max-height: calc(var(--standard-width) * 2);
       }
     }
   } /* END: #hero-section > section.background */
@@ -210,45 +200,24 @@
   
     /* Tagline: div + p The sub-text to the tag-line */
     > div + p {
-
-      display: block;
+      display: inline-block;
       margin-top: -0.7rem;
       width: 100%;
       min-width: var(--min-width);
       font-family: var(--sans-font-family);
       font-variation-settings: var(--sans-variation);
-      font-size: 1rem; 
+      font-size: calc(var(--standard-width) * 0.1); 
 
-      @media (--breakpoint-psm) {
-        font-size: calc(var(--standard-width) / 12); 
-      }
-      @media (--breakpoint-lsm) or (--breakpoint-llg) {
-        font-size: calc(var(--standard-width) / 7); 
-      } 
-      @media (--breakpoint-lxl) {
-        font-size: calc(var(--standard-width) / 12); 
+      @media (--breakpoint-arlg) and (--breakpoint-lsm) {
         display: flex;
         flex-direction: column;
+        background-color: var(--breakpoint-testcolor-arlg);
       }
     } /* Tagline:  div + p */
   
   } /* END: #hero-section > section.brand-message  */
   
   /* Menu Navigation common across the entire site */
-  #menu-bar > picture {
-    background-color: cyan;
-    @media (--breakpoint-psm)  {background-color:red;}
-    @media (--breakpoint-pmd)  {background-color:orangered;}
-    @media (--breakpoint-plg)  {background-color:orange;}
-    @media (--breakpoint-pxl)  {background-color:rgb(205, 184, 50);}
-    @media (--breakpoint-p2xl) {background-color:yellow;}
-
-    @media (--breakpoint-lsm)  {background-color:greenyellow;}
-    @media (--breakpoint-lmd)  {background-color:darkcyan;}
-    @media (--breakpoint-llg)  {background-color:darkgreen;}
-    @media (--breakpoint-lxl)  {background-color:blue;}
-    @media (--breakpoint-l2xl) {background-color:black;}
-  }
   #menu-bar {
     display: flex; 
     inset: 0;
@@ -306,7 +275,7 @@
       max-width: 30rem;
       margin-left: auto;
 
-      @media (--breakpoint-pmd) {
+      @media (--breakpoint-md) {
         display: flex;
       };
     };
@@ -337,15 +306,11 @@
         margin-right: 0.5rem;
          
         > a {
-          font-size: 0.75rem;
+          font-size: 0.75rem; 
           color: var(--text-gray-700);
           &:hover {
             color: var(--text-gray-800);
           }
-  
-          @media (--breakpoint-pmd) { 
-            font-size: 1rem;
-          };
         };
       };
     };
@@ -395,23 +360,8 @@
   #content {
     flex-grow: 1; 
     padding-left: var(--notch-inset-left);
-    background-color: cyan;
     z-index: 15;
-    
-    @media (--breakpoint-psm)  {background-color:red;}
-    @media (--breakpoint-pmd)  {background-color:orangered;}
-    @media (--breakpoint-plg)  {background-color:orange;}
-    @media (--breakpoint-pxl)  {background-color:rgb(205, 184, 50);}
-    @media (--breakpoint-p2xl) {background-color:yellow;}
-
-    @media (--breakpoint-lsm)  {background-color:greenyellow;}
-    @media (--breakpoint-lmd)  {background-color:darkcyan;}
-    @media (--breakpoint-llg)  {background-color:darkgreen;}
-    @media (--breakpoint-lxl)  {background-color:blue;}
-    @media (--breakpoint-l2xl) {background-color:black;}
-
-  }
-  
+  }  
   section#filler { background-color: var(--bg-color); }
 
 } /* END: Layer Component */
