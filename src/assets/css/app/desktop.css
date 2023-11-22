@@ -1,18 +1,4 @@
-@media (min-aspect-ratio: 2 / 1) { /* Length : Breadth ratio > 2 */
-  :root {
-    --edge: 100vmin; /* Always pick the shorter side for better control on scalability. */
-    --basis: calc(--var(edge) / 100); 
-    --fs: calc(1 * var(--basis));
-  }
-}
-
-@media (max-aspect-ratio: 2 / 1) { /* Length : Breadth ratio < 2 */
-  :root {
-    --edge: 50vmax;
-    --basis: calc(--var(edge) / 100); 
-    --fs: calc(1 * var(--basis));
-  }
-}
+@import url('/assets/css/base/common.css') layer(base);
 
 /* Responsive Layer Break Points */
 @custom-media --breakpoint-sm  (min-width: 640px);
@@ -33,325 +19,68 @@
 @custom-media --breakpoint-arxl  (min-aspect-ratio: 16/9);
 @custom-media --breakpoint-ar2xl (min-aspect-ratio: 21/9);
 
-:root {
-
-  /* Width utilities in landscape: */
-  --lean: calc(100 * var(--vmin)); /* 100vmin i.e Full portrait width or full landscape height. */
-  --safe: calc(100 * var(--fs) + (100vmax - 100 * var(--fs)) / 2); /* 100vmin plus half of the remaining space on either sides. */
-  --full: 100%; /* Useful for full bleed headers and banners. */
-  --half: 50%;
-  --one-third: calc(1 / 3 * 100%);
-  --two-third: calc(2 / 3 * 100%);
+@layer structure {
+  :root {
+    /* Width utilities in landscape: */
+    --lean: calc(100 * var(--vmin)); /* 100vmin i.e Full portrait width or full landscape height. */
+    --safe: calc(100 * var(--fs) + (100vmax - 100 * var(--fs)) / 2); /* 100vmin plus half of the remaining space on either sides. */
+    --full: 100%; /* Useful for full bleed headers and banners. */
+    --half: 50%;
+    --one-third: calc(1 / 3 * 100%);
+    --two-third: calc(2 / 3 * 100%);
+    
+    --base-font-size-for-desktop: calc(4 * var(--fs)); 
+    --base-font-size: var(--base-font-size-for-desktop); /* This variable is declared for each device category separately. */
   
-  --base-font-size-for-desktop: calc(4 * var(--fs)); 
-  --base-font-size: var(--base-font-size-for-desktop); /* This variable is declared for each device category separately. */
-
-  /* Fix standard width to a minimum */
-  --standard-width: calc(25 * var(--vmin));
-  --min-width: 368px; /* TODO: calculate this? */
-}
-
-/* Keyframes Definitions */
-@keyframes kf-scroll-right {
-    0%, 100% { transform: translateX(-50%); }
-    50% { transform: translateX(0%);}
-}
-
-@keyframes kf-pulse {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-}
-
-@keyframes kf-fade {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Animation Class Definitions */
-.annimation-scroll-right {
-  animation: kf-scroll-right 240s ease-in-out infinite;
-}
-.page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-/* Hero Section for the home page */
-#hero-section {
-  position: relative; 
-  display: flex; 
-  flex-direction: column; 
-  inset: 0; 
-  overflow-x: clip;
-  min-height: 4rem;
-} /* END: hero-section*/
-
-#hero-section .home {
-  min-height: 30rem;
-  & div:first-child {
-    /* The home page needs a 6x3 grid, but other pages only need a 6x1 grid */
-    grid-template-rows: repeat(3, 1fr); /* "grid-rows-3" */
+    /* Fix standard width to a minimum */
+    --standard-width: calc(25 * var(--vmin));
+    --min-width: 368px; /* TODO: calculate this? */
   }
-}
+} /* structure */
 
-#hero-section > section.background {
-  div:first-child {
-    overflow: clip;
-    position: absolute;
-    inset: 0; 
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* "grid-cols-6" */
-    grid-template-rows: repeat(1, 1fr); /* "grid-rows-3" */
-  
-    > .bg-pattern {
-        background-image: var(--pattern-noise);
-        animation: kf-pulse 10s infinite ease-in-out;
-        filter: blur(2.5rem) invert(50%);
-    }
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0; 
-    background-repeat: repeat;
-    mix-blend-mode: screen;
-    &.bg-1 {
-      background-image: var(--pattern-1);
-      animation: kf-fade 30s 0s infinite;
-    };
-    &.bg-2 {
-      background-image: var(--pattern-2);
-      animation: kf-fade 30s 15s infinite;
-    }
-  }
-
-  img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding-top: 1.25rem;
-    margin-right: calc(var(--standard-width) * -0.8);
-    max-height: calc(var(--standard-width) * 2);
-    @media (--breakpoint-arsm) {
+/* Responsive Design Media Queries */
+@media (--breakpoint-arsm) {
+  @layer structure {
+    #hero-section > section.background img {
       margin-right: calc(var(--standard-width) * -0.5);
-    }
-    @media (--breakpoint-armd) {
+    } /* END: #hero-section > section.background */
+  }
+}
+
+@media (--breakpoint-armd) {
+  @layer structure {
+    #hero-section > section.background img {
       margin-right: calc(var(--standard-width) * -0.2);
       max-height: calc(var(--standard-width) * 1.8);
-    }
+    } /* END: #hero-section > section.background */  
   }
-} /* END: #hero-section > section.background */
-
-/* Main message with in the hero section for the home page */
-#hero-section > section.brand-message {
-  display: flex;
-  flex-direction: column;
-  width: 64%; /* 7/12 */
-  padding-left: 0.625;
-  padding-top: calc(var(--standard-width) / 4);
-  padding-bottom: calc(var(--standard-width) / 2);
-  margin-top: 1rem;
-  margin-left: 2rem;
-  position: relative;
-  z-index: 10;
-  /* Enable force inheritance for SmartTVs */
-  font-family: var(--serif-font-family); 
-  font-variation-settings: var(--serif-variation);
-
-  > div  {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-family:inherit; /* Force inheritance for SmartTVs */
-    /* Tagline: div + p The main hero-message tag-line */
-    span {
-      color: var(--text-color);
-      white-space: nowrap;
-      font-size: calc(var(--standard-width) / 4); 
-      font-family:inherit; /* Force inheritance for SmartTVs */
-      color: var(--text-color);
-    }
-    /* Mask for the word scroll in the main hero message tag-line */
-    span + div {
-      margin-left: calc( var(--standard-width) / 41.6 ); 
-      height: calc( var(--standard-width) / 1.6 ); 
-      width: calc( var(--standard-width) / 0.6 ); 
-      mask-image: radial-gradient(80% 50% at 47% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%);
-      -webkit-mask-image: radial-gradient(80% 50% at 47% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%);
-      font-family:inherit; /* Force inheritance for SmartTVs */
-      /* Word scroll container */
-      > div {
-        display: flex;
-        flex-direction: column-reverse;
-        font-size: calc(var(--standard-width) / 4);
-        font-family:inherit; /* Force inheritance for SmartTVs */
-      }
-      /* Word List in the word scroll */
-      > div div {
-        padding: 0;
-        margin: 0;
-        height: calc( var(--standard-width) / 2.75 ); 
-        font-family:inherit; /* Force inheritance for SmartTVs */
-      }
-    }    
-  } /* div */
-
-  /* Tagline: div + p The sub-text to the tag-line */
-  > div + p {
-    display: inline-block;
-    margin-top: -0.7rem;
-    width: 100%;
-    min-width: var(--min-width);
-    font-size: calc(var(--standard-width) * 0.1); 
-    font-family: var(--sans-font-family); 
-    font-variation-settings: var(--sans-variation);
-    span {    
-      font-family:inherit; /* Force inheritance for SmartTVs */
-    }
-    @media (--breakpoint-arlg) and (--breakpoint-lsm) {
-      display: flex;
-      flex-direction: column;
-      background-color: var(--breakpoint-testcolor-arlg);
-    }
-  } /* Tagline:  div + p */
-
-} /* END: #hero-section > section.brand-message  */
-
-/* Menu Navigation common across the entire site */
-#menu-bar {
-  display: flex; 
-  inset: 0;
-  z-index: 20;
-
-  margin: 0.3125rem 0.625rem 0 0.625rem;
-  @media (--breakpoint-lmd) {
-    margin-bottom: auto;
-  }
-  > picture {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin-right: 0.25rem;
-  }
-
-  > nav {
-    display: flex; 
-    position: relative;
-    align-items: center; 
-    align-self: stretch;
-    height: 4rem;
-    margin-left: 1rem;
-  }
-
-  > nav > menu {
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  
-    font-family: var(--sans-font-family);
-    font-variation-settings: var(--sans-variation);
-    font-size: 1rem;
-  
-    & > .menu-item {
-      display: block;
-      text-decoration: none;
-      font-family:inherit; /* Force inheritance for SmartTVs */
-      &:hover {
-        color: var(--text-color-tuscany);
-        text-decoration: underline;
-      };
-      & .current-page {
-        font-weight: bold;
-        text-decoration: underline;
-      }
-    }
-  }
-  > #search {
-    display: none;
-    margin-top: 0.5rem;
-    max-width: 30rem;
-    margin-left: auto;
-    @media (--breakpoint-md) {
-      display: flex;
-    }
-  }
-} /* END: #menu-bar */
-
-/* Selection of Social Links to arrange horizontally */
-#social-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.5;
-
-  & > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.125rem;
-
-    & div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0.1875rem;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-       
-      & > a {
-        font-size: 0.75rem; 
-        color: var(--text-gray-700);
-        &:hover {
-          color: var(--text-gray-800);
-        }
-      };
-    };
-  }
-} /* END: social-links */
-  
-/* Brand Footer includes the brand-logo + brand-name + tag-line */
-#basement-message {
-  display:grid;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.5rem;
-  opacity: 0.75;
-  /* Logo Image and Words */
-  div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    gap: 0.5rem;
-    /* Brand Name */
-    p {
-      font-size: 0.75rem;
-      font-family: var(--header-font-family); 
-      font-variation-settings: var(--header-variation);
-    }      
-  }
-} /* END: basement-message */
-
-#copyright {
-  margin-bottom: 0.75rem;
-  margin-top: 0.5rem;
-
-  p {
-    text-align: center;
-    font: italic 0.75rem var(--fine-print-font-family);
-    font-variation-settings: var(--fine-print-variation);  
-  }    
-} /* END: copyright */
-
-#content {
-  flex-grow: 1; 
-  padding-left: var(--notch-inset-left);
-  z-index: 15;
 }
 
-section#filler { background-color: var(--bg-color); }
+@media (--breakpoint-arlg) and (--breakpoint-lsm) {
+  @layer structure {
+    /* Main message with in the hero section for the home page */
+    /* Tagline: div + p The sub-text to the tag-line */
+    #hero-section > section.brand-message > div + p {
+      display: flex;
+      flex-direction: column;
+    } /* END: #hero-section > section.brand-message  */
+  }
+}
+
+@media (--breakpoint-lmd) {
+  @layer structure {
+    /* Menu Navigation common across the entire site */
+    #menu-bar {
+        margin-bottom: auto;
+    } /* END: #menu-bar */
+  }
+}
+
+@media (--breakpoint-md) {
+  @layer structure {
+    /* Menu Navigation common across the entire site */
+    #menu-bar > #search {
+          display: flex;
+    }
+  }
+}

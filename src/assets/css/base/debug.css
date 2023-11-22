@@ -1,0 +1,48 @@
+/* Responsive Layer Break Points */
+@custom-media --breakpoint-sm  (min-width: 640px);
+@custom-media --breakpoint-md  (min-width: 768px);
+@custom-media --breakpoint-lg  (min-width: 1024px);
+@custom-media --breakpoint-xl  (min-width: 1280px);
+@custom-media --breakpoint-2xl (min-width: 1536px);
+
+@custom-media --breakpoint-lsm  (min-width: 640px)  and (orientation: landscape);
+@custom-media --breakpoint-lmd  (min-width: 768px)  and (orientation: landscape);
+@custom-media --breakpoint-llg  (min-width: 1024px) and (orientation: landscape);
+@custom-media --breakpoint-lxl  (min-width: 1280px) and (orientation: landscape);
+@custom-media --breakpoint-l2xl (min-width: 1536px) and (orientation: landscape);
+
+@custom-media --breakpoint-arsm  (min-aspect-ratio: 1/1);
+@custom-media --breakpoint-armd  (min-aspect-ratio: 4/3);
+@custom-media --breakpoint-arlg  (min-aspect-ratio: 3/2);
+@custom-media --breakpoint-arxl  (min-aspect-ratio: 16/9);
+@custom-media --breakpoint-ar2xl (min-aspect-ratio: 21/9);
+
+:root {
+    --breakpoint-testcolor-psm:   red;
+    --breakpoint-testcolor-pmd:   orangered;
+    --breakpoint-testcolor-plg:   orange;
+    --breakpoint-testcolor-pxl:   rgb(205, 184, 50);
+    --breakpoint-testcolor-p2xl:  yellow;
+    
+    --breakpoint-testcolor-lsm:   greenyellow;
+    --breakpoint-testcolor-lmd:   darkcyan;
+    --breakpoint-testcolor-llg:   darkgreen;
+    --breakpoint-testcolor-lxl:   blue;
+    --breakpoint-testcolor-l2xl:  black;
+  
+    --breakpoint-testcolor-arsm:  red;
+    --breakpoint-testcolor-armd:  orangered;
+    --breakpoint-testcolor-arlg:  orange;
+    --breakpoint-testcolor-arxl:  rgb(205, 184, 50);
+    --breakpoint-testcolor-ar2xl: yellow;
+}
+
+/* Debugging Selectors */
+#menu-bar > picture {
+  background-color: cyan; /* anything < 1 aspect ratio, longer height than width */
+  @media screen and (--breakpoint-arsm)  {background-color: var(--breakpoint-testcolor-arsm);}
+  @media screen and (--breakpoint-armd)  {background-color: var(--breakpoint-testcolor-armd);}
+  @media screen and (--breakpoint-arlg)  {background-color: var(--breakpoint-testcolor-arlg);}
+  @media screen and (--breakpoint-arxl)  {background-color: var(--breakpoint-testcolor-arxl);}
+  @media screen and (--breakpoint-ar2xl) {background-color: var(--breakpoint-testcolor-ar2xl);}
+}

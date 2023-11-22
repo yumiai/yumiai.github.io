@@ -1,96 +1,20 @@
-  /* Always set Charset. Recommended reading: https://www.w3.org/International/questions/qa-css-charset.en */
-  @charset "UTF-8";
-
-  /* Portrait ⇋ landscape switch.
-
-     Import statements must come before anything else, there the paths to the top-level CSS files are
-     Fully specified here. Then repeated as CSS Variables for other uses.
-  */
-  /* Orientation independent styles */
-  @import url('/assets/css/base/preflight.css') all; 
-  @import url('/assets/css/base/colors.css') screen;
-  @import url('/assets/css/base/fonts.css') all;      
- 
-  /* Code syntax highlight */
-  @import "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.0/build/styles/github-dark.min.css";
-  @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
-
-  /* Orientation dependent styles */
-  @import url(/assets/css/portrait.css) screen and (orientation: portrait);
-  @import url(/assets/css/landscape.css) screen and (orientation: landscape);
-  /* --vmin stands for base unit of intrinsic blockscoped typography. */
-  @media only screen and (orientation: portrait) {
-      :root {
-          --vmin: calc(100vw/100);
-          /* Fallback if vmin is not supported. */
-      }
-  }
-  
-  @media only screen and (orientation: landscape) {
-      :root {
-          --vmin: calc(100vh/100);
-          /* Fallback if vmin is not supported. */
-      }
-  }
-  
-  /* Global variables below */
+/* Always set Charset. Recommended reading: https://www.w3.org/International/questions/qa-css-charset.en */
+@charset "UTF-8";
+/* Portrait ⇋ landscape switch orientation dependent styles */
+/* Recommended reading: https://bubblin.io/blog/a-css-router */
+@import url(/assets/css/portrait.css) screen and (orientation: portrait);
+@import url(/assets/css/landscape.css) screen and (orientation: landscape);
+/* --vmin stands for base unit of intrinsic blockscoped typography. */
+@media only screen and (orientation: portrait) {
   :root {
-      --vmin: 1vmin; /* Only used when vmin is supported by the browser. */
-
-      /* Do not remove or alter the following two lines. Repeated from above. */
-      /* Recommended reading: https://bubblin.io/blog/a-css-router */
-      --portrait-axis: /assets/css/portrait.css;
-      --landscape-axis: /assets/css/landscape.css;        
-
-      --pattern-1: url('/assets/images/watercolour1.webp');
-      --pattern-2: url('/assets/images/watercolour3.webp');
-      --pattern-noise: url('/assets/images/noise.webp');   
-  
-    }
-
-  html,
-  body {
-    /** Pagefind variables */
-    --pagefind-ui-scale: 0.8; /* Scales the whole search box */
-    --pagefind-ui-font: var(--sans-font-family); 
-    --pagefind-ui-primary: var(--color-darkgray);
-    --pagefind-ui-text: var(--color-darkgray);
-    --pagefind-ui-background: var(--color-white-transparent-25);
-    --pagefind-ui-tag: var(--color-lightgray);
-    --pagefind-ui-border: var(--color-darkgray);
-    --pagefind-ui-border-width: 0.075rem;
-    --pagefind-ui-border-radius: 0.25rem;
-
-    font-size: var(--base-font-size);
-    font-family: var(--serif-font-family);
-    font-variation-settings: var(--serif-variation);
-
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Ensure that padding does not affect the overall dimensions */ 
+      --vmin: calc(100vw/100);
+      /* Fallback if vmin is not supported. */
   }
+}
 
-  #search {
-    & .pagefind-ui__drawer  { 
-      position: absolute;
-      width: 100%; 
-      max-height: calc(100vh - 150px);
-      padding: 0.5rem; 
-      padding-top: 0; 
-      opacity: 0.95;
-      overflow-y: auto;
-      box-shadow: 0 4px 6px -1px var(--color-alpha-black), 0 2px 4px -1px var(--color-transparent-010);
-      background-color: var(--color-white-transparent-95);
-      border: var(--pagefind-ui-border-width) solid var(--color-gray-100); 
-      border-bottom-right-radius: var(--pagefind-ui-border-radius);
-      border-bottom-left-radius: var(--pagefind-ui-border-radius);
-    }
-
-    & .pagefind-ui__message { padding-top: 0; }
-    & .pagefind-ui__result { padding-top: 0.25rem; padding-bottom: 1rem; }
-    & .pagefind-ui__result:last-of-type { border-bottom-width: 0; }
-    & .pagefind-ui__result-title { padding-bottom: 0.25rem;}
-    & .pagefind-ui__result-excerpt { color: var(--text-color-gray-700);}
+@media only screen and (orientation: landscape) {
+  :root {
+      --vmin: calc(100vh/100);
+      /* Fallback if vmin is not supported. */
   }
+}

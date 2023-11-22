@@ -1,6 +1,5 @@
 /* ** Landscape or y-axis.  ***/
 /* The landscape-axis router. */
-
 /* iOS Smartphones */
 @import url('/assets/css/app/desktop.css') 
   (min-width: 375px) /* iPhone 12 mini */
@@ -116,8 +115,6 @@
 /*** Retina & non-retina Screens ***/
 
 /* Desktops */ 
-@import url('/assets/css/app/desktop.css'); 
-/*  (hover: hover) 
+@import url('/assets/css/app/desktop.css') 
+ (hover: hover) 
   and (pointer: fine);
-*/
-

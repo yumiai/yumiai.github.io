@@ -1,42 +1,25 @@
-/* Start test of viewport squarishness: 
-    → Test what is the largest possible size of a square that would fit into the viewport? 
-    → How many such "largest possible squares" can fit into the viewport without exceeding 100vmax?  
-*/ 
-@media (min-aspect-ratio: 1 / 2) {
-  :root {
-    --edge: 100vmin; /* Always start with the shortest viewport side. */
-    --basis: calc(var(--edge) / 100); /* 1 part of the square */
-    --fs: calc(1 * var(--basis)); /* fs stands for font size. */
-  }
-}
+@import url('/assets/css/base/common.css') layer(base);
 
-@media (max-aspect-ratio: 1 / 2) {
-  :root {
-    --edge: 50vmax; /* The shorter side, always. */
-    --basis: calc(var(--edge) / 100); /* 1 part of the square */
-    --fs: calc(1 * var(--basis)); /* Factor 2 can be adjusted according to required font-size relative to the mobile viewport. */
-  }
-}
+/* Responsive Layer Break Points */
+@custom-media --breakpoint-sm  (min-width: 640px);
+@custom-media --breakpoint-md  (min-width: 768px);
+@custom-media --breakpoint-lg  (min-width: 1024px);
+@custom-media --breakpoint-xl  (min-width: 1280px);
+@custom-media --breakpoint-2xl (min-width: 1536px);
 
-/* End test of viewport squarishness */ 
-:root {
-  /* Treat larger widths in portrait mode as landscape with more room for the scroll. */
-  --lean: calc(95 * var(--vmin)); /* 100vmin i.e portrait width or full height in landscape orientation. */
-  --safe: var(--lean);
-  --full: 100vmin;
-  --half: 100vmin;
-  --one-half: var(--lean); /* Since mobile devices are lean anyway. */
-  --one-third: var(--lean); /* …will be different in case of tablets. */
-  --two-third: var(--lean);
+@custom-media --breakpoint-lsm  (min-width: 640px)  and (orientation: landscape);
+@custom-media --breakpoint-lmd  (min-width: 768px)  and (orientation: landscape);
+@custom-media --breakpoint-llg  (min-width: 1024px) and (orientation: landscape);
+@custom-media --breakpoint-lxl  (min-width: 1280px) and (orientation: landscape);
+@custom-media --breakpoint-l2xl (min-width: 1536px) and (orientation: landscape);
 
-  --base-font-size-for-mobile: calc(4 * var(--fs)); 
-  --base-font-size: var(--base-font-size-for-mobile); /* This variable is declared for each device category separately. */
+@custom-media --breakpoint-arsm  (min-aspect-ratio: 1/1);
+@custom-media --breakpoint-armd  (min-aspect-ratio: 4/3);
+@custom-media --breakpoint-arlg  (min-aspect-ratio: 3/2);
+@custom-media --breakpoint-arxl  (min-aspect-ratio: 16/9);
+@custom-media --breakpoint-ar2xl (min-aspect-ratio: 21/9);
 
-  --notch-inset-left:  calc( env(safe-area-inset-left, 1.625rem) - 1rem);
-}
-
-@layer components {
-
+@layer structure {
   /* Keyframes Definitions */
   @keyframes kf-scroll-right {
     0%, 100% { transform: translateX(-50%); }
@@ -93,8 +76,8 @@
           background-image: var(--pattern-noise);
           animation: kf-pulse 10s infinite ease-in-out;
           filter: blur(2.5rem) invert(50%);
-      };
-    };
+      }
+    }
 
     & .home div:first-child {
       /* The home page needs a 6x3 grid, but other pages only need a 6x1 grid */
@@ -109,12 +92,12 @@
       &.bg-1 {
         background-image: var(--pattern-1);
         animation: kf-fade 30s 0s infinite;
-      };
+      }
       &.bg-2 {
         background-image: var(--pattern-2);
         animation: kf-fade 30s 15s infinite;
-      };
-    };
+      }
+    }
   
     img {
       position: absolute;
@@ -201,9 +184,9 @@
             font-size: 3rem;
           }
           
-        };
-      };    
-    }; /* div */
+        }
+      }    
+    } /* div */
   
     /* Tagline: div + p The sub-text to the tag-line */
     > div + p {
@@ -264,7 +247,7 @@
 
       @media (orientation: landscape) {
         font-size: 1.375rem;
-      };  
+      }  
         
 
       & > .menu-item {
@@ -273,13 +256,13 @@
         &:hover {
           color: var(--text-color-tuscany);
           text-decoration: underline;
-        };
+        }
         & .current-page {
           font-weight: bold;
           text-decoration: underline;
-        };
-      };
-    };
+        }
+      }
+    }
 
     > #search {
       display: none;
@@ -290,8 +273,8 @@
       @media (orientation: landscape) {
         display: flex;
         flex-grow: 0;
-      };
-    };
+      }
+    }
 
   } /* END: #menu-bar */
   
@@ -325,15 +308,15 @@
           }
           @media (min-width: 768px) { 
             font-size: 0.75rem;
-          };
-        };
+          }
+        }
 
         span {
           font-size: 0.75rem;
         }
-      };
-    };
-  }; /* END: social-links */
+      }
+    }
+  } /* END: social-links */
   
   /* Brand Footer includes the brand-logo + brand-name + tag-line */
   #basement-message {
@@ -361,9 +344,9 @@
         font-size: 1rem;
         font-family: var(--header-font-family); 
         font-variation-settings: var(--header-variation);
-      };        
-    };
-  }; /* END: basement-message */
+      }        
+    }
+  } /* END: basement-message */
   
   #copyright {
     margin-bottom: 0.75rem;

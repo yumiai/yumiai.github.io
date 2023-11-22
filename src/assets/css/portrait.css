@@ -116,8 +116,6 @@
 /*** Vertically mounted Retina & non-retina Screens ***/
 
 /* Desktops */ 
-
-@import url('/assets/css/app/desktop.css'); 
-/*  (hover: hover) 
+@import url('/assets/css/app/desktop.css') 
+  (hover: hover) 
   and (pointer: fine);
-*/
