@@ -36,9 +36,12 @@
 
   --base-font-size-for-mobile: calc(1.2 * var(--fs)); 
   --base-font-size: var(--base-font-size-for-mobile); /* This variable is declared for each device category separately. */
-  --notch-inset-left:  calc( env(safe-area-inset-left, 1.625rem) - 1rem);
-  
+
   --vmin: 1vmin; /* Only used when vmin is supported by the browser. */
+
+  /* Fix standard width to a minimum */
+  --standard-width: calc(25 * var(--vmin));
+  --min-width: 368px; /* TODO: calculate this? */
 
   --portrait-axis: /assets/css/portrait.css;
   --landscape-axis: /assets/css/landscape.css;        
@@ -167,7 +170,7 @@ body {
     }
   }
 
-  img {
+  & picture > img {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -186,7 +189,7 @@ body {
   padding-top: calc(var(--standard-width) / 4);
   padding-bottom: calc(var(--standard-width) / 2);
   margin-top: 1rem;
-  margin-left: 2rem;
+  margin-left: 0.625rem;
   position: relative;
   z-index: 10;
   /* Enable force inheritance for SmartTVs */
@@ -207,10 +210,11 @@ body {
       color: var(--text-color);
     }
     /* Mask for the word scroll in the main hero message tag-line */
-    span + div {
-      margin-left: calc( var(--standard-width) / 41.6 ); 
-      height: calc( var(--standard-width) / 1.6 ); 
-      width: calc( var(--standard-width) / 0.6 ); 
+    & > span + div {
+      margin-left: calc( var(--standard-width) * 0.05 ); 
+      height: calc( var(--standard-width) * 0.625 ); 
+      width: calc( var(--standard-width) * 1.6 );
+
       mask-image: radial-gradient(80% 50% at 47% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%);
       -webkit-mask-image: radial-gradient(80% 50% at 47% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%);
       font-family:inherit; /* Force inheritance for SmartTVs */
@@ -225,7 +229,7 @@ body {
       > div div {
         padding: 0;
         margin: 0;
-        height: calc( var(--standard-width) / 2.75 ); 
+        height: calc( var(--standard-width) * 0.37 ); 
         font-family:inherit; /* Force inheritance for SmartTVs */
       }
     }    
@@ -378,5 +382,3 @@ body {
   z-index: 15;
 }
 section#filler { background-color: var(--bg-color); }
-
-

@@ -1,5 +1,4 @@
 /**/
-
 const scrollContainer = document.getElementById('scroll-container');
 const words = ["Markets.", "Finance.", "Progress.", "Places.", "Returns.", "Impact."];
 const wordClasses = "items-start";

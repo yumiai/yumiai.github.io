@@ -1,7 +1,7 @@
 /* ** Landscape or y-axis.  ***/
 /* The landscape-axis router. */
 /* iOS Smartphones */
-@import url('/assets/css/app/desktop.css') 
+@import url('/assets/css/app/mobile.css') layer(content)
   (min-width: 375px) /* iPhone 12 mini */
   and (max-width: 812px)
   and (resolution: 3x)
@@ -29,7 +29,7 @@
   and (pointer: coarse);  
 
 /* Android Smartphones */
-@import url('/assets/css/app/desktop.css') 
+@import url('/assets/css/app/mobile.css') layer(content)
   (min-width: 412px) /* Google Pixel 6 */
   and (max-width: 915px)
   and (resolution: 2.625x)
@@ -74,7 +74,7 @@
 /*** Route-in or @import tablet.css next. ***/
 
 /* Tablets */
-@import url('/assets/css/app/desktop.css') 
+@import url('/assets/css/app/tablet.css') layer(content)
   (min-device-width: 768px)  /* iPad Mini 4 */ 
   and (max-device-width: 1024px) 
   and (resolution: 2x) 
@@ -115,6 +115,6 @@
 /*** Retina & non-retina Screens ***/
 
 /* Desktops */ 
-@import url('/assets/css/app/desktop.css') 
+@import url('/assets/css/app/desktop.css') layer(content)
  (hover: hover) 
   and (pointer: fine);

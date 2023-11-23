@@ -19,68 +19,53 @@
 @custom-media --breakpoint-arxl  (min-aspect-ratio: 16/9);
 @custom-media --breakpoint-ar2xl (min-aspect-ratio: 21/9);
 
-@layer structure {
-  :root {
-    /* Width utilities in landscape: */
-    --lean: calc(100 * var(--vmin)); /* 100vmin i.e Full portrait width or full landscape height. */
-    --safe: calc(100 * var(--fs) + (100vmax - 100 * var(--fs)) / 2); /* 100vmin plus half of the remaining space on either sides. */
-    --full: 100%; /* Useful for full bleed headers and banners. */
-    --half: 50%;
-    --one-third: calc(1 / 3 * 100%);
-    --two-third: calc(2 / 3 * 100%);
-    
-    --base-font-size-for-desktop: calc(4 * var(--fs)); 
-    --base-font-size: var(--base-font-size-for-desktop); /* This variable is declared for each device category separately. */
+
+:root {
+  /* Width utilities in landscape: */
+  --lean: calc(100 * var(--vmin)); /* 100vmin i.e Full portrait width or full landscape height. */
+  --safe: calc(100 * var(--fs) + (100vmax - 100 * var(--fs)) / 2); /* 100vmin plus half of the remaining space on either sides. */
+  --full: 100%; /* Useful for full bleed headers and banners. */
+  --half: 50%;
+  --one-third: calc(1 / 3 * 100%);
+  --two-third: calc(2 / 3 * 100%);
   
-    /* Fix standard width to a minimum */
-    --standard-width: calc(25 * var(--vmin));
-    --min-width: 368px; /* TODO: calculate this? */
-  }
-} /* structure */
+  --base-font-size-for-desktop: calc(4 * var(--fs)); 
+  --base-font-size: var(--base-font-size-for-desktop); /* This variable is declared for each device category separately. */
+}
 
 /* Responsive Design Media Queries */
 @media (--breakpoint-arsm) {
-  @layer structure {
     #hero-section > section.background img {
       margin-right: calc(var(--standard-width) * -0.5);
     } /* END: #hero-section > section.background */
-  }
 }
 
 @media (--breakpoint-armd) {
-  @layer structure {
     #hero-section > section.background img {
       margin-right: calc(var(--standard-width) * -0.2);
       max-height: calc(var(--standard-width) * 1.8);
     } /* END: #hero-section > section.background */  
-  }
 }
 
 @media (--breakpoint-arlg) and (--breakpoint-lsm) {
-  @layer structure {
     /* Main message with in the hero section for the home page */
     /* Tagline: div + p The sub-text to the tag-line */
     #hero-section > section.brand-message > div + p {
       display: flex;
       flex-direction: column;
     } /* END: #hero-section > section.brand-message  */
-  }
 }
 
 @media (--breakpoint-lmd) {
-  @layer structure {
     /* Menu Navigation common across the entire site */
     #menu-bar {
         margin-bottom: auto;
     } /* END: #menu-bar */
-  }
 }
 
 @media (--breakpoint-md) {
-  @layer structure {
     /* Menu Navigation common across the entire site */
     #menu-bar > #search {
           display: flex;
     }
-  }
 }
