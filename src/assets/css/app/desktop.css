@@ -1,5 +1,3 @@
-@import url('/assets/css/base/common.css') layer(base);
-
 /* Responsive Layer Break Points */
 @custom-media --breakpoint-sm  (min-width: 640px);
 @custom-media --breakpoint-md  (min-width: 768px);
