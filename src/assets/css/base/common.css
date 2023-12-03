@@ -375,6 +375,68 @@ body {
     font-variation-settings: var(--fine-print-variation);  
   }    
 } /* END: copyright */
+
+
+/* Blog Posts */
+article.post {
+  --Element-Margin: calc(var(--standard-width) * 0.175);
+  --Element-Font-Size: calc(var(--standard-width) * 0.07); 
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+
+  margin: var(--Element-Margin) var(--Element-Margin) var(--Element-Margin) var(--Element-Margin);
+
+  font-family: var(--content-font-family);
+  font-variation-settings: var(--content-variation);
+  font-size: var(--Element-Font-Size);  
+
+  & > h1 {
+    --Element-Font-Size: calc(var(--standard-width) * 0.1); 
+
+    font-family: var(--header-font-family);
+    font-variation-settings: var(--header-variation);
+    font-size: var(--Element-Font-Size);  
+    background-color: red;
+  }
+
+  & > div {
+    & p {
+      margin: 0.5rem 0 0.5rem 0;
+    }
+    & h3 {
+      --Element-Margin: calc(var(--standard-width) * 0.075);
+      --Element-Font-Size: calc(var(--standard-width) * 0.08); 
+
+      font-family: var(--header-font-family);
+      font-variation-settings: var(--header-variation);
+      font-size: var(--Element-Font-Size);
+
+      margin: var(--Element-Margin) 0 var(--Element-Margin) 0;
+    }
+  }
+
+  & > h1 + nav {
+    background-color: blue;
+  }
+
+  & > nav + time {
+    background-color: orange;
+  }
+
+  & > time + div {
+    background-color: orangered;
+  }
+
+}
+
+article + nav {
+  background-color: violet;
+}
+
+
 #content {
   flex-grow: 1; 
   padding-left: var(--notch-inset-left);

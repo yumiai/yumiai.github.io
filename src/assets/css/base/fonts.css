@@ -26,6 +26,9 @@
     --header-font-family: "Fraunces", "Merriweather", serif;
     --header-variation: "wght" 400, "SOFT" 100, "WONK" 1;
 
+    --content-font-family: "Fraunces", "Merriweather", serif;
+    --content-variation: "wght" 300, "SOFT" 100, "WONK" 1;
+
     --fine-print-font-family: "Fraunces", "Merriweather", serif;    
     --fine-print-variation: "wght" 200, "SOFT" 100, "WONK" 1;
 }

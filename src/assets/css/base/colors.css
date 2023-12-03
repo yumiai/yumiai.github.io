@@ -86,7 +86,8 @@
     --color-transparent-010: rgba(0,0,0,0.1);   
 
   }
-
+  
+  /* Light and dark colour scheme switching */
   :root {
     color-scheme: light;
 
@@ -107,7 +108,14 @@
     background-color: var(--bg-color);
     color: var(--text-color);
   }
-    
+
+  .light {
+    display: block;
+  }
+  .dark {
+    display: none;
+  }
+
   @media (prefers-color-scheme: dark) {
     :root {
       color-scheme: dark;
@@ -117,4 +125,12 @@
       --text-color-tuscany: var(--text-color-tuscany-dark);
 
       --shadow-strength: var(--shadow-strength-dark);
-  }}
+
+    }
+    .light {
+      display: none;
+    }
+    .dark {
+      display: block;
+    }
+ }
