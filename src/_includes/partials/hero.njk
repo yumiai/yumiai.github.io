@@ -1,0 +1,53 @@
+<section id="hero-section" class="home">
+  <section class="background">
+    <div> 
+    {% if hero.visible %}
+      {% set grid_rows = 19 %}
+    {% else %}
+    {% set grid_rows = 6 %}
+    {% endif %}    
+    
+    {% for i in range(0,grid_rows) %}
+        <div class="bg-pattern grid-item"></div>
+    {% endfor %}
+    </div>
+    <div class="hero-bg bg-1"></div>
+    <div class="hero-bg bg-2"></div>
+    {% if hero.image %}
+       <img src="{{ hero.image }}" imagick="webp png 800@2" alt="Pilea peperomioides plant, the money plant."/>
+    {% endif %}  
+  </section>
+  <header id="menu-bar">
+    <picture>
+      {% if url != "/" %}<a href="/">{% endif %}
+        <img src="/assets/images/logo-yumi.svg" ignorepicture alt="The yumi logo, two hands held in the shape of a heart.">
+      {% if url != "/" %}</a>{% endif %}
+    </picture>
+    <nav>
+      <menu role="menu">
+      {%- for entry in search.pages("menu.visible=true", "menu.order") %}
+        {% if entry.data.url != "/" %}
+        <li class="menu-item">
+          <a href="{{ entry.data.url }}" class="menu-item{% if entry.data.url == url %} current-page" aria-current="page{% endif %}">
+            {{ entry.data.menu.title or entry.data.title }}
+          </a>
+        </li>
+        {% endif %}            
+      {%- endfor %}
+      </menu>
+    </nav>
+    <div id="search" role="search"></div>
+  </header>
+  {% if hero.visible %}
+  <section class="brand-message">
+    <div data-pagefind-ignore>
+      <span>People. Actions.</span>
+      <div><div id="scroll-container"></div></div>
+    </div>
+    <p>
+      <span>{{hero.byline.maintext}}</span>
+      <span>{{hero.byline.subtext}}</span>
+    </p>
+  </section> 
+  {% endif %}   
+</section>

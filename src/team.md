@@ -1,10 +1,10 @@
 ---
-layout: layouts/post.njk
-title: Team
-templateClass: tmpl-post
+layout: layouts/base.njk
+draft: true
 menu:
+  title: About
   visible: true
-  order: 5
+  order: 60
 ---
 
 Team stuff.

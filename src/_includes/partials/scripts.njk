@@ -1,0 +1,15 @@
+<script>
+  // Add a random animation-delay to each .grid-item div for the background animation.
+  document.addEventListener("DOMContentLoaded", function() {
+    const gridItems = document.querySelectorAll('.grid-item');
+
+    gridItems.forEach(item => {
+      const randomDelay = Math.floor(Math.random() * 10);  // random delay between 0 and 5 seconds
+      item.style.animationDelay = `${randomDelay}s`;
+    });
+  });
+</script>
+
+{% if hero.visible %}
+<script src="{{ site.baseurl }}/assets/scripts/word-scroll.js"></script>
+{% endif %}

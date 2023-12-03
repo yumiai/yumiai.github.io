@@ -1,94 +1,19 @@
+---
+title: Regenerative finance with yūmi and ai
+menu:
+  visible: true
+---
 <!DOCTYPE html>
 <html lang="{{ lang.code }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover">
-    <meta name="description" content="{{ description or site.description }}">    
-    <title>{{ title or site.title }}</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-
-    <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favico.ico"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com">    
-    <link rel="alternate" href="{{ site.baseurl }}/feed.xml" type="application/atom+xml" title="{{ site.title }}">
-    <link rel="alternate" href="{{ site.baseurl }}/feed.json" type="application/json" title="{{ site.title }}">
-  </head>
-
+{% include 'partials/head.njk' %}
 <body>
   <div class="page-container">
-
-    <section id="hero-section">
-      <section class="background">
-        <div>
-          {% for i in range(0,6) %}
-            <div class="bg-pattern grid-item"></div>
-          {%- endfor %}   
-        </div>
-        <div class="hero-bg bg-1"></div>
-        <div class="hero-bg bg-2"></div>
-      </section>
-      <header id="menu-bar">
-        <picture>
-          {% if url != "/" %}<a href="/">{% endif %}
-            <img src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="The yumi logo, two hands held in the shape of a heart.">
-          {% if url != "/" %}</a>{% endif %}
-        </picture>
-        <nav>
-          <menu role="menu">
-          {%- for entry in search.pages("menu.visible=true", "menu.order") %}
-            {% if entry.data.url != "/" %}
-            <li class="menu-item">
-              <a href="{{ entry.data.url }}" class="menu-item{% if entry.data.url == url %} current-page" aria-current="page{% endif %}">
-                {{ entry.data.menu.title or entry.data.title }}
-              </a>
-            </li>
-            {% endif %}            
-          {%- endfor %}
-          </menu>
-        </nav>
-        <div id="search" role="search"></div>
-      </header> 
-    </section>
-
+    {% include 'partials/hero.njk' %}
     <main id="content">
-      <section data-pagefind-body>{{ content | safe }}</section>
+      {{ content | safe }}
     </main>
-
-    <footer id="basement-message" data-pagefind-ignore>
-      <div>  
-        <img src="{{ site.baseurl }}/assets/images/logo-yumi.svg" alt="Logo" >
-        <p>You, Me and A.I.</p>
-      </div>
-      <p>{{site.description}}</p> 
-    </footer>
-
-    <footer id="social-links" data-pagefind-ignore>
-      <div>
-        {% for link in site.sociallinks %}
-        <div>
-          <a href="{{ link.url }}" aria-label="{{ link.title }}"><i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i></a>
-          <span>{{ link.title }}</span>
-        </div>
-        {% endfor %}
-      </div>
-    </footer>
-
-    <footer id="copyright" data-pagefind-ignore>
-      <p>{{site.copyright}}</p>
-    </footer>
-
+    {% include 'partials/footer.njk' %}
   </div>
-
-    <script>
-      // Add a random animation-delay to each .grid-item div for the background animation.
-      document.addEventListener("DOMContentLoaded", function() {
-        const gridItems = document.querySelectorAll('.grid-item');
-    
-        gridItems.forEach(item => {
-          const randomDelay = Math.floor(Math.random() * 10);  // random delay between 0 and 5 seconds
-          item.style.animationDelay = `${randomDelay}s`;
-        });
-      });
-    </script>
-
+  {% include 'partials/scripts.njk' %}
 </body>
 </html>

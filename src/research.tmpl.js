@@ -1,6 +1,5 @@
 export const layout = "layouts/archive.njk";
-export const title = "Research";
-
+export const draft = true;
 export default function* ({ search, paginate }) {
   const posts = search.pages("type=posts", "date=desc");
 
@@ -10,8 +9,9 @@ export default function* ({ search, paginate }) {
     // Show the first page in the menu
     if (data.pagination.page === 1) {
       data.menu = {
+        title: "Research",
         visible: true,
-        order: 4,
+        order: 30,
       };
     }
 

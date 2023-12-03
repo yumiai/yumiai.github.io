@@ -1,10 +1,10 @@
 ---
-layout: layouts/post.njk
-title: Stakepool
-templateClass: tmpl-post
+layout: layouts/base.njk
+draft: true
 menu:
+  title: Stakepool
   visible: true
-  order: 2
+  order: 10
 ---
 
 Stakepool stuff.

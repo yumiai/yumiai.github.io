@@ -1,9 +1,10 @@
 ---
 layout: layouts/blog.njk
+draft: true
 menu:
   visible: true
   title: Blog
-  order: 6
+  order: 50
 ---
 
 {% set postslist = search.pages("type=posts", "date=desc", 4) %}

@@ -1,10 +1,11 @@
 ---
-layout: layouts/post.njk
-title: ReFi
-templateClass: tmpl-post
+layout: layouts/base.njk
+draft: true
 menu:
+  title: ReFi
   visible: true
-  order: 3
+  order: 20
 ---
+
 
 ReFi stuff.
