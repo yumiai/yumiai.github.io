@@ -122,28 +122,12 @@ body {
   flex-direction: column;
   min-height: 100%;
 }
-/* Hero Section for the home page */
-#hero-section {
-  position: relative; 
-  display: flex; 
-  flex-direction: column; 
-  inset: 0; 
-  overflow-x: clip;
-  min-height: 4rem;
-} /* END: hero-section*/
 
-#hero-section .home {
-  min-height: 30rem;
-  & div:first-child {
-    /* The home page needs a 6x3 grid, but other pages only need a 6x1 grid */
-    grid-template-rows: repeat(3, 1fr); /* "grid-rows-3" */
-  }
-}
-
-#hero-section > section.background {
+/* Common background animation for the home page */
+section.background {
   div:first-child {
     overflow: clip;
-    position: absolute;
+    position: relative;
     inset: 0; 
     display: grid;
     grid-template-columns: repeat(6, 1fr); /* "grid-cols-6" */
@@ -155,8 +139,8 @@ body {
         filter: blur(2.5rem) invert(50%);
     }
   }
-  .hero-bg {
-    position: absolute;
+  .bg {
+    position: relative;
     inset: 0; 
     background-repeat: repeat;
     mix-blend-mode: screen;
@@ -169,16 +153,42 @@ body {
       animation: kf-fade 30s 15s infinite;
     }
   }
-
   & picture > img {
-    position: absolute;
+    position: relative;
     bottom: 0;
     right: 0;
     padding-top: 1.25rem;
     margin-right: calc(var(--standard-width) * -0.8);
     max-height: calc(var(--standard-width) * 2);
   }
-} /* END: #hero-section > section.background */
+} /* END: section.background */
+
+/* Hero Section for the home page */
+#hero-section {
+  position: relative; 
+  display: flex; 
+  flex-direction: column; 
+  inset: 0; 
+  overflow-x: clip;
+  min-height: 4rem;
+
+  & .home {
+    min-height: 30rem;
+  }
+} /* END: hero-section*/
+
+#hero-section > section.background { 
+  div:first-child {
+    position: absolute;
+    grid-template-rows: repeat(3, 1fr); /* "grid-rows-3" */    
+  }
+  .bg {
+    position: absolute;
+  }
+  & picture > img {
+    position: absolute;
+  }
+}
 
 /* Main message with in the hero section for the home page */
 #hero-section > section.brand-message {
@@ -442,4 +452,30 @@ article + nav {
   padding-left: var(--notch-inset-left);
   z-index: 15;
 }
-section#filler { background-color: var(--bg-color); }
+
+#mission {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-items: center;
+
+  color: var(--text-color-subtext);
+  background-color: var(--bg-color-subtext);
+  
+  font-size: 4rem;
+  font-family: var(--subheader-font-family); 
+  font-variation-settings: var(--subheader-variation);
+  font-variant-caps: all-small-caps;
+
+  text-align:center;
+  padding: 3rem 1rem 3rem 1rem;
+  line-height: 90%;
+
+  & > h1+h1 {
+    font-variation-settings: var(--header-variation);
+  }
+}
+
+#delivery {
+
+}

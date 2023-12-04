@@ -43,7 +43,7 @@ export const defaults: Options = {
   name: "imagick",
   order: ["jxl", "avif", "webp", "png", "jpg"],
   usedefault: false,
-  formats: "webp png jpg 800@2",
+  formats: "webp png 800@2",
   colorschemes: ['light', 'dark'], 
 };
 

@@ -46,10 +46,21 @@
       var(--color-saturation-coconut-cream-default) 
       var(--color-lightness-coconut-cream-default));
 
+    --bg-color-light-subtext: hsl(
+      var(--color-hue-english-holly-default) 
+      var(--color-saturation-english-holly-default) 
+      var(--color-lightness-english-holly-default));
+
     --text-color-light: hsl(
       var(--color-hue-english-holly-default) 
       var(--color-saturation-english-holly-default) 
       var(--color-lightness-english-holly-default));
+
+    --text-color-light-subtext: hsl( 
+      var(--color-hue-coconut-cream-default)
+      var(--color-saturation-coconut-cream-default) 
+      var(--color-lightness-coconut-cream-default)
+    );
 
     --text-color-tuscany-light: hsl( 
       var(--color-hue-tuscany-default)
@@ -66,11 +77,23 @@
       calc(var(--color-lightness-coconut-cream-default) / 1.5)
     );
 
+    --bg-color-dark-subtext: hsl( 
+      var(--color-hue-english-holly-default)
+      calc(var(--color-saturation-english-holly-default) * 2) 
+      calc(var(--color-lightness-english-holly-default) * 2)
+    );
+
     --text-color-dark: hsl( 
       var(--color-hue-english-holly-default)
-      calc(var(--color-saturation-english-holly-default) * 1.5) 
-      calc(var(--color-lightness-english-holly-default) * 1.5)
+      calc(var(--color-saturation-english-holly-default) / 2) 
+      calc(var(--color-lightness-english-holly-default) / 1.5)
     );
+
+    --text-color-dark-subtext: hsl( 
+      var(--color-hue-coconut-cream-default)
+      calc(var(--color-saturation-coconut-cream-default) * 1.5) 
+      calc(var(--color-lightness-coconut-cream-default) * 1.5)
+    );    
 
     --text-color-tuscany-dark: hsl( 
       var(--color-hue-tuscany-default)
@@ -94,8 +117,11 @@
     --bg-color: var(--bg-color-light); 
     --bg-color-white: var(--color-white); 
     --bg-color-black: var(--color-black); 
+    --bg-color-subtext: var(--bg-color-light-subtext);
 
     --text-color: var(--text-color-light);
+    --text-color-subtext: var(--text-color-light-subtext);
+
     --text-color-tuscany: var(--text-tuscany-light);
     --text-color-gray-500: var(--color-gray-500);
     --text-color-gray-700: var(--color-gray-700);
@@ -121,11 +147,14 @@
       color-scheme: dark;
 
       --bg-color: var(--bg-color-dark); 
+      --bg-color-subtext: var(--bg-color-dark-subtext);
+
       --text-color: var(--text-color-dark);
+      --text-color-subtext: var(--text-color-dark-subtext);
+
       --text-color-tuscany: var(--text-color-tuscany-dark);
 
       --shadow-strength: var(--shadow-strength-dark);
-
     }
     .light {
       display: none;
