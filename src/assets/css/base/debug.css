@@ -38,11 +38,14 @@
 }
 
 /* Debugging Selectors */
+/* anything < 1 aspect ratio, longer height than width */
 #menu-bar > picture {
-  background-color: cyan; /* anything < 1 aspect ratio, longer height than width */
+/*
+  background-color: cyan;
   @media screen and (--breakpoint-arsm)  {background-color: var(--breakpoint-testcolor-arsm);}
   @media screen and (--breakpoint-armd)  {background-color: var(--breakpoint-testcolor-armd);}
   @media screen and (--breakpoint-arlg)  {background-color: var(--breakpoint-testcolor-arlg);}
   @media screen and (--breakpoint-arxl)  {background-color: var(--breakpoint-testcolor-arxl);}
   @media screen and (--breakpoint-ar2xl) {background-color: var(--breakpoint-testcolor-ar2xl);}
+*/
 }
