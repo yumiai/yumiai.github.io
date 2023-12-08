@@ -1,6 +1,6 @@
 <footer id="basement-message" data-pagefind-ignore>
   <div>  
-    <img src="{{ site.baseurl }}/assets/images/logo-yumi.svg" ignorepicture alt="Logo" >
+    <img src="{{ site.baseurl }}/assets/images/logos/yumi-logo.svg" ignorepicture alt="Logo" >
     <p>You, Me and A.I.</p>
   </div>
   <p>{{site.description}}</p> 
@@ -9,10 +9,12 @@
 <footer id="social-links" data-pagefind-ignore>
   <div>
     {% for link in site.sociallinks %}
-    <div>
-      <a href="{{ link.url }}" aria-label="{{ link.title }}"><i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i></a>
-      <span>{{ link.title }}</span>
-    </div>
+    <a href="{{ link.url }}" aria-label="{{ link.title }}">
+      <div>
+        <i class="{{ link.faSet }} {{ link.faIcon }} fa-lg"></i>
+        <p>{{ link.title }}</p>
+      </div>
+    </a>
     {% endfor %}
   </div>
 </footer>

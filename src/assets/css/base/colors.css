@@ -14,8 +14,8 @@
     --color-lightness-coconut-cream-default: 96%;
 
     --color-hue-english-holly-default: 136;
-    --color-saturation-english-holly-default: 96%;
-    --color-lightness-english-holly-default: 9%;
+    --color-saturation-english-holly-default: 95.7%;
+    --color-lightness-english-holly-default: 9.2%;
 
     --color-hue-tuscany-default: 22;
     --color-saturation-tuscany-default: 62%;
@@ -24,6 +24,8 @@
     /* BEGIN: Fix up the naming an colour type used */
     --english-holly: #012e0d;
     --coconut-cream: #fcfaed;
+    --color-coconut-cream-transparent-50: rgba(252,250,237,0.5);
+    --color-coconut-cream-transparent-60: rgba(252,250,237,0.6);
 
     --color-gray-100: #edeef1; 
     --color-gray-300: #b6bac3;
@@ -37,6 +39,8 @@
     --color-white: rgba(255,255,255,1);
     --color-white-transparent-95: rgba(255,255,255,0.95);
     --color-white-transparent-25: rgba(255,255,255,0.25);
+
+    --color-cream-button: rgba(246,241,213,0.3);
 
     /* END: Fix up */
 
@@ -79,8 +83,8 @@
 
     --bg-color-dark-subtext: hsl( 
       var(--color-hue-english-holly-default)
-      calc(var(--color-saturation-english-holly-default) * 2) 
-      calc(var(--color-lightness-english-holly-default) * 2)
+      calc(var(--color-saturation-english-holly-default) * 1.5) 
+      calc(var(--color-lightness-english-holly-default) * 1.5)
     );
 
     --text-color-dark: hsl( 
@@ -118,11 +122,12 @@
     --bg-color-white: var(--color-white); 
     --bg-color-black: var(--color-black); 
     --bg-color-subtext: var(--bg-color-light-subtext);
+    --bg-color-call-to-action: var(--text-color-tuscany-light);
 
     --text-color: var(--text-color-light);
     --text-color-subtext: var(--text-color-light-subtext);
 
-    --text-color-tuscany: var(--text-tuscany-light);
+    --text-color-tuscany: var(--text-color-tuscany-light);
     --text-color-gray-500: var(--color-gray-500);
     --text-color-gray-700: var(--color-gray-700);
     --text-color-gray-800: var(--color-gray-800);  
@@ -152,7 +157,7 @@
       --text-color: var(--text-color-dark);
       --text-color-subtext: var(--text-color-dark-subtext);
 
-      --text-color-tuscany: var(--text-color-tuscany-dark);
+      --text-color-tuscany: var(--text-color-tuscany-light);
 
       --shadow-strength: var(--shadow-strength-dark);
     }

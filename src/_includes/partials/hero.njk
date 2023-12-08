@@ -1,18 +1,5 @@
 <section id="hero-section" class="home">
   <section class="background">
-    <div> 
-    {% if hero.visible %}
-      {% set grid_rows = 19 %}
-    {% else %}
-    {% set grid_rows = 6 %}
-    {% endif %}    
-    
-    {% for i in range(0,grid_rows) %}
-        <div class="bg-pattern grid-item"></div>
-    {% endfor %}
-    </div>
-    <div class="bg bg-1"></div>
-    <div class="bg bg-2"></div>
     {% if hero.image %}
        <img src="{{ hero.image }}" imagick="webp png 800@2" alt="Pilea peperomioides plant, the money plant."/>
     {% endif %}  
@@ -20,7 +7,7 @@
   <header id="menu-bar">
     <picture>
       {% if url != "/" %}<a href="/">{% endif %}
-        <img src="/assets/images/logo-yumi.svg" ignorepicture alt="The yumi logo, two hands held in the shape of a heart.">
+        <img src="/assets/images/logos/yumi-logo.svg" ignorepicture alt="The yumi logo, two hands held in the shape of a heart.">
       {% if url != "/" %}</a>{% endif %}
     </picture>
     <nav>
@@ -49,5 +36,10 @@
       <span>{{hero.byline.subtext}}</span>
     </p>
   </section> 
+  
+  <section class="takeaction">
+    <button type="button">Stake with us</button>
+    <button  type="button">See how it works</button>
+  </section>
   {% endif %}   
 </section>

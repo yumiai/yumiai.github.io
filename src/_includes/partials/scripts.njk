@@ -12,4 +12,15 @@
 
 {% if hero.visible %}
 <script src="{{ site.baseurl }}/assets/scripts/word-scroll.js"></script>
+
+<script>
+// Call this function whenever the carousel is scrolled or updated
+document.querySelector('.left-arrow').addEventListener('click', () => {
+  document.querySelector('.carousel').scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+document.querySelector('.right-arrow').addEventListener('click', () => {
+  document.querySelector('.carousel').scrollBy({ left: 300, behavior: 'smooth' });
+});
+</script>
 {% endif %}

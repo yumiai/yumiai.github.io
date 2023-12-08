@@ -1,0 +1,15 @@
+<section class="background">
+  <div>
+  {% if hero.visible %}
+    {% set grid_rows = 19 %}
+  {% else %}
+  {% set grid_rows = 6 %}
+  {% endif %}    
+  
+  {% for i in range(0,grid_rows) %}
+      <div class="bg-pattern grid-item"></div>
+  {% endfor %}
+  </div>
+  <div class="bg bg-1"></div>
+  <div class="bg bg-2"></div>
+</section>

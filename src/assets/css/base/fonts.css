@@ -22,15 +22,22 @@
 
     --sans-font-family: 'Inter', -apple-system, system-ui, sans-serif;
     --sans-variation: "wght" 300, "slnt" 0;
-    
+    --sans-light-variation: "wght" 200, "slnt" 0;
+    --sans-medium-variation: "wght" 400, "slnt" 0;
+    --sans-bold-variation: "wght" 500, "slnt" 0;
+
     --header-font-family: "Fraunces", "Merriweather", serif;
     --header-variation: "wght" 400, "SOFT" 100, "WONK" 1;
+    --header-bold-variation: "wght" 600, "SOFT" 100, "WONK" 1;
 
     --subheader-font-family: "Fraunces", "Merriweather", serif;
     --subheader-variation: "wght" 300, "SOFT" 100, "WONK" 1;
+    --subheader-medium-variation: "wght" 350, "SOFT" 100, "WONK" 1, "opsz" 144;
 
     --content-font-family: "Fraunces", "Merriweather", serif;
+
     --content-variation: "wght" 300, "SOFT" 100, "WONK" 1;
+    --content-thin-variation: "wght" 150, "SOFT" 100, "WONK" 1;
 
     --fine-print-font-family: "Fraunces", "Merriweather", serif;    
     --fine-print-variation: "wght" 200, "SOFT" 100, "WONK" 1;
