@@ -640,7 +640,7 @@ mark {
 
   background-image: radial-gradient(ellipse 50% 25% at center 65%, rgba(131, 93, 38, 0.3) 30%, transparent 100%);
 
-  & div:first-of-type {
+  & > div:first-of-type {
     display: flex;
     opacity: 100%;
     flex-direction: column;
@@ -657,15 +657,56 @@ mark {
       color: var(--text-color-dark);
     }
     & > p {
-      color: var(--text-color-dark);
+      color: var(--text-color-dark);justify-content: center;
       width: 75%;
       margin: 1rem 0 2rem 0;
       font-size: 1.2rem;   
       font-family: var(--sans-font-family); 
       font-variation-settings: var(--sans-variation);
     }
-  }
+  } 
 }
+
+
+/* TODO */
+
+    /* Base Style */
+    #buildingblocks {
+      font-size: 1rem;   
+      font-family: var(--sans-font-family); 
+      font-variation-settings: var(--sans-variation);
+
+      display: flex;
+      flex-direction: column;   
+      background-color: green;
+
+      & > .blockgroup {
+        display: flex;
+      }
+      & .firstgroup {
+        flex: 0 0 100%; /* Full width */
+        background-color: blue;
+        justify-content: center;
+      }
+      & .secondgroup {
+        flex: 0 0 25%; /* Four equal columns */
+        background-color: blueviolet;
+      }
+      & > .blockgroup.thirdgroup {
+        justify-content: center; /* Centering the items */     
+        background-color: orangered;
+      }
+      & .thirdgroup {    
+        flex: 0 0 33.333%; /* Three equal columns */ 
+
+      }
+
+      & svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+
 
 /* Projects right-hand side text */ 
 #projects {
