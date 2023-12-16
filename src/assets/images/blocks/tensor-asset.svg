@@ -1,7 +1,13 @@
-      <svg fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg width="256" height="50" viewBox="0 0 256 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
           <style>
-            .brickcolor {fill: green;}
+            .brickcolor {fill: #012E0D; }
+
+            .blocklabel {
+              fill: white;
+              font-family: 'Inter', -apple-system, system-ui, sans-serif;
+              font-weight: "wght" 200, "slnt" 0;
+            }
           </style>
           <!-- Brick Definitions -->
           <rect id="brickpath0" x="0" y="0" width="1" height="1" rx="0.0125" ry="0.06" />
@@ -73,13 +79,9 @@
             <use xlink:href="#cappath1" fill="url(#caplinear3)" mask="url(#capmask0)" />   
           </pattern>
 
-          <symbol id="brick0">
-            <rect class="blocklength" x="0" y="0" height="7" fill="url(#capGradient0)"/>
-            <rect class="blocklength" x="0" y="7" height="43" fill="url(#blockGradient0)"/>
-          </symbol>
         </defs>
-      </svg>
-      
-      <svg class="brick" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="--brickcolor: orange;" >
-        <use xlink:href="#brick0" />
+
+        <rect x="0" y="0" width="256" height="7" fill="url(#capGradient0)"/>
+        <rect x="0" y="7" width="256" height="50" fill="url(#blockGradient0)"/>
+        <text class="blocklabel" x="75" y="35">Tensor Asset</text>
       </svg>

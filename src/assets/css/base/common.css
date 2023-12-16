@@ -651,7 +651,6 @@ mark {
     font-variation-settings: var(--subheader-variation);
   
     text-align:center;
-    margin-bottom: 1rem;
  
     & > h1 {
       color: var(--text-color-dark);
@@ -681,22 +680,31 @@ mark {
 
       & > .blockgroup {
         display: flex;
+        margin: 1rem 0 1rem 0;
+
+        & img {
+          margin: 0 1rem 0 1rem;
+          box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        & h1, p {
+          display: none;
+        }
       }
       & .firstgroup {
         flex: 0 0 100%; /* Full width */
-        background-color: blue;
+        /*background-color: blue;*/
         justify-content: center;
         text-align: center;
         width: 100%;
       }
       & .secondgroup {
         flex: 0 0 25%; /* Four equal columns */
-        background-color: blueviolet;
-
+        /*background-color: blueviolet;*/
+        justify-content: center;
       }
       & > .blockgroup.thirdgroup {
         justify-content: center; /* Centering the items */     
-        background-color: orangered;
+        /*background-color: orangered;*/
       }
       & .thirdgroup {    
         flex: 0 0 33.333%; /* Three equal columns */ 
