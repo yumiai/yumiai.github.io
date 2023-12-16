@@ -657,7 +657,8 @@ mark {
       color: var(--text-color-dark);
     }
     & > p {
-      color: var(--text-color-dark);justify-content: center;
+      color: var(--text-color-dark);
+      justify-content: center;
       width: 75%;
       margin: 1rem 0 2rem 0;
       font-size: 1.2rem;   
@@ -679,6 +680,28 @@ mark {
       display: flex;
       flex-direction: column;   
       background-color: green;
+      
+      --brickcolor: green;
+
+      & svg {
+        --segmentlength: 32px;
+        --segmentgap: 0px;
+        --numbersegments: 10;
+        --caplength: calc(var(--segmentlength) * var(--numbersegments));
+        --blocklength: calc(var(--segmentlength) * var(--numbersegments));
+
+        width: 0;
+        height: 0;
+
+        &.brick{
+          width: var(--blocklength);
+          height: auto;
+        }
+
+        & .blocklength {
+          width: var(--blocklength);
+        }
+      }
 
       & > .blockgroup {
         display: flex;
@@ -687,10 +710,13 @@ mark {
         flex: 0 0 100%; /* Full width */
         background-color: blue;
         justify-content: center;
+        text-align: center;
+        width: 100%;
       }
       & .secondgroup {
         flex: 0 0 25%; /* Four equal columns */
         background-color: blueviolet;
+
       }
       & > .blockgroup.thirdgroup {
         justify-content: center; /* Centering the items */     
@@ -698,15 +724,8 @@ mark {
       }
       & .thirdgroup {    
         flex: 0 0 33.333%; /* Three equal columns */ 
-
-      }
-
-      & svg {
-        width: 100%;
-        height: auto;
       }
     }
-
 
 /* Projects right-hand side text */ 
 #projects {
@@ -771,12 +790,9 @@ mark {
       border-radius: 8px; /* Adjust this value as needed */
       border: 1px solid #d1d1d1; /* Light border for subtle edge */
 
-      box-shadow:
-      inset 1px 1px 0px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
-      inset -1px -1px 0px rgba(255, 0, 0, 0.3), /* Bottom right inner shadow */
-      0px 8px 5px rgba(2, 2, 2, 0.05); /* Outer drop shadow */    
-
-
+      box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
+                  inset -1px -1px 0px rgba(255, 0, 0, 0.3), /* Bottom right inner shadow */
+                  0px 8px 5px rgba(2, 2, 2, 0.05); /* Outer drop shadow */    
     }
   }
 }
