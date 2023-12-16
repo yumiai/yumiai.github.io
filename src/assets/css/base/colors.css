@@ -138,7 +138,6 @@
 
     background-color: var(--bg-color);
     color: var(--text-color);
-    --brickcolor: var(--english-holly);
   }
 
   .light {
@@ -161,7 +160,6 @@
       --text-color-tuscany: var(--text-color-tuscany-light);
 
       --shadow-strength: var(--shadow-strength-dark);
-      --brickcolor: red;
     }
     .light {
       display: none;

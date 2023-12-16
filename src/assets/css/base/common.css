@@ -668,7 +668,6 @@ mark {
   } 
 }
 
-
 /* TODO */
 
     /* Base Style */
@@ -679,29 +678,6 @@ mark {
 
       display: flex;
       flex-direction: column;   
-      background-color: green;
-      
-      --brickcolor: green;
-
-      & svg {
-        --segmentlength: 32px;
-        --segmentgap: 0px;
-        --numbersegments: 10;
-        --caplength: calc(var(--segmentlength) * var(--numbersegments));
-        --blocklength: calc(var(--segmentlength) * var(--numbersegments));
-
-        width: 0;
-        height: 0;
-
-        &.brick{
-          width: var(--blocklength);
-          height: auto;
-        }
-
-        & .blocklength {
-          width: var(--blocklength);
-        }
-      }
 
       & > .blockgroup {
         display: flex;
