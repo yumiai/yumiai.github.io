@@ -31,6 +31,116 @@
   --base-font-size: var(--base-font-size-for-desktop); /* This variable is declared for each device category separately. */
 }
 
+@media screen and not (--breakpoint-lg) {
+  :root {
+    --blockgroup1-length: calc(24 * var(--segmentlength)); 
+    --blockgroup2-length: calc(6 * var(--segmentlength)); 
+    --blockgroup3-length: calc(8 * var(--segmentlength)); 
+
+    --smartfunds-text-positon: 340px;
+    --digitalidentity-text-positon: 45px;
+    --digitalmrv-text-positon: 55px;
+    --marketmechanisms-text-positon: 25px;
+    --tensorasset-text-positon: 50px;
+    --accordframework-text-positon: 60px;
+    --adr-text-positon: 20px;
+    --marketinfrastructure-text-positon: 55px;    
+  }
+}
+
+@media screen and not (--breakpoint-md) {
+  :root {  
+    --blockgroup1-length: calc(20 * var(--segmentlength)); 
+    --blockgroup2-length: calc(4 * var(--segmentlength)); 
+    --blockgroup3-length: calc(6 * var(--segmentlength)); 
+
+    --smartfunds-text-positon: 280px;
+    --digitalidentity-text-positon: 15px;
+    --digitalmrv-text-positon: 20px;
+    --marketmechanisms-text-positon: 5px;
+    --tensorasset-text-positon: 20px;
+    --accordframework-text-positon: 25px;
+    --adr-text-positon: 5px;
+    --marketinfrastructure-text-positon: 15px;  
+
+  }
+  #delivery div:last-of-type > div {
+    flex-basis: calc(50% - 20px); /* Adjust the spacing as needed */
+  }
+  #buildingblocks {
+    & img {
+      width: 100%;
+    }
+    & .secondgroup {
+      flex-wrap: wrap;
+      flex: 0 0 50%; /* Four equal columns */
+      & > div {
+        margin: 0 0 1rem 0;
+      }
+    }
+    & .thirdgroup {   
+      flex-wrap: wrap; 
+      flex: 0 0 40%; /* Four equal columns */
+      & > div {
+        margin-bottom: 1rem;
+      }
+    }
+  }  
+}
+
+@media screen and not (--breakpoint-sm) {
+  :root {
+    --header-fontsize: calc(var(--standard-width) * 0.2) /*2.5rem*/;
+    --blockgroup1-length: calc(13 * var(--segmentlength)); 
+    --blockgroup2-length: calc(13 * var(--segmentlength)); 
+    --blockgroup3-length: calc(13 * var(--segmentlength)); 
+
+    --smartfunds-text-positon: 160px;
+    --digitalidentity-text-positon: 155px;
+    --digitalmrv-text-positon: 155px;
+    --marketmechanisms-text-positon: 135px;
+    --tensorasset-text-positon: 155px;
+    --accordframework-text-positon: 140px;
+    --adr-text-positon: 100px;
+    --marketinfrastructure-text-positon: 125px;   
+
+
+  }
+  #delivery div:last-of-type > div {
+        flex-basis: 100%;
+  }    
+  #buildingblocks {
+    & svg {
+      margin: 0 0 0 
+    }
+
+    /* TODO: Remove this */
+    & img {
+      margin: 0 0 0 0;
+      width: 100%;
+    }
+
+    & .secondgroup {
+      flex-wrap: wrap;
+      flex-basis: 100%; /* Four equal columns */
+
+      min-width: 400px;
+
+      & > div {
+        margin: 0 0 1rem 0;
+      }
+    }
+
+    & .thirdgroup {   
+      flex-wrap: wrap; 
+      flex-basis: 100%; /* Four equal columns */
+      & > div {
+        margin-bottom: 1rem;
+      }
+    }
+  }  
+}
+
 /* Responsive Design Media Queries */
 @media (--breakpoint-arsm) {
     #hero-section > section.background img {

@@ -518,7 +518,9 @@ article + nav {
 }
 
 /* Home Page Styles */
-
+:root {
+  --header-fontsize: calc(var(--standard-width) * 0.125) /*2.5rem*/;
+}
 /* Brush stroke flourishes under particular words */
 mark {
   --element-padding: 0;
@@ -581,7 +583,7 @@ mark {
     align-content: center;
     justify-items: center;
       
-    font-size: 2.5rem;
+    font-size: var(--header-fontsize);
     font-family: var(--subheader-font-family); 
     font-variation-settings: var(--subheader-variation);
   
@@ -609,7 +611,7 @@ mark {
       
       backdrop-filter: blur(2rem);
 
-      border-radius: 10px; /* Adjust this value as needed */
+      border-radius: 10px;
       border: 1px solid #d1d1d1; /* Light border for subtle edge */
 
       box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
@@ -646,7 +648,7 @@ mark {
     flex-direction: column;
     align-items: center;
     
-    font-size: 2.5rem;
+    font-size: var(--header-fontsize);
     font-family: var(--subheader-font-family); 
     font-variation-settings: var(--subheader-variation);
   
@@ -667,41 +669,79 @@ mark {
   } 
 }
 /* Base Style */
+:root {
+  --header-fontsize: calc(var(--standard-width) * 0.125) /*2.5rem*/;
+
+  --segmentlength: 32px;
+
+  --blockgroup1-length: calc(30 * var(--segmentlength)); 
+  --blockgroup2-length: calc(8 * var(--segmentlength)); 
+  --blockgroup2-text-positon: 75px;
+
+  --blockgroup3-length: calc(10 * var(--segmentlength)); 
+  --blockgroup3-text-positon: 53px;
+
+  /* See: --block-green in css/base/colors.css for block colours */
+  --smartfunds-fill: var(--block-green);
+  --smartfunds-color: var(--block-white);  
+  --smartfunds-text-positon: 435px;
+  --digitalidentity-fill: var(--block-darkgreen);
+  --digitalidentity-color: var(--block-white);  
+  --digitalidentity-text-positon: 75px;
+  --digitalmrv-fill: var(--block-lilac);
+  --digitalmrv-color: var(--block-white);  
+  --digitalmrv-text-positon: 90px;
+  --marketmechanisms-fill: var(--block-cream);
+  --marketmechanisms-color: var(--block-black);  
+  --marketmechanisms-text-positon: 55px;
+  --tensorasset-fill: var(--block-darkgreen);
+  --tensorasset-color: var(--block-white);  
+  --tensorasset-text-positon: 75px;
+  --accordframework-fill: var(--block-cream);
+  --accordframework-color: var(--block-black);  
+  --accordframework-text-positon: 95px;
+  --adr-fill: var(--block-darkgreen);
+  --adr-color: var(--block-white);  
+  --adr-text-positon: 53px;
+  --marketinfrastructure-fill: var(--block-lilac);
+  --marketinfrastructure-color: var(--block-white);  
+  --marketinfrastructure-text-positon: 85px;
+}
+
 #buildingblocks {
   font-size: 1rem;   
   font-family: var(--sans-font-family); 
   font-variation-settings: var(--sans-variation);
   display: flex;
   flex-direction: column;   
+
+  /* Sets the width of the svg image so that it is updatable via the CSS variables */
+  & svg {
+    &.blockgroup1 { width: var(--blockgroup1-length); }
+    &.blockgroup2 { width: var(--blockgroup2-length); }
+    &.blockgroup3 { width: var(--blockgroup3-length); }
+
+    margin: 0 1rem 0 1rem;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+
   & > .blockgroup {
     display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    text-align: center;
+    width: 100%;
     margin: 1rem 0 1rem 0;
+
+    /* TODO: Remove this */
     & img {
+      width: 90%;
       margin: 0 1rem 0 1rem;
       box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
     }
     & h1, p {
       display: none;
     }
-  }
-  & .firstgroup {
-    flex: 0 0 100%; /* Full width */
-    /*background-color: blue;*/
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-  }
-  & .secondgroup {
-    flex: 0 0 25%; /* Four equal columns */
-    /*background-color: blueviolet;*/
-    justify-content: center;
-  }
-  & > .blockgroup.thirdgroup {
-    justify-content: center; /* Centering the items */     
-    /*background-color: orangered;*/
-  }
-  & .thirdgroup {    
-    flex: 0 0 33.333%; /* Three equal columns */ 
   }
 }
 
@@ -827,7 +867,7 @@ mark {
       
       background-color: var(--color-coconut-cream-transparent-50);
 
-      border-radius: 10px; /* Adjust this value as needed */
+      border-radius: 10px;
       border: 1px solid #d1d1d1; /* Light border for subtle edge */
       box-shadow:
         inset 1px 1px 2px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
@@ -974,7 +1014,7 @@ mark {
       padding: 10px;
       padding-right: 0;
       border: none;
-      border-radius: 8px; /* Adjust this value as needed */
+      border-radius: 8px;
       margin-right: -1rem;
       width: calc(var(--standard-width) * 0.8); 
       height: var(--element-spacing);
@@ -992,7 +1032,7 @@ mark {
                   linear-gradient( rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
                   linear-gradient(var(--bg-color-call-to-action), var(--bg-color-call-to-action));
   
-      border-radius: 8px; /* Adjust this value as needed */
+      border-radius: 8px;
       border: 1px solid #d1d1d1; /* Light border for subtle edge */
       box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
                   inset -1px -1px 0px rgba(255, 149, 0, 0.4), /* Bottom right inner shadow */

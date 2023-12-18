@@ -35,6 +35,7 @@ menu:
 </section>
 
 <section id="components">
+  {% include 'partials/brickdef.njk' %}
   <div>
     <h1>Building the <mark class="thickbrush">future</mark>, one block at a time</h1>
     <p>yūmi’s building blocks enable communities to design and create their own micro-economic systems that help finance and coordinate activity at scale, across the planet.</p>
@@ -44,46 +45,46 @@ menu:
       <div>
         <h1>Smart funds</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/smart-funds.svg" ignorepicture alt="Smart funds">
+        {{comp.bricks({id: "smartfunds", group: "1", color: "--smartfunds-color", x: "--smartfunds-text-positon", fill: "--smartfunds-fill", width: "--blockgroup1-length", text: "Smart Fund"}) | safe}} 
       </div>
     </div>
     <div class="blockgroup secondgroup">
       <div>
         <h1>Digital Identity</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/digital-identity.svg" ignorepicture alt="Digital Identity">
+        {{comp.bricks({id: "digitalidentity", group: "2", color: "--digitalidentity-color", x: "--digitalidentity-text-positon", fill: "--digitalidentity-fill", width: "--blockgroup2-length", text: "Digital Identity"}) | safe}} 
       </div> 
       <div>
         <h1>Digital MRV</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/digital-mrv.svg" ignorepicture alt="Digital MRV">
+        {{comp.bricks({id: "digitalmrv", group: "2", color: "--digitalmrv-color", x: "--digitalmrv-text-positon", fill: "--digitalmrv-fill", width: "--blockgroup2-length", text: "Digital MRV"}) | safe}} 
       </div>
       <div>
         <h1>Market Mechnaisms</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/market-mechanisms.svg" ignorepicture alt="Market Mechnaisms">
+        {{comp.bricks({id: "marketmechanisms", group: "2", color: "--marketmechanisms-color", x: "--marketmechanisms-text-positon", fill: "--marketmechanisms-fill", width: "--blockgroup2-length", text: "Market Mechanisms"}) | safe}} 
       </div>
       <div>
         <h1>Tensor Assets</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/tensor-asset.svg" ignorepicture alt="Tensor Asset">
+        {{comp.bricks({id: "tensorasset", group: "2", color: "--tensorasset-color", x: "--tensorasset-text-positon", fill: "--tensorasset-fill", width: "--blockgroup2-length", text: "Tensor Asset"}) | safe}} 
       </div>
     </div>
     <div class="blockgroup thirdgroup">
       <div>
         <h1>Accord Framework</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/accord-framework.svg" ignorepicture alt="Accord Framework">
+        {{comp.bricks({id: "accordframework", group: "3", color: "--accordframework-color", x: "--accordframework-text-positon", fill: "--accordframework-fill", width: "--blockgroup3-length", text: "Accord Framework"}) | safe}} 
       </div>
       <div>
         <h1>Alternative Dispute Resolution</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/adr.svg" ignorepicture alt="Alternative Dispute Resolution">
+        {{comp.bricks({id: "adr", group: "3", color: "--adr-color", x: "--adr-text-positon", fill: "--adr-fill", width: "--blockgroup3-length", text: "Alternative Dispute Resolution"}) | safe}} 
       </div>
       <div>
         <h1>Market Infrastructure</h1>
         <p>A long and nice description of the lego brick.</p>
-        <img src="/assets/images/blocks/market-infrastructure.svg" ignorepicture alt="Market Infrastructure">
+        {{comp.bricks({id: "marketinfrastructure", color: "--marketinfrastructure-color", group: "3", x: "--marketinfrastructure-text-positon", fill: "--marketinfrastructure-fill", width: "--blockgroup3-length", text: "Market infrastructure"}) | safe}} 
       </div>
     </div>  
   </div>

@@ -1,10 +1,10 @@
-      <svg width="926" height="50" viewBox="0 0 926 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg height="50" viewBox="0 0 318 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
           <style>
-            .brickcolor {fill: #09561F; }
+            .brickcolor {fill: #E8D592; }
 
             .blocklabel {
-              fill: white;
+              fill: black;
               font-family: 'Inter', -apple-system, system-ui, sans-serif;
               font-weight: "wght" 200, "slnt" 0;
             }
@@ -81,7 +81,7 @@
 
         </defs>
 
-        <rect x="0" y="0" width="926" height="7" fill="url(#capGradient0)"/>
-        <rect x="0" y="7" width="926" height="50" fill="url(#blockGradient0)"/>
-        <text class="blocklabel" x="420" y="35">Smart Funds</text>
+        <rect x="0" y="0" width="318" height="7" fill="url(#capGradient0)"/>
+        <rect x="0" y="7" width="318" height="50" fill="url(#blockGradient0)"/>
+        <text class="blocklabel" x="95" y="35">Accord Framework</text>
       </svg>

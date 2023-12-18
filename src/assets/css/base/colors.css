@@ -27,6 +27,7 @@
     --color-coconut-cream-transparent-50: rgba(252,250,237,0.5);
     --color-coconut-cream-transparent-60: rgba(252,250,237,0.6);
 
+
     --color-gray-100: #edeef1; 
     --color-gray-300: #b6bac3;
     --color-gray-500: #6b7280;
@@ -74,6 +75,12 @@
 
     --shadow-strength-light: .02;
 
+    /* Lego Block Colors */
+    --block-green-light: #09561F;  
+    --block-darkgreen-light: #012E0D;
+    --block-lilac-light: #B584B8;
+    --block-cream-light: #E8D592;
+
     /* DARK MODE colour scheme */
     --bg-color-dark: hsl( 
       var(--color-hue-coconut-cream-default) 
@@ -107,6 +114,12 @@
 
     --shadow-strength-dark: .8;
 
+    /* Lego Block Colors */
+    --block-green-dark: rgb(65, 163, 96);
+    --block-darkgreen-dark: rgb(85, 126, 96);
+    --block-lilac-dark: #db13e6;
+    --block-cream-dark: #b79c3b;
+
     /* These colors are related to the mask-radical class */
     --color-alpha-black: rgba(0,0,0,1);
     --color-transparent: rgba(0,0,0,0);   
@@ -136,6 +149,15 @@
 
     --shadow-strength: var(--shadow-strength-light);
 
+    /* Lego Block Colors */
+    --block-black: black;  
+    --block-white: white;  
+
+    --block-green: var( --block-green-light); 
+    --block-darkgreen: var(--block-darkgreen-light); 
+    --block-lilac: var(--block-lilac-light);
+    --block-cream: var(--block-cream-light);
+
     background-color: var(--bg-color);
     color: var(--text-color);
   }
@@ -160,6 +182,15 @@
       --text-color-tuscany: var(--text-color-tuscany-light);
 
       --shadow-strength: var(--shadow-strength-dark);
+
+      /* Lego Block Colors */
+      --block-black: black;  
+      --block-white: white;  
+
+      --block-green: var( --block-green-dark); 
+      --block-darkgreen: var(--block-darkgreen-dark); 
+      --block-lilac: var(--block-lilac-dark);
+      --block-cream: var(--block-cream-dark);
     }
     .light {
       display: none;

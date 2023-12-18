@@ -1,7 +1,7 @@
-      <svg width="256" height="50" viewBox="0 0 256 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg height="50" viewBox="0 0 318 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
           <style>
-            .brickcolor {fill: #012E0D; }
+            .brickcolor {fill: #B584B8; }
 
             .blocklabel {
               fill: white;
@@ -81,7 +81,7 @@
 
         </defs>
 
-        <rect x="0" y="0" width="256" height="7" fill="url(#capGradient0)"/>
-        <rect x="0" y="7" width="256" height="50" fill="url(#blockGradient0)"/>
-        <text class="blocklabel" x="75" y="35">Digital Identity</text>
+        <rect x="0" y="0" width="318" height="7" fill="url(#capGradient0)"/>
+        <rect x="0" y="7" width="318" height="50" fill="url(#blockGradient0)"/>
+        <text class="blocklabel" x="85" y="35">Market Infrastructure</text>
       </svg>

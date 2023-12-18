@@ -1,0 +1,39 @@
+<svg class="blockgroup{{group}}" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <style>
+        .brickcolor-{{id}} {fill: var({{fill}}); }
+
+        .blocklabel-{{id}} {
+          fill: var({{color}});
+          font-family: 'Inter', -apple-system, system-ui, sans-serif;
+          font-weight: "wght" 200, "slnt" 0;
+          transform: translateX(var({{x}}));
+        }
+
+        .brickpart-{{id}} { width: var({{width}}); }
+      </style>
+
+      <!-- Brick Definitions -->        
+      <pattern id="block-{{id}}0" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#brickpath0" class="brickcolor-{{id}}"/>
+        <use xlink:href="#blockGradient0"/>
+      </pattern>
+      
+      <!-- Cap Definitions -->
+      <pattern id="cap-{{id}}0" patternUnits="userSpaceOnUse" x="6" width="32" height="7">
+        <use xlink:href="#cappath0" class="brickcolor-{{id}}" />
+        <!-- NOTE: Have to keep these gradient use here rather than in the shared definitions. 
+                   Not sure why, it just doesn't work unlike the blockGradient0 above. -->
+        <use xlink:href="#cappath0" fill="url(#caplinear0)" fill-opacity="0.3" style="mix-blend-mode:overlay"/>
+        <use xlink:href="#cappath0" fill="url(#caplinear1)" fill-opacity="0.2" style="mix-blend-mode:hard-light"/>
+        <use xlink:href="#cappath1" fill="url(#caplinear3)" mask="url(#capmask0)" /> 
+      </pattern>
+
+      <symbol id="{{id}}" >
+        <rect x="0" y="0" class="brickpart-{{id}}" height="7" fill="url(#cap-{{id}}0)"/>
+        <rect x="0" y="7" class="brickpart-{{id}}" height="50" fill="url(#block-{{id}}0)"/>
+        <text class="blocklabel-{{id}}" x="0" y="35">{{text}}</text>
+      </symbol>
+    </defs>
+    <use xlink:href="#{{id}}"/>
+  </svg>
