@@ -19,6 +19,7 @@
     /* yumi styles */
     --serif-font-family: "Fraunces", "Merriweather", serif;
     --serif-variation: "wght" 400, "SOFT" 100, "WONK" 1;
+    --serif-medium-variation: "wght" 400, "SOFT" 100, "WONK" 1;
 
     --sans-font-family: 'Inter', -apple-system, system-ui, sans-serif;
     --sans-variation: "wght" 300, "slnt" 0;

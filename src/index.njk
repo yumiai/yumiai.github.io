@@ -41,36 +41,79 @@ menu:
     <p>yūmi’s building blocks enable communities to design and create their own micro-economic systems that help finance and coordinate activity at scale, across the planet.</p>
   </div>
   <div id="buildingblocks">
-    <div class="modal-backdrop"></div>
     <div class="blockgroup firstgroup">
       <div>
-        {{comp.bricks({id: "smartfunds", group: "1", color: "--smartfunds-color", fill: "--smartfunds-fill", x: "--smartfunds-text-positon", width: "--blockgroup1-length", text: "Smart Fund", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/smartfunds}}"}) | safe}} 
+        {% comp "bricks", {id: "smartfunds", group: "1", color: "--smartfunds-color", fill: "--smartfunds-fill", x: "--smartfunds-text-positon", width: "--blockgroup1-length", text: "Smart Funds"} %}
+          <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+             content would look like in this scenario.</p>
+          <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+             container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+          <p>Upon hovering on a lego block, the opacity is returned to 100%. Clicking on it replaces the content
+             in this container with the content of the clicked block.</p>
+        {% endcomp %}
       </div>
     </div>
     <div class="blockgroup secondgroup">
       <div>
-        {{comp.bricks({id: "digitalidentity", group: "2", color: "--digitalidentity-color", x: "--digitalidentity-text-positon", fill: "--digitalidentity-fill", width: "--blockgroup2-length", text: "Digital Identity", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/digitalidentity}}"}) | safe}}  
+        {% comp "bricks", {id: "digitalidentity", group: "2", color: "--digitalidentity-color", x: "--digitalidentity-text-positon", fill: "--digitalidentity-fill", width: "--blockgroup2-length", text: "Digital Identity"} %}  
+          <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+             content would look like in this scenario.</p>
+          <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+             container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+          <p>Upon hovering on a lego block, the opacity is returned to 100%. Clicking on it replaces the content
+             in this container with the content of the clicked block.</p>
+      {% endcomp %}
       </div> 
       <div>
-        {{comp.bricks({id: "digitalmrv", group: "2", color: "--digitalmrv-color", x: "--digitalmrv-text-positon", fill: "--digitalmrv-fill", width: "--blockgroup2-length", text: "Digital MRV", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/digitalmrv}}"}) | safe}}  
-      </div>
+        {% comp "bricks", {id: "digitalmrv", group: "2", color: "--digitalmrv-color", x: "--digitalmrv-text-positon", fill: "--digitalmrv-fill", width: "--blockgroup2-length", text: "Digital MRV"} %}
+          <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+             content would look like in this scenario.</p>
+          <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+             container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+      {% endcomp %}
+    </div>
       <div>
-        {{comp.bricks({id: "marketmechanisms", group: "2", color: "--marketmechanisms-color", x: "--marketmechanisms-text-positon", fill: "--marketmechanisms-fill", width: "--blockgroup2-length", text: "Market Mechanisms", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/marketmechanisms}}"}) | safe}}  
-      </div>
+        {% comp "bricks", {id: "marketmechanisms", group: "2", color: "--marketmechanisms-color", x: "--marketmechanisms-text-positon", fill: "--marketmechanisms-fill", width: "--blockgroup2-length", text: "Market Mechanisms"} %}
+          <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+             content would look like in this scenario.</p>
+          <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+             container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+     {% endcomp %}
+    </div>
       <div>
-        {{comp.bricks({id: "tensorasset", group: "2", color: "--tensorasset-color", x: "--tensorasset-text-positon", fill: "--tensorasset-fill", width: "--blockgroup2-length", text: "Tensor Asset", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/tensorassets}}"}) | safe}}  
-      </div>
+        {% comp "bricks", {id: "tensorasset", group: "2", color: "--tensorasset-color", x: "--tensorasset-text-positon", fill: "--tensorasset-fill", width: "--blockgroup2-length", text: "Tensor Asset"} %}
+        <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+           content would look like in this scenario.</p>
+        <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+           container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+       {% endcomp %}
+    </div>
     </div>
     <div class="blockgroup thirdgroup">
       <div>
-        {{comp.bricks({id: "accordframework", group: "3", color: "--accordframework-color", x: "--accordframework-text-positon", fill: "--accordframework-fill", width: "--blockgroup3-length", text: "Accord Framework", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/accordframework}}"}) | safe}}  
-      </div>
+        {% comp "bricks", {id: "accordframework", group: "3", color: "--accordframework-color", x: "--accordframework-text-positon", fill: "--accordframework-fill", width: "--blockgroup3-length", text: "Accord Framework"} %}
+          <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+             content would look like in this scenario.</p>
+          <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+             container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+       {% endcomp %}
+    </div>
       <div>
-        {{comp.bricks({id: "adr", group: "3", color: "--adr-color", x: "--adr-text-positon", fill: "--adr-fill", width: "--blockgroup3-length", text: "Alternative Dispute Resolution", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/adr}}"}) | safe}}  
-      </div>
+        {% comp "bricks", {id: "adr", group: "3", color: "--adr-color", x: "--adr-text-positon", fill: "--adr-fill", width: "--blockgroup3-length", text: "Alternative Dispute Resolution"} %}
+          <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+             content would look like in this scenario.</p>
+          <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+             container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+       {% endcomp %}
+    </div>
       <div>
-        {{comp.bricks({id: "marketinfrastructure", color: "--marketinfrastructure-color", group: "3", x: "--marketinfrastructure-text-positon", fill: "--marketinfrastructure-fill", width: "--blockgroup3-length", text: "Market infrastructure", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/marketinfrastructure}}"}) | safe}}  
-      </div>
+        {% comp "bricks", {id: "marketinfrastructure", color: "--marketinfrastructure-color", group: "3", x: "--marketinfrastructure-text-positon", fill: "--marketinfrastructure-fill", width: "--blockgroup3-length", text: "Market infrastructure"} %}
+          <p>This is a blurb here that is long enough to give a good impression of what a piece of long-form 
+             content would look like in this scenario.</p>
+          <p>As you can see, it spans many paragraphs. Should the long-form content extend beyond the visible 
+             container, a scroll bar should appear to indicate that more content is visible below the fold.</p>
+       {% endcomp %}
+    </div>
     </div>  
   </div>
 </section>

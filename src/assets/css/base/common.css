@@ -737,43 +737,40 @@ mark {
     margin: 1rem 0 1rem 0;
   }
 
-  /* Style for the Modal */
-  & .modal {
-    display: none; /* Hidden by default */
-    position: absolute; /* Position relative to nearest positioned ancestor */
-    z-index: 2; /* Sit on top */
+  .tippy-box[data-theme~='blocks'] {
+    --bg-color-popup:  var(--bg-color);
+    --text-color-popup: var(--text-color);
 
-    left: 30%;
-    top: 10;
-
-    background-color: #fefefe;
-    padding: 5px;
-    border: 1px solid #888;
-    width: auto; /* Adjust width as necessary */
-    max-width: 600px; /* Maximum width */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  }
+    background-color: var(--bg-color-popup);
+    color: var(--text-color-popup);
+    cursor: pointer;
+    padding: 0.5rem;
+    text-align: left;
   
-  /* Background overlay */
-  & .modal-backdrop {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-  }
+    /* CSS Popup Arrow */
+    &[data-placement^='top'] > .tippy-arrow::before {
+      border-top-color: var(--bg-color-popup);
+    }
+    &[data-placement^='bottom'] > .tippy-arrow::before {
+      border-bottom-color: var(--bg-color-popup);
+    }
+    &[data-placement^='left'] > .tippy-arrow::before {
+      border-left-color: var(--bg-color-popup);
+    }
+    &[data-placement^='right'] > .tippy-arrow::before {
+      border-right-color: var(--bg-color-popup);
+    }
 
-  /* Modal Content Box */
-  & .modal-content {
-    background-color: #fefefe;
-    border: 1px solid #888;
-    width: 100%; /* Could be more or less, depending on screen size */
-    max-width: 600px; /* Maximum width */
+    & h2 {
+      font-size: 1.3rem; /* TODO: Scale the font */
+      font-family: var(--serif-font-family); 
+      font-variation-settings: var(--serif-medium-variation);
+      margin-bottom: 1rem;
+    }
+    & p {
+      margin-bottom: 0.5rem;
+    }
   }
-
 }
 
 /* Projects right-hand side text */ 
@@ -781,6 +778,7 @@ mark {
   position: relative;
   min-height: 30rem;
   padding: 5rem 0 5rem 1.5rem;
+  z-index: 20;
 }
 
 /* Projects right-hand side text */ 

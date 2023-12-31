@@ -1,12 +1,9 @@
-<div id="{{id}}info" class="modal">
-  <div class="modal-content">
-    <h2>{{text}}</h2>
-    <a class="close" href="#"></a>
-    <p class="content">{{popovertext}}</p>
-    <a href="{{popoverlink}}">more.</a>
-  </div>
+<div id="{{id}}info" style="display: none;" >
+  <h2>{{text}}</h2>
+  {{content | safe }}
+  <a href="{{site.baseurl}}/{{id}}">more.</a>  
 </div>
-<svg id="{{id}}svg" data-modal-target="#{{id}}info" class="blockgroup{{group}}" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="{{id}}svg" data-popup="{{id}}info" class="blockgroup{{group}}" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
       <style>
         .brickcolor-{{id}} {fill: var({{fill}}); }

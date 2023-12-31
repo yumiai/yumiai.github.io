@@ -11,10 +11,33 @@
 </script>
 
 {% if hero.visible %}
-<script src="{{ site.baseurl }}/assets/scripts/popup.js"></script>
+<!-- Development -->
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+<!-- Production -->
+<!--
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+-->
+
 <script src="{{ site.baseurl }}/assets/scripts/word-scroll.js"></script>
 
 <script>
+tippy('[data-popup]', {
+  content(reference) {
+    const id = reference.getAttribute('data-popup');
+    const template = document.getElementById(id);
+    return template.innerHTML;
+  },
+  theme: 'blocks',
+  allowHTML: true,
+  interactive: true,
+  interactiveDebounce: 15,
+  interactiveBorder: 5,
+  placement: 'auto',
+});
+
 // Call this function whenever the carousel is scrolled or updated
 document.querySelector('.left-arrow').addEventListener('click', () => {
   document.querySelector('.carousel').scrollBy({ left: -300, behavior: 'smooth' });
