@@ -41,50 +41,35 @@ menu:
     <p>yūmi’s building blocks enable communities to design and create their own micro-economic systems that help finance and coordinate activity at scale, across the planet.</p>
   </div>
   <div id="buildingblocks">
+    <div class="modal-backdrop"></div>
     <div class="blockgroup firstgroup">
       <div>
-        <h1>Smart funds</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "smartfunds", group: "1", color: "--smartfunds-color", x: "--smartfunds-text-positon", fill: "--smartfunds-fill", width: "--blockgroup1-length", text: "Smart Fund"}) | safe}} 
+        {{comp.bricks({id: "smartfunds", group: "1", color: "--smartfunds-color", fill: "--smartfunds-fill", x: "--smartfunds-text-positon", width: "--blockgroup1-length", text: "Smart Fund", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/smartfunds}}"}) | safe}} 
       </div>
     </div>
     <div class="blockgroup secondgroup">
       <div>
-        <h1>Digital Identity</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "digitalidentity", group: "2", color: "--digitalidentity-color", x: "--digitalidentity-text-positon", fill: "--digitalidentity-fill", width: "--blockgroup2-length", text: "Digital Identity"}) | safe}} 
+        {{comp.bricks({id: "digitalidentity", group: "2", color: "--digitalidentity-color", x: "--digitalidentity-text-positon", fill: "--digitalidentity-fill", width: "--blockgroup2-length", text: "Digital Identity", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/digitalidentity}}"}) | safe}}  
       </div> 
       <div>
-        <h1>Digital MRV</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "digitalmrv", group: "2", color: "--digitalmrv-color", x: "--digitalmrv-text-positon", fill: "--digitalmrv-fill", width: "--blockgroup2-length", text: "Digital MRV"}) | safe}} 
+        {{comp.bricks({id: "digitalmrv", group: "2", color: "--digitalmrv-color", x: "--digitalmrv-text-positon", fill: "--digitalmrv-fill", width: "--blockgroup2-length", text: "Digital MRV", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/digitalmrv}}"}) | safe}}  
       </div>
       <div>
-        <h1>Market Mechnaisms</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "marketmechanisms", group: "2", color: "--marketmechanisms-color", x: "--marketmechanisms-text-positon", fill: "--marketmechanisms-fill", width: "--blockgroup2-length", text: "Market Mechanisms"}) | safe}} 
+        {{comp.bricks({id: "marketmechanisms", group: "2", color: "--marketmechanisms-color", x: "--marketmechanisms-text-positon", fill: "--marketmechanisms-fill", width: "--blockgroup2-length", text: "Market Mechanisms", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/marketmechanisms}}"}) | safe}}  
       </div>
       <div>
-        <h1>Tensor Assets</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "tensorasset", group: "2", color: "--tensorasset-color", x: "--tensorasset-text-positon", fill: "--tensorasset-fill", width: "--blockgroup2-length", text: "Tensor Asset"}) | safe}} 
+        {{comp.bricks({id: "tensorasset", group: "2", color: "--tensorasset-color", x: "--tensorasset-text-positon", fill: "--tensorasset-fill", width: "--blockgroup2-length", text: "Tensor Asset", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/tensorassets}}"}) | safe}}  
       </div>
     </div>
     <div class="blockgroup thirdgroup">
       <div>
-        <h1>Accord Framework</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "accordframework", group: "3", color: "--accordframework-color", x: "--accordframework-text-positon", fill: "--accordframework-fill", width: "--blockgroup3-length", text: "Accord Framework"}) | safe}} 
+        {{comp.bricks({id: "accordframework", group: "3", color: "--accordframework-color", x: "--accordframework-text-positon", fill: "--accordframework-fill", width: "--blockgroup3-length", text: "Accord Framework", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/accordframework}}"}) | safe}}  
       </div>
       <div>
-        <h1>Alternative Dispute Resolution</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "adr", group: "3", color: "--adr-color", x: "--adr-text-positon", fill: "--adr-fill", width: "--blockgroup3-length", text: "Alternative Dispute Resolution"}) | safe}} 
+        {{comp.bricks({id: "adr", group: "3", color: "--adr-color", x: "--adr-text-positon", fill: "--adr-fill", width: "--blockgroup3-length", text: "Alternative Dispute Resolution", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/adr}}"}) | safe}}  
       </div>
       <div>
-        <h1>Market Infrastructure</h1>
-        <p>A long and nice description of the lego brick.</p>
-        {{comp.bricks({id: "marketinfrastructure", color: "--marketinfrastructure-color", group: "3", x: "--marketinfrastructure-text-positon", fill: "--marketinfrastructure-fill", width: "--blockgroup3-length", text: "Market infrastructure"}) | safe}} 
+        {{comp.bricks({id: "marketinfrastructure", color: "--marketinfrastructure-color", group: "3", x: "--marketinfrastructure-text-positon", fill: "--marketinfrastructure-fill", width: "--blockgroup3-length", text: "Market infrastructure", popovertext: "A long and nice description of the lego brick.", popoverlink: "{{site.baseurl/marketinfrastructure}}"}) | safe}}  
       </div>
     </div>  
   </div>
