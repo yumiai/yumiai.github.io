@@ -640,6 +640,7 @@ mark {
   backdrop-filter: blur(2rem);
   padding: 4rem 0 3rem 0;
   position: relative; /* Used for the positioning context of the SVG popups. */
+  z-index: 9999;
 
   background-image: radial-gradient(ellipse 50% 25% at center 65%, rgba(131, 93, 38, 0.3) 30%, transparent 100%);
 
