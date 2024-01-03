@@ -138,6 +138,9 @@
     --bg-color-subtext: var(--bg-color-light-subtext);
     --bg-color-call-to-action: var(--text-color-tuscany-light);
 
+    --bg-color-project-card: var(--color-coconut-cream-transparent-50);
+    --bg-color-project-text: var(--block-darkgreen-light);
+
     --text-color: var(--text-color-light);
     --text-color-subtext: var(--text-color-light-subtext);
 
@@ -147,6 +150,9 @@
     --text-color-gray-800: var(--color-gray-800);  
     --text-color-black: var(--color-black);
     --text-color-white: var(--color-white);
+
+    --text-color-project-card: var(--text-color-black);
+    --text-color-project-text: var(--text-color-tuscany-light);
 
     --shadow-strength: var(--shadow-strength-light);
 
@@ -158,6 +164,8 @@
     --block-darkgreen: var(--block-darkgreen-light); 
     --block-lilac: var(--block-lilac-light);
     --block-cream: var(--block-cream-light);
+
+
 
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -181,6 +189,9 @@
       --text-color-subtext: var(--text-color-dark-subtext);
 
       --text-color-tuscany: var(--text-color-tuscany-light);
+
+      --text-color-project-card: var(--text-color-black);
+      --text-color-project-text: var(--text-color);
 
       --shadow-strength: var(--shadow-strength-dark);
 

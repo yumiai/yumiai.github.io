@@ -924,6 +924,178 @@ mark {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Projects right-hand side text */ 
+#projectsx {
+  position: relative;
+  min-height: 30rem;
+  padding: 3rem 0 5rem 3rem;
+  z-index: 20;
+}
+
+
+#projectsx > .projectcards {
+  /* Project Cards Carousel Container that constrains the visiblity
+     of the carousel. */
+  overflow: hidden;
+  max-width: 50%;
+  position: absolute;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5), transparent, rgba(255, 255, 255, 0.5));
+    mix-blend-mode: normal;
+    pointer-events: none;
+  }
+}
+
+/* Projects right-hand side text */ 
+#projectsx > .projectstext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*margin: 0 5rem 0 auto; <= reset back to */ 
+  margin: 0 0 0 auto;
+  right: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  font-family: var(--subheader-font-family); 
+  font-variation-settings: var(--subheader-medium-variation);
+
+  text-align:left;
+
+  max-width: 48%;
+  min-height: 30rem;
+  background-color: var(--bg-color-project-text);
+
+  /* Project Text */
+  
+  & > h1 {
+    padding-top: 4rem;
+    color: var(--coconut-cream);
+    font-size: calc(var(--standard-width) * 0.125);
+    width: 75%;
+    & > mark {
+      padding-bottom: 0.25rem;
+      color: var(--coconut-cream);
+    }
+  }
+  & > p {      
+    margin: 1rem 0 2rem 0;
+    color: var(--coconut-cream);
+    font-size: calc(var(--standard-width) * 0.07);
+    font-family: var(--sans-font-family); 
+    font-variation-settings: var(--sans-variation);
+  }
+
+  /* TODO: Carousel navigation arrows - Slides theme? */
+  & > div {
+    min-width: 100%;
+    font-size: calc(var(--standard-width) * 0.05);
+    & > button {
+      height: 3rem;
+      width: 3rem;
+      display: inline-block;
+      cursor: pointer;
+
+      background-color: transparent;
+      background: linear-gradient(0deg, rgba(255,255,255,1), 
+                 rgba(255,255,255,0.5) 100%), 
+                 black, 
+                 rgba(255,255,255,0.4), 
+                 var(--color-cream-button);
+
+      backdrop-filter: blur(2rem);
+      border-radius: 8px; /* Adjust this value as needed */
+      border: 1px solid #d1d1d1; /* Light border for subtle edge */
+
+      box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
+                  inset -1px -1px 0px rgba(255, 0, 0, 0.3), /* Bottom right inner shadow */
+                  0px 8px 5px rgba(2, 2, 2, 0.05); /* Outer drop shadow */    
+    }
+  }
+}
+
+
+
+/* Projects left-hand side - project cards container */
+#projectsx .projectcard  {
+  /* Individual Project Cards */  
+  background-color: var(--bg-color-project-card);
+
+  padding: 2rem 1rem 1rem 1rem;
+  min-height: 30rem;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1; /* Light border for subtle edge */
+  box-shadow:
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2); /* Bottom right inner shadow */
+
+  font-family: var(--serif-font-family);
+  font-variation-settings: var(--serif-medium-variation);
+  font-size: var(--element-font-size); 
+  
+  & img {
+    width: 30%;
+    margin: 0 auto 1rem auto;
+    border-radius: 50%;  /* Creates the circular shape */
+    object-fit: cover;  /* Ensures the image covers the area without stretching (optional) */
+  }
+  & h3 {
+    margin-bottom: 10px; /* Space between title and paragraph */
+    font-variation-settings: var(--sans-bold-variation);
+    font-size: 1.5rem;
+  }
+
+  > picture {
+    height: 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 #supportedby {
 
   --element-font-size: calc(var(--standard-width) * 0.1); 

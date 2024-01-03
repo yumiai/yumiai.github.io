@@ -14,6 +14,7 @@
 <!-- Development -->
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
 <!-- Production -->
 <!--
@@ -47,4 +48,12 @@ document.querySelector('.right-arrow').addEventListener('click', () => {
   document.querySelector('.carousel').scrollBy({ left: 300, behavior: 'smooth' });
 });
 </script>
+
+<script>
+  document.addEventListener( 'DOMContentLoaded', function() {
+    var splide = new Splide( '.splide' );
+    splide.mount();
+  } );
+</script>
+
 {% endif %}
