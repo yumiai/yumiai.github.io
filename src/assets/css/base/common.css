@@ -781,7 +781,7 @@ mark {
 #projects {
   position: relative;
   min-height: 30rem;
-  padding: 3rem 0 5rem 3rem;
+  padding: 3rem 0 5 0;
   z-index: 20;
 }
 
@@ -821,7 +821,7 @@ mark {
 
   text-align:left;
 
-  max-width: 48%;
+  max-width: 50%;
   min-height: 30rem;
   background-color: var(--bg-color-project-text);
 
@@ -849,29 +849,53 @@ mark {
   & > div {
     min-width: 100%;
     font-size: calc(var(--standard-width) * 0.05);
+    font-variation-settings: var(--sans-medium-variation); 
+
+    color: var(--text-color);
+    cursor: pointer;
+
     & > button {
       height: 3rem;
       width: 3rem;
       display: inline-block;
       cursor: pointer;
 
-      background-color: transparent;
-      background: linear-gradient(0deg, rgba(255,255,255,1), 
-                 rgba(255,255,255,0.5) 100%), 
-                 black, 
-                 rgba(255,255,255,0.4), 
-                 var(--color-cream-button);
-
-      backdrop-filter: blur(2rem);
-      border-radius: 8px; /* Adjust this value as needed */
+      background: linear-gradient(0deg, rgba(255,255,255,0.4), rgba(255,255,255,0) 20%, rgba(255,255,255,0.4) 100%),
+                  linear-gradient( rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+                  linear-gradient(var(--bg-color-call-to-action), var(--bg-color-call-to-action));
+  
+      border-radius: 8px;
       border: 1px solid #d1d1d1; /* Light border for subtle edge */
-
       box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
-                  inset -1px -1px 0px rgba(255, 0, 0, 0.3), /* Bottom right inner shadow */
-                  0px 8px 5px rgba(2, 2, 2, 0.05); /* Outer drop shadow */    
+                  inset -1px -1px 0px rgba(255, 149, 0, 0.4), /* Bottom right inner shadow */
+                  0px 8px 5px rgba(2, 2, 2, 0.05); /* Outer drop shadow */  
     }
   }
 }
+
+
+.carousel-arrow {
+  height: 3rem;
+  width: 3rem;
+  display: inline-block;
+  cursor: pointer;
+
+  background: linear-gradient(0deg, rgba(255,255,255,0.4), rgba(255,255,255,0) 20%, rgba(255,255,255,0.4) 100%),
+              linear-gradient( rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+              linear-gradient(var(--bg-color-call-to-action), var(--bg-color-call-to-action));
+  border-radius: 8px;
+  border: 1px solid #d1d1d1; /* Light border for subtle edge */
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
+              inset -1px -1px 0px rgba(255, 149, 0, 0.4), /* Bottom right inner shadow */
+              0px 8px 5px rgba(2, 2, 2, 0.05); /* Outer drop shadow */  
+}
+
+
+
+
+
+
+
 
 
 

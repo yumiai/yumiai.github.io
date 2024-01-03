@@ -25,35 +25,52 @@
 <script src="{{ site.baseurl }}/assets/scripts/word-scroll.js"></script>
 
 <script>
-tippy('[data-popup]', {
-  content(reference) {
-    const id = reference.getAttribute('data-popup');
-    const template = document.getElementById(id);
-    return template.innerHTML;
-  },
-  theme: 'blocks',
-  allowHTML: true,
-  interactive: true,
-  interactiveDebounce: 15,
-  interactiveBorder: 5,
-  placement: 'auto',
-});
-
-// Call this function whenever the carousel is scrolled or updated
-document.querySelector('.left-arrow').addEventListener('click', () => {
-  document.querySelector('.carousel').scrollBy({ left: -300, behavior: 'smooth' });
-});
-
-document.querySelector('.right-arrow').addEventListener('click', () => {
-  document.querySelector('.carousel').scrollBy({ left: 300, behavior: 'smooth' });
-});
-</script>
-
-<script>
+  tippy('[data-popup]', {
+    content(reference) {
+      const id = reference.getAttribute('data-popup');
+      const template = document.getElementById(id);
+      return template.innerHTML;
+    },
+    theme: 'blocks',
+    allowHTML: true,
+    interactive: true,
+    interactiveDebounce: 15,
+    interactiveBorder: 5,
+    placement: 'auto',
+  });
+  
   document.addEventListener( 'DOMContentLoaded', function() {
-    var splide = new Splide( '.splide' );
-    splide.mount();
-  } );
-</script>
+    // Instantiate the splite without buttons so buttons layout can be customised. 
+    var splide = new Splide( '.splide', {
+      perPage: 2,
+      pagination: false, 
+      focus: "center", 
+      gap:"1rem",
+      start: 2, 
+      omitEnd: true,
+      arrows: false});
 
+    // Updates the bar width whenever the carousel moves:
+    splide.on( 'move', function () {
+      var end  = splide.Components.Controller.getEnd() + 1;
+      var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+      bar.style.width = String( 100 * rate ) + '%';
+    });
+
+    splide.mount();
+    // Attach events to custom buttons
+    btnNext.addEventListener('click', e => {
+      var end = splide.Components.Controller.getEnd() - 1;
+      if (splide.index < end) {
+        splide.go('+1')
+      }
+    })
+    btnPrev.addEventListener('click', e => {
+      var begin = 1;
+      if (splide.index > begin) {
+        splide.go('-1')
+      }      
+    })
+  });
+</script>
 {% endif %}
