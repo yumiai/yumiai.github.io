@@ -2,6 +2,7 @@
 title: Planning for unplanned work
 description: Practices for product building
 date: 2023-06-31
+author: Robert O'Brien
 imagick:
   usedefault: true
 tags:
@@ -9,17 +10,11 @@ tags:
   - extra-tag
 ---
 
-tl;dr
-
 There are two types of work. Features go into roadmaps, but where does the rest go? This short guide covers everything from zero-friction intake to effectively managing unplanned bug reports and requests.
 
 ---
 
-### [Intro](#intro)
-
-There are two types of work.
-
-Planned work and unplanned work.
+There are two types of work; Planned work and unplanned work.
 
 Planned work are tasks and activities that have been organized and scheduled in advance. This type of work typically happens in projects that tie into roadmaps and larger company goals. Because the work has been planned before, you know what you're trying to do, who's going to work on it, and when they will get started.
 
@@ -128,10 +123,15 @@ SLAs help you to establish and maintain internal standards for how quickly unpla
 Wrapping up, let’s summarize the most important points and provide you with some useful links so you can set up your own plan for unplanned work.
 
 - Unplanned work are bugs, alerts, and other requests and emergencies that appear suddenly. You can’t escape this type of work, but you can manage it.
+
 - Unplanned work has two broad phases: An intake phase and an execution phase.
+
 - The intake phase is about turning reported bugs and requests into explicit, actionable issues. To make this process as frictionless as possible, you enable intake right where unplanned work first appears — with integrations to your most important tools. Linear has integrations with customer support platforms ([Intercom](https://linear.app/integrations/intercom), [Zendesk](https://linear.app/integrations/zendesk), [Front](https://linear.app/integrations/front), [Plain](https://linear.app/integrations/plain)), engineering tools ([Sentry](https://linear.app/integrations/sentry), [Incident.io](https://linear.app/integrations/incident-io)), and [many other products](https://linear.app/integrations).
+
 - Slack is a particularly important intake channel where a lot of unplanned work surfaces. [We built a tool called Linear Asks](https://linear.app/features/asks) that allows your team to quickly turn these requests into actionable issues.
+
 - In the execution phase, we first centralize all incoming unplanned work in a shared team inbox called Triage, where each issue gets reviewed, prioritized, and assigned. [You can learn more about Triage and how to enable it for your team here](https://linear.app/docs/triage).
+
 - To get the most out of Triage, we recommend having a [clearly defined person who reviews incoming work](https://linear.app/docs/triage#triage-responsibility). For larger teams, [enabling SLAs](https://linear.app/docs/sla) can help with the prioritization of time-sensitive requests.
 
 

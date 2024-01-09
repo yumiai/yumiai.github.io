@@ -1,6 +1,7 @@
 ---
-title: The third post.
+title: The third post
 description: This is a post on our Blog about stuff.
+author: Robert O'Brien
 date: 2023-06-30
 pinned: true
 tags:

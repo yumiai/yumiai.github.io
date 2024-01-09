@@ -305,10 +305,13 @@ section.background {
 
 /* Menu Navigation common across the entire site */
 #menu-bar {
+  --element-margin: calc(var(--standard-width) * 0.03);
+
   display: flex; 
   inset: 0;
   z-index: 20;
-  margin: 0.3125rem 0.625rem 0 0.625rem;
+
+  margin: calc(var(--element-margin)/2) var(--element-margin) 0 var(--element-margin);
 
   > picture {
     display: flex;
@@ -453,19 +456,33 @@ footer:first-of-type {
 
 /* Blog Posts */
 article.post {
-  --element-margin: calc(var(--standard-width) * 0.175);
-  --element-font-size: calc(var(--standard-width) * 0.07); 
+  --element-margin: calc(var(--standard-width) * 0.03);
+  --element-padding: calc(var(--standard-width) * 0.3); 
+  --element-font-size: calc(var(--standard-width) * 0.06); 
 
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
 
-  margin: var(--element-margin) var(--element-margin) var(--element-margin) var(--element-margin);
+  background-color: var(--color-coconut-cream-transparent-60);
+
+  margin: calc(var(--element-margin)/2) var(--element-margin) 0 var(--element-margin);
+
+  padding: var(--element-padding);
 
   font-family: var(--content-font-family);
   font-variation-settings: var(--content-variation);
   font-size: var(--element-font-size);  
+
+  line-height: calc(var(--element-font-size)*1.75);
+
+  border-radius: 10px;
+  border: 1px solid #d1d1d1; /* Light border for subtle edge */
+
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
+              inset -1px -1px 2px rgba(0, 0, 0, 0.2), /* Bottom right inner shadow */
+              20px 20px 25px rgba(2, 2, 2, 0.15); /* Outer drop shadow */   
 
   & > h1 {
     --element-font-size: calc(var(--standard-width) * 0.1); 
@@ -473,12 +490,41 @@ article.post {
     font-family: var(--header-font-family);
     font-variation-settings: var(--header-variation);
     font-size: var(--element-font-size);  
-    /* background-color: red; */
+
+  }
+
+  /* Author and date formating */
+  & > h1 + p {
+
+    font-family: var(--sans-font-family);
+    font-variation-settings: var(--sans-light-variation);
+    font-size: var(--element-font-size);  
+    color: var(--text-color-gray-500);
+
+    margin: var(--element-font-size) 0 var(--element-font-size) 0;
+    & > span::after {
+      content: " • ";
+    }
+  }
+
+  /* tags */
+  & > h1 + p + nav > a {
+    font-family: var(--sans-font-family);
+    font-variation-settings: var(--sans-light-variation);
+    font-size: var(--element-font-size);  
+    color: var(--text-color-tuscany);
+
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+
+    &:not(:last-child) {
+      margin-right: var(--element-font-size); /* Adjust the margin value as needed */
+    }
   }
 
   & > div {
     & p {
-      margin: 0.5rem 0 0.5rem 0;
+      margin: 0.75rem 0 0.75rem 0;
     }
     & h3 {
       --element-margin: calc(var(--standard-width) * 0.075);
@@ -490,25 +536,102 @@ article.post {
 
       margin: var(--element-margin) 0 var(--element-margin) 0;
     }
+
+    /* Any horizontal lines within an article */  
+    & hr {
+      --element-margin: calc(var(--element-font-size)*2); 
+      margin: var(--element-margin) 0 var(--element-margin) 0;
+      border-color: var(--text-color-gray-500);
+    }  
+
+    /* Ensure the image covers the area maintaining aspect ratio */
+    & picture > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;  
+    }
+
+    & ul {
+      list-style-type:disc;
+      margin-left: var(--element-margin);
+      padding-left: var(--element-margin);
+    }
   }
 
-/*
-  & > h1 + nav {
-    background-color: blue;
+  &+ nav {
+    --element-margin: calc(var(--standard-width) * 0.03);
+    --element-padding: calc(var(--standard-width) * 0.075); 
+    --element-font-size: calc(var(--standard-width) * 0.06); 
+
+    margin: calc(var(--element-margin)*3) var(--element-margin) 0 var(--element-margin);   
+
+    > ul {
+      display: flex;
+      flex-direction: row;
+
+      justify-content: space-between; /* Space out items */
+      list-style-type: none; /* Optional: Remove default list styling */
+      
+      & li {   
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background-color: var(--color-coconut-cream-transparent-60);
+        
+        border-radius: 10px;
+        border: 1px solid #d1d1d1; /* Light border for subtle edge */
+      
+        box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
+                    inset -1px -1px 2px rgba(0, 0, 0, 0.2), /* Bottom right inner shadow */
+                    20px 20px 25px rgba(2, 2, 2, 0.15); /* Outer drop shadow */  
+
+        padding: var(--element-padding) calc(var(--element-padding)*2) var(--element-padding) calc(var(--element-padding)*2);
+        min-width: 49%;
+
+        & a {
+          display: flex;       /* Enable Flexbox */
+          align-items: center; /* Vertically center align items */
+          justify-content: space-between; /* Space out items */
+          min-width: 100%;         /* Span the full width */
+          text-decoration: none; /* Optional: Removes underline */
+        }
+      
+        & .direction, .title {
+            align-self: flex-start;
+            text-align: left;
+        }
+
+        &:first-child {
+          & .direction, .title {
+            text-align: right;
+          }
+        }
+
+        & .title {
+          font-family: var(--header-font-family);
+          font-variation-settings: var(--header-variation);
+          font-size: calc(var(--element-font-size)*1.5);
+        }
+
+        & .direction {
+          font-family: var(--sans-font-family);
+          font-variation-settings: var(--header-variation);
+          font-size: var(--element-font-size);
+          color: var(--text-color-gray-500);
+
+          margin-top: auto; /* force it to the bottom */
+        }
+
+        & i {
+          font-size: calc(var(--element-font-size)*1.25);
+          align-self: center; /* Center align vertically */
+        }
+      }
+
+    }
   }
 
-  & > nav + time {
-    background-color: orange;
-  }
-*/
-  & > time + div {
-    background-color: var(--color-coconut-cream-transparent-60);
-  }
-
-}
-
-article + nav {
-  background-color: violet;
 }
 
 #content {

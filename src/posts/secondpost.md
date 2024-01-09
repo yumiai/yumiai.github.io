@@ -1,6 +1,7 @@
 ---
-title: The second post.
+title: The second post
 description: This is a post on our Blog about stuff.
+author: Robert O'Brien
 date: 2023-06-29
 tags:
   - second-tag

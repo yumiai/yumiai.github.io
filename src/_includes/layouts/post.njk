@@ -3,38 +3,42 @@ layout: layouts/base.njk
 ---
 <article class="post" data-pagefind-body>
   <h1>{{ title }}</h1>
-  <nav class="inline">
+  <p><span>{{author}}</span><time class="post-date" datetime="{{ date | date('DATETIME') }}">{{ date | date('HUMAN_DATE') }}</time></p>
+  <nav>
   {% for tag in tags %}
-    <a href="/tags/{{ tag }}/">{{ tag }}</a>
+    <a href="/tags/{{ tag }}/">#{{ tag }}</a>
   {% endfor %}
   </nav>
-
-  <time class="post-date" datetime="{{ date | date('DATETIME') }}">
-    {{ date | date('HUMAN_DATE') }}
-  </time>
-
   <div>
     {{ content | safe }}
   </div>
 </article>
-
-
-<hr>
-
-
 <nav>
   <ul>
     {%- set previousPost = search.previousPage(url, "type=posts") %}
     {%- if previousPost %}
     <li>
-      ← Previous: <a href="{{ previousPost.data.url }}" rel="prev">{{ previousPost.data.title }}</a>
+      <a href="{{ previousPost.data.url }}" rel="prev">
+        <i class="fas fa-arrow-left fa-lg"></i>
+        <div>
+          <div class="direction">Previous article</div>
+          <div class="title">{{ previousPost.data.title }}</div>
+        </div>
+
+      </a>
     </li>
     {% endif %}
 
     {%- set nextPost = search.nextPage(url, "type=posts") %}
     {%- if nextPost %}
     <li>
-      <strong>Next: <a href="{{ nextPost.data.url }}" rel="next">{{ nextPost.data.title }}</a> →</strong>
+      <a href="{{ nextPost.data.url }}" rel="next">
+        <div>
+          <div class="direction">Next article</div>
+          <div class="title">{{ nextPost.data.title }}</div>
+        </div>
+        <i class="fas fa-arrow-right fa-lg"></i>
+      </a>
     </li>
     {% endif %}
   </ul>
