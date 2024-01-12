@@ -1,17 +1,16 @@
 ---
 title: Planning for unplanned work
 description: Practices for product building
-date: 2023-06-31
+date: 2023-07-04
 author: Robert O'Brien
+headline: true
+image: /assets/images/test.png
+abstract: There are two types of work. Features go into roadmaps, but where does the rest go? This short guide covers everything from zero-friction intake to effectively managing unplanned bug reports and requests.
 imagick:
   usedefault: true
 tags:
   - fourth-tag
   - extra-tag
----
-
-There are two types of work. Features go into roadmaps, but where does the rest go? This short guide covers everything from zero-friction intake to effectively managing unplanned bug reports and requests.
-
 ---
 
 There are two types of work; Planned work and unplanned work.

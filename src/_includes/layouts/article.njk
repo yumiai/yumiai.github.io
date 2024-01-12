@@ -10,6 +10,10 @@ layout: layouts/base.njk
   {% endfor %}
   </nav>
   <div>
+    {% if abstract %}
+    <p>{{abstract | safe}}</p>
+    <hr />
+    {% endif %}
     {{ content | safe }}
   </div>
 </article>
@@ -24,7 +28,6 @@ layout: layouts/base.njk
           <div class="direction">Previous article</div>
           <div class="title">{{ previousPost.data.title }}</div>
         </div>
-
       </a>
     </li>
     {% endif %}

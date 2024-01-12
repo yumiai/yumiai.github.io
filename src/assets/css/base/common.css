@@ -453,6 +453,221 @@ footer:first-of-type {
   }    
 } /* END: copyright */
 
+/* Blog Archive */
+#articles nav.articles {
+  --element-margin: calc(var(--standard-width) * 0.03);
+  --element-padding: calc(var(--standard-width) * 0.05); 
+  --element-font-size: calc(var(--standard-width) * 0.05); 
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top:     calc(var(--element-margin)*3);
+
+  & .previous, .next {
+    --element-double-padding: calc(var(--element-padding)*2);
+
+    font-family: var(--sans-font-family);
+    font-variation-settings: var(--sans-light-variation);
+    font-size: var(--element-font-size);  
+    color: var(--text-color-tuscany);
+
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+
+    padding: var(--element-padding) var(--element-double-padding) var(--element-padding) var(--element-double-padding);
+        
+    &:not(:last-child) {
+      margin-right: var(--element-font-size); /* Adjust the margin value as needed */
+    }
+  }
+}
+
+.articles {
+  --element-margin: calc(var(--standard-width) * 0.03);
+  --element-padding: calc(var(--standard-width) * 0.05); 
+  --element-font-size: calc(var(--standard-width) * 0.06); 
+
+  & .summary, .introduction, > a { 
+    background-color: var(--color-coconut-cream-transparent-60);
+  
+    margin: calc(var(--element-margin)/2) var(--element-margin) 0 var(--element-margin);
+  
+    font-family: var(--content-font-family);
+    font-variation-settings: var(--content-variation);
+    font-size: var(--element-font-size);  
+  
+    line-height: calc(var(--element-font-size)*1.75);
+  
+    border-radius: 8px;
+    border: 1px solid #d1d1d1; /* Light border for subtle edge */
+  
+    box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.8), /* Top left inner shadow */
+                inset -1px -1px 2px rgba(0, 0, 0, 0.2), /* Bottom right inner shadow */
+                20px 20px 25px rgba(2, 2, 2, 0.15); /* Outer drop shadow */   
+
+    overflow:hidden;
+  }
+
+  & li.summary {
+    /* tags */
+    display: flex;
+
+    /* Ensure the image covers the area maintaining aspect ratio */
+    & picture > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;  
+    }
+
+    & > div {
+      padding: var(--element-padding);
+    }
+
+    & .tags, .readmore, .share {
+      font-family: var(--sans-font-family);
+      font-variation-settings: var(--sans-light-variation);
+      font-size: var(--element-font-size);  
+      color: var(--text-color-tuscany);
+  
+      text-decoration: underline;
+      text-underline-offset: 0.25rem;
+  
+      &:not(:last-child) {
+        margin-right: var(--element-font-size); /* Adjust the margin value as needed */
+      }
+    }
+
+    & div h2 {    
+      --element-font-size: calc(var(--standard-width) * 0.07); 
+
+      font-family: var(--header-font-family);
+      font-variation-settings: var(--header-variation);
+      font-size: var(--element-font-size);  
+
+      margin-top: var(--element-font-size);
+    }
+
+    /* Author and date formating */
+    & div > .author.time {
+      font-family: var(--sans-font-family);
+      font-variation-settings: var(--sans-light-variation);
+      font-size: var(--element-font-size);  
+      color: var(--text-color-gray-500);
+  
+      margin: var(--element-font-size) var(--element-font-size) var(--element-font-size) 0;
+
+      & > span::after {
+        content: " • ";
+      }
+    }
+
+    & div > .abstract {
+      margin-bottom: calc(var(--element-font-size)*3);
+    }
+
+    & nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;      
+    }
+  }
+
+  &.headline { 
+    & > h1 {
+      --element-font-size: calc(var(--standard-width) * 0.1); 
+      font-family: var(--header-font-family);
+      font-variation-settings: var(--header-variation);
+      font-size: var(--element-font-size);  
+
+      margin: calc(var(--element-margin)/2) var(--element-margin) 0 var(--element-margin);
+    }
+
+    & > .introduction {
+      padding: var(--element-padding);
+      margin-bottom: calc(var(--element-padding)*2);
+    }
+  }
+
+  &.headline li {
+    flex-direction: row;
+    & > div {
+      max-width: 60%;
+    }
+  }
+
+  &.latest > h1, &.archive > h1 {
+    --element-font-size: calc(var(--standard-width) * 0.125); 
+
+    font-family: var(--sans-font-family);
+    font-variation-settings: var(--sans-light-variation);
+    font-size: var(--element-font-size); 
+
+    margin: calc(var(--element-margin)/2) var(--element-margin) 0 var(--element-margin);
+
+  }
+
+  &.latest > ul {
+    --element-double-margin: calc(var(--element-font-size)*3);
+
+    display: flex;
+    flex-direction: row;
+    margin-top:     var(--element-double-margin);
+    margin-bottom:  var(--element-double-margin);
+
+    & > li.summary {
+      display: flex;
+      flex-direction: column;
+
+      & > picture {
+        max-height: 60%;
+      }  
+    }
+  }
+
+  &.archive > ul {
+    display: flex;
+    flex-direction: column; 
+
+    & > li.summary {
+      flex-direction: row; 
+      margin-top:     var(--element-margin);
+      margin-bottom:  var(--element-margin);
+
+      & > picture {
+        display: none;
+      }
+      & > div {
+        display: flex;
+        justify-content: space-between; /* Space out items */
+        flex-direction: row;
+        width: 100%;
+      }
+      /* Left & Right handside */
+      & > div > div {
+        display: flex;
+        flex-direction: column;
+
+      }
+      /* Right handside row modifications */
+      & > div > div + div {
+        flex-direction: row;
+        align-items: center;
+        & .tags, .readmore, .share {
+          --element-font-size: calc(var(--standard-width) * 0.06); 
+        }
+      }
+
+      & div h2 {
+        --element-font-size: calc(var(--standard-width) * 0.065); 
+        margin-top: 0;
+      }       
+    }
+  }
+}
 
 /* Blog Posts */
 article.post {
@@ -490,7 +705,6 @@ article.post {
     font-family: var(--header-font-family);
     font-variation-settings: var(--header-variation);
     font-size: var(--element-font-size);  
-
   }
 
   /* Author and date formating */

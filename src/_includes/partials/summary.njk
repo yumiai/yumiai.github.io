@@ -1,0 +1,42 @@
+<li class="summary">
+  
+  {% set postimage = "/assets/images/test.png" %}
+  {% if post.data.image %}
+    {% set postimage = post.data.image %}
+  {% endif %}
+  <img src="{{ postimage }}" imagick="webp png 800@2" alt="{{post.data.description}}"/>
+  <div>
+    <div>
+      {% for tagname in post.data.tags %}
+        {% set tag = search.page("type=tag tag='" + tagname + "'") %}
+        {% if tag %}
+          <a class="tags" href="{{ tag.data.url }}">#{{ tagname }}</a>
+        {% endif %}
+      {% endfor %}
+    
+      <a href="{{ post.data.url }}">
+        {% if post.data.title %}
+          <h2>{{ post.data.title }}</h2>
+        {% else %}
+          <code>{{ post.data.url }}</code>
+        {% endif %}
+      </a>
+    </div>
+    <div>
+      <p class="author time">
+        <span >{{post.data.author}}</span>
+        <time class="post-date" datetime="{{ post.data.date | date('DATETIME') }}">
+          {{ post.data.date | date('HUMAN_DATE') }}
+        </time>
+      </p>
+      
+      {% if post.data.headline and post.data.abstract %}
+        <p class="abstract">{{post.data.abstract}}</p>
+      {% endif %}
+      <nav>
+        <a class="readmore" href="{{ post.data.url }}" {% if entry.data.url == url %} aria-current="page"{% endif %}>{{cta | safe}}</a>
+        <a class="share" href="{{ post.data.url }}" {% if entry.data.url == url %} aria-current="page"{% endif %}><i class="fas fa-link fa-lg"></i> Share</a>
+      </nav>
+    </div>
+  </div>
+</li>

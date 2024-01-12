@@ -1,0 +1,68 @@
+---
+layout: layouts/base.njk
+section:
+  headline: "Blog"
+  latest: ""
+  archive: "Older posts"
+action: 
+  headline: "Continue reading <i class='fas fa-arrow-right fa-lg'></i>"
+  latest: "Read post"
+  archive: "Read post"
+  pages: 
+    previous: "Previous posts"
+    next: "More posts"
+query: 
+  headline: "type=posts headline=true"
+  posts: "type=posts !headline=true"
+---
+<div id="articles">
+  <section class="articles headline">
+    {% if section.headline %}<h1 class="title">{{section.headline | safe}}</h1>{% endif %}
+    
+    {% if content %}
+      <div class="introduction">
+        {{ content | safe }}
+      </div>
+    {% endif %}
+    
+    {% set cta = action.headline %}
+    {% set post = search.page(query.headline) %}
+    <ul>
+      {% include "partials/summary.njk" %}
+    </ul>
+  </section>
+  
+  <section class="articles latest">
+    {% set len_latest = 3 %}
+    {% set cta = action.latest %}
+    {% set posts = search.pages(query.posts, "date=desc") %}
+    {% for post in posts %} 
+      {% if loop.index == 1 %}
+        {%if section.latest%}<h1 class="title">{{section.latest | safe}}</h1>{%endif%}
+        <ul>
+      {% endif %}
+    
+      {% if loop.index == (len_latest+1) %}
+        </ul>
+        </section>
+    
+        <section class="articles archive">
+        {%if section.archive%}<h1 class="title">{{section.archive | safe}}</h1>{%endif%}
+        <ul>
+        {% set cta = action.archive %}
+    
+      {% endif %}
+    
+      {% include "partials/summary.njk" %}
+    
+      {% if loop.index == posts.length %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </section>
+  <!-- TODO: More posts, pagenation -->
+  <nav class="articles">
+    <a class="previous" href="#"><i class="fas fa-arrow-left fa-lg"></i> {{action.pages.previous}}</a>
+    <a class="next" href="#">{{action.pages.next}} <i class="fas fa-arrow-right fa-lg"></i></a>
+  </nav>
+</div>
