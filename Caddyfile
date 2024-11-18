@@ -1,0 +1,13 @@
+# Caddy is the http server we are using for deployment, however you can
+# server the localhost or the files directly via 'tailscale server' see
+#
+# 1. Tailscale Funnel: https://tailscale.com/kb/1247/funnel-serve-use-cases/
+# 2. VSCode extension: https://tailscale.com/kb/1265/vscode-extension/
+#
+# The following host names serve on localhost, 127.0.01, and via any tailscale node.
+
+http://:8080, http://*.husky-ostrich.ts.net:8080 {
+	# Listen on default http and https ports
+	root .
+	file_server
+}

@@ -1,0 +1,27 @@
+name: Push to GitHub Main Branch
+run-name: ${{ gitea.actor }} is deploying the yūmi web site.
+on: 
+  push:
+    branches:
+      - main # default branch for pages source
+
+jobs:
+  Deploy-Web-Site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "wolstaeb"
+          git config --global user.email "82072426+wolstaeb@users.noreply.github.com"
+
+      - name: Add GitHub Remote
+        run: |
+          git remote add github https://wolstaeb:${{ secrets.DEPLOY_TOKEN }}@github.com/yumiai/yumiai.github.io.git
+
+      - name: Mirror Main Branch to GitHub
+        run: |
+          git checkout main
+          git push github main:main --force
